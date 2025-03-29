@@ -13,19 +13,21 @@
       <img src="logo.png" alt="Logo">
       <span>White Fire Technologies</span>
     </div>
-    <nav class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Courses</a>
-      <a href="#">Blog</a>
-      <a href="#">Contact Us</a>
-      <a href="#">Careers</a>
-    </nav>
+    <nav class="nav-links" id="nav-links">
+        <a href="#" class="active-link">Home</a>
+        <a href="#">Courses</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Careers</a>
+      </nav>
+      
     <div class="menu-icon" id="menu-icon">
       ☰
     </div>
   </header>
 
-  <!-- Main Content -->
+
+
   <main>
     <section class="hero">
       <h1>Welcome to Our Website</h1>
@@ -33,14 +35,77 @@
     </section>
   </main>
 
+
+  <!-- WhatsApp Button & Chat -->
+  <div class="whatsapp-container">
+    <div class="whatsapp-button" id="whatsapp-button">
+      <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+    </div>
+    <div class="whatsapp-chat" id="whatsapp-chat">
+      <div class="chat-header">
+        <span>Chat with us</span>
+        <span class="close-chat" id="close-chat">×</span>
+      </div>
+      <div class="chat-body" id="chat-body">
+        <div class="bot-message">Hi 👋 How can we help you?</div>
+      </div>
+      <div class="chat-footer">
+        <input type="text" id="whatsapp-message" placeholder="Type your message..." />
+        <button id="send-message">Send</button>
+      </div>
+    </div>
+  </div>
+  
+
   <script>
     const menuIcon = document.getElementById('menu-icon');
-    const navLinks = document.querySelector('.nav-links');
+    const navLinks = document.getElementById('nav-links');
 
     menuIcon.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
   </script>
+
+
+<script>
+    const whatsappButton = document.getElementById('whatsapp-button');
+    const whatsappChat = document.getElementById('whatsapp-chat');
+    const closeChat = document.getElementById('close-chat');
+    const sendMessage = document.getElementById('send-message');
+    const messageInput = document.getElementById('whatsapp-message');
+    const chatBody = document.getElementById('chat-body');
+
+    const phoneNumber = '447587675040'; // e.g., 919876543210
+
+    whatsappButton.addEventListener('click', () => {
+      whatsappChat.style.display = 'flex';
+    });
+
+    closeChat.addEventListener('click', () => {
+      whatsappChat.style.display = 'none';
+    });
+
+    sendMessage.addEventListener('click', () => {
+      const message = messageInput.value.trim();
+      if (message !== '') {
+        // Display user message
+        const userMsg = document.createElement('div');
+        userMsg.className = 'user-message';
+        userMsg.innerText = message;
+        chatBody.appendChild(userMsg);
+
+        // Auto scroll
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        // Open WhatsApp link silently
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+
+        messageInput.value = '';
+      }
+    });
+  </script>
+  
 
 </body>
 </html>
