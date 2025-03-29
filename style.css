@@ -59,30 +59,121 @@
     cursor: pointer;
   }
   
-  .hero {
-    text-align: center;
-    padding: 60px 20px;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .hero p {
-    font-size: 1.2rem;
-    color: #555;
-  }
   .nav-links a.active-link {
     color: #ff9800;
   }
-
-
-
-
-
-
-
+  
+  /* Hero Section */
+  
+  .hero-section {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(47, 54, 59, 0.7);
+  }
+  
+  .hero-text {
+    position: absolute;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .hero-text p {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .sub-tagline {
+    font-size: 1.2rem;
+    color: #ffe600;
+    margin-top: 5px;
+  }
+  
+  .hero-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .learn-btn, .contact-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .learn-btn {
+    background-color: #ff9800;
+    color: #fff;
+  }
+  
+  .learn-btn:hover {
+    background-color: #e68900;
+  }
+  
+  .contact-btn {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+  }
+  
+  .contact-btn:hover {
+    background-color: #fff;
+    color: #0d6985;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-text p {
+      font-size: 1.1rem;
+    }
+  
+    .sub-tagline {
+      font-size: 1rem;
+    }
+  
+    .hero-buttons {
+      flex-direction: column;
+    }
+  }
+  
+  
+  /* WhatsApp */
+  
   .whatsapp-container {
     position: fixed;
     bottom: 20px;
@@ -138,7 +229,8 @@
     gap: 10px;
   }
   
-  .bot-message, .user-message {
+  .bot-message,
+  .user-message {
     padding: 8px 12px;
     border-radius: 15px;
     max-width: 80%;
@@ -179,8 +271,6 @@
     cursor: pointer;
   }
   
-  
-  
   /* Responsive */
   @media (max-width: 768px) {
     .nav-links {
@@ -211,7 +301,13 @@
     .menu-icon {
       display: block;
     }
-    
-      
+  
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-text p {
+      font-size: 1.1rem;
+    }
   }
   

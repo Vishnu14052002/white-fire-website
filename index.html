@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Responsive Website</title>
+  <title>White Fire Technologies</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,27 +14,32 @@
       <span>White Fire Technologies</span>
     </div>
     <nav class="nav-links" id="nav-links">
-        <a href="#" class="active-link">Home</a>
-        <a href="#">Courses</a>
-        <a href="#">Blog</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Careers</a>
-      </nav>
-      
-    <div class="menu-icon" id="menu-icon">
-      ☰
-    </div>
+      <a href="#" class="active-link">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Careers</a>
+    </nav>
+    <div class="menu-icon" id="menu-icon">☰</div>
   </header>
 
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <img src="resources/main_image.jpg" alt="Hero Image" class="hero-image">
+    <div class="hero-text">
+      <h1>A One-of-a-kind IT Training Institute</h1>
+      <p>Committed to equipping you with industry-leading skills</p>
+      <span class="sub-tagline">🚀 Turn your passion into profession with us!</span>
+      <div class="hero-buttons">
+        <button class="learn-btn">Explore Courses</button>
+        <button class="contact-btn">Contact Now</button>
+      </div>
+    </div>
+  </section>
+  
 
-
-  <main>
-    <section class="hero">
-      <h1>Welcome to Our Website</h1>
-      <p>Your learning journey starts here.</p>
-    </section>
-  </main>
-
+ 
+  
 
   <!-- WhatsApp Button & Chat -->
   <div class="whatsapp-container">
@@ -55,7 +60,6 @@
       </div>
     </div>
   </div>
-  
 
   <script>
     const menuIcon = document.getElementById('menu-icon');
@@ -64,18 +68,13 @@
     menuIcon.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
-  </script>
 
-
-<script>
     const whatsappButton = document.getElementById('whatsapp-button');
     const whatsappChat = document.getElementById('whatsapp-chat');
     const closeChat = document.getElementById('close-chat');
     const sendMessage = document.getElementById('send-message');
     const messageInput = document.getElementById('whatsapp-message');
     const chatBody = document.getElementById('chat-body');
-
-    const phoneNumber = '447587675040'; // e.g., 919876543210
 
     whatsappButton.addEventListener('click', () => {
       whatsappChat.style.display = 'flex';
@@ -85,27 +84,21 @@
       whatsappChat.style.display = 'none';
     });
 
-    sendMessage.addEventListener('click', () => {
+    sendMessage.addEventListener('click', async () => {
       const message = messageInput.value.trim();
       if (message !== '') {
-        // Display user message
         const userMsg = document.createElement('div');
         userMsg.className = 'user-message';
         userMsg.innerText = message;
         chatBody.appendChild(userMsg);
-
-        // Auto scroll
         chatBody.scrollTop = chatBody.scrollHeight;
-
-        // Open WhatsApp link silently
-        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappURL, '_blank');
-
         messageInput.value = '';
+
+        // Optional: Send to backend (you can use fetch here)
+        // await fetch('http://localhost:5000/send-message', {...})
       }
     });
   </script>
-  
 
 </body>
 </html>
