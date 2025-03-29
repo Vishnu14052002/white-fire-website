@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      <span>White Fire Technologies</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Careers</a>
+    </nav>
+    <div class="menu-icon" id="menu-icon">
+      ☰
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="hero">
+      <h1>Welcome to Our Website</h1>
+      <p>Your learning journey starts here.</p>
+    </section>
+  </main>
+
+  <script>
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuIcon.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
