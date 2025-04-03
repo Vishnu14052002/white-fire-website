@@ -180,7 +180,6 @@
   }
   .top_navigation_bar.responsive a.icon {
     position: absolute; /* Position the icon absolutely when the menu is open */
-    right: 0;
   }
   
 }
