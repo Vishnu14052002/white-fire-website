@@ -14,7 +14,7 @@
 }
 
 /* Full-page background image */
-body {
+.main_page {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -35,3 +35,145 @@ body {
   width: 350px; /* Adjust size as needed */
   height: auto; /* Maintains aspect ratio */
 }
+
+
+.top_navigation_bar
+{
+  float: right;
+  margin-top: 50px;
+  margin-right: 20px;
+}
+
+.vishnu{
+  margin-top: 100px;
+  margin-right: 0px;
+}
+
+.firsta
+{
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.homeactive
+{
+  color: #f64a00;
+}
+
+.top_navigation_bar a:hover
+{
+  color: #f64a00;
+  transition: 0.5s
+}
+
+.top_navigation_bar .icon {
+  display: none; /* Hide icon by default */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1070px) {
+  /* Styles for tablets */
+
+  .top_navigation_bar a {
+    display: none; /* Hide all navigation links initially */
+    width: 100%;
+    text-align: left;
+    padding: 8px 16px;
+  }
+  .top_navigation_bar a.icon {
+    display: block; /* Show hamburger icon */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 65px;
+    border: none;
+    margin-top: -44px;
+    margin-right: -20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 767px) {
+  /* Styles for mobile phones */
+  .main_logo
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px; /* Adjust size as needed */
+    height: auto; /* Maintains aspect ratio */
+
+  }
+  .top_navigation_bar
+  {
+    float: right;
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+  .top_navigation_bar a {
+    display: none; /* Hide all navigation links initially */
+    width: 100%;
+    text-align: center;
+    padding: 8px 16px;
+  }
+  .top_navigation_bar a.icon {
+    display: block; /* Show hamburger icon */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 65px;
+    border: none;
+    margin-top: -60px;
+    margin-right: -20px;
+
+  }
+  .top_navigation_bar.responsive a {
+    display: block; /* Show nav links when menu is active */
+  }
+  .top_navigation_bar.responsive {
+    position: relative;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    z-index: 1000;
+    transition: 0.3s;
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
