@@ -44,10 +44,7 @@
   margin-right: 20px;
 }
 
-.vishnu{
-  margin-top: 100px;
-  margin-right: 0px;
-}
+
 
 .firsta
 {
@@ -91,7 +88,7 @@
   .top_navigation_bar a {
     display: none; /* Hide all navigation links initially */
     width: 100%;
-    text-align: left;
+    text-align: center;
     padding: 8px 16px;
   }
   .top_navigation_bar a.icon {
@@ -103,6 +100,22 @@
     border: none;
     margin-top: -44px;
     margin-right: -20px;
+  }
+  .top_navigation_bar.responsive a {
+    display: block; /* Show nav links when menu is active */
+
+  }
+  .top_navigation_bar.responsive {
+    position: relative;
+    margin-top: 0px;
+    margin-right: 0px;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    /* z-index: 1000; */
+    transition: 0.3s;
   }
 }
 
@@ -128,12 +141,6 @@
     height: auto; /* Maintains aspect ratio */
 
   }
-  .top_navigation_bar
-  {
-    float: right;
-    margin-top: 0px;
-    margin-right: 0px;
-  }
   .top_navigation_bar a {
     display: none; /* Hide all navigation links initially */
     width: 100%;
@@ -147,22 +154,33 @@
     text-align: center;
     font-size: 65px;
     border: none;
-    margin-top: -60px;
-    margin-right: -20px;
-
+    /* margin-top: -64px;
+    margin-right: -20px; */
   }
   .top_navigation_bar.responsive a {
     display: block; /* Show nav links when menu is active */
+
   }
   .top_navigation_bar.responsive {
     position: relative;
+    margin-top: 0px;
+    margin-right: 0px;
     right: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 50%;
     background-color: #333;
-    z-index: 1000;
-    transition: 0.3s;
+    /* z-index: 1000; */
+    transition: 0s;
+  }
+  #vishnu{
+    margin-top: -64px;
+    margin-right: -20px;
+
+  }
+  .top_navigation_bar.responsive a.icon {
+    position: absolute; /* Position the icon absolutely when the menu is open */
+    right: 0;
   }
   
 }
