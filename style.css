@@ -366,6 +366,73 @@
   .course-btn:hover {
     background-color: #ff9800;
   }
+
+
+
+
+
+
+.aboutus_header{
+    font-size: 1.6rem;
+    color: #0d6985;
+    font-weight: 600;
+    text-align: center;
+}
+.aboutus_content
+{
+  
+  display: flex;
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+.aboutus_content_content
+{
+  text-align: center;
+}
+.aboutus_content_content_one
+{
+  font-size: 2.3rem;
+  font-weight: 600;
+  color: #ff9800;
+}
+.aboutus_content_content_two
+{
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: justify;
+}
+
+.aboutus_content_banner_image_image
+{
+  width: 600px;
+  height: auto;
+}
+.aboutus_content_banner
+{
+  margin-top: -40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   @media (max-width: 768px) {
     .courses-container {
@@ -442,4 +509,45 @@
       font-size: 1.1rem;
     }
   }
+
+
+  @media (max-width: 1287px)
+  {
+    .aboutus_content_banner_image_image
+    {
+      width: 400px;
+      height: auto;
+    }
+    .aboutus_content_content_one
+    {
+      font-size: 2.0rem;
+      font-weight: 600;
+      color: #ff9800;
+    }
+    .aboutus_content_content_two
+    {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: 400;
+      text-align: justify;
+    }
+  }
+
+  @media (max-width: 1000px)
+  {
+    .aboutus_content
+    {
+      display: block;
+      width: 80%;
+      margin: auto;
+      margin-top: 30px;
+    }
+    .aboutus_content_banner_image_image
+    {
+      width: 320px;
+      height: auto;
+      margin-top: 30px;
+    }
+  }
+
   
