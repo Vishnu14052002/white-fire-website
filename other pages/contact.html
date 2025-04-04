@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="other page style/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <title>Contact US</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+          <img src="logo.png" alt="Logo">
+          <span>White Fire Technologies</span>
+        </div>
+        <nav class="nav-links" id="nav-links">
+          <a href="#">Home</a>
+          <a href="#">Courses</a>
+          <a href="#">About Us</a>
+          <a href="#" class="active-link">Contact Us</a>
+          <a href="#">Gallery</a>
+        </nav>
+        <div class="menu-icon" id="menu-icon">☰</div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <img src="/Users/vishnug/Desktop/desktop 1/desktop1/projects for others/white fire website/white-fire-website/other pages/other page resources/shutterstock_2288178513.jpg" alt="Hero Image" class="hero-image">
+        <div class="hero-text">
+          <h1>Contact Us for more details</h1>
+          <p>We always ready to help and assist you</p>
+          <span class="sub-tagline">🚀 Turn your passion into profession with us!</span>
+        </div>
+    </section>
+
+    <section class="contact-container">
+        <div class="contact-heading">
+            <h2>Keep In Touch With Us</h2>
+            <p>If you require clarifications on any of the courses or the admission process, we are happy to help.</p>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Call us on:</h3>
+                        <p>91 8086 651 651</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Email us at:</h3>
+                        <p>Enquiry: abc@gmail.com</p>
+                        <p>Placement Cell: abc@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Locate us on (H Q):</h3>
+                        <p>chemlsford duke station cm3 5xb</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Connect Us on:</h3>
+                        <p>WhatsApp</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Send us a message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course">Select Course</label>
+                        <select id="course" name="course" required>
+                            <option value="" disabled selected>Choose a course</option>
+                            <option value="data-science">Data Science</option>
+                            <option value="python">Python</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="android-development">Android Development</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Type your message here..." rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 White Fire Technologies. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Form submission handling (you can add your form logic here)
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Form submitted successfully!');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
