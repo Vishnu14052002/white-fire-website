@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="other page style/booksession.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <title>Book Free Session</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+          <img src="../resources/White fire logo.png" alt="Logo">
+        </div>
+        <nav class="nav-links" id="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="./courses.html">Courses</a>
+          <a href="../other pages/about.html">About Us</a>
+          <a href="../other pages/contact.html">Contact Us</a>
+          <a href="../other pages/gallery.html">Gallery</a>
+          <a href="../other pages/free-session.html" class="active-link">Free Session</a>
+
+          <!-- Added dropdown menu -->
+          <div class="dropdown">
+            <a href="#" class="dropbtn">More <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+              <a href="other pages/scholarships.html">Scholarships</a>
+              <a href="other pages/placements.html">Placements</a>
+              <a href="other pages/hire-from-us.html">Hire From Us</a>
+              <a href="other pages/our-trainers.html">Our Trainers</a>
+              <a href="other pages/become-trainer.html">Become A Trainer</a>
+              <a href="other pages/other-careers.html">Other Careers</a>
+              <a href="other pages/tech-blog.html">Tech Blog</a>
+              <a href="other pages/testimonials.html">Testimonials</a>
+              <a href="other pages/white-papers.html">White Papers</a>
+            </div>
+          </div>
+
+          <!-- Mobile-only links -->
+          <div class="mobile-only-links">
+            <a href="other pages/scholarships.html">Scholarships</a>
+            <a href="other pages/placements.html">Placements</a>
+            <a href="other pages/hire-from-us.html">Hire From Us</a>
+            <a href="other pages/our-trainers.html">Our Trainers</a>
+            <a href="other pages/become-trainer.html">Become A Trainer</a>
+            <a href="other pages/other-careers.html">Other Careers</a>
+            <a href="other pages/tech-blog.html">Tech Blog</a>
+            <a href="other pages/testimonials.html">Testimonials</a>
+            <a href="other pages/white-papers.html">White Papers</a>
+          </div>
+        </nav>
+        <div class="menu-icon" id="menu-icon">☰</div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <img src="other page resources/shutterstock_2288178513.jpg" alt="Free Session Image" class="hero-image">
+        <div class="hero-text">
+          <h1>Book Your Free Session Now</h1>
+          <p>Experience our world-class training before you commit</p>
+          <span class="sub-tagline">🔥 Limited seats available for each session!</span>
+        </div>
+    </section>
+
+    <section class="booking-container">
+        <div class="booking-heading">
+            <h2>Reserve Your Free Training Session</h2>
+            <p>Get a taste of our expert-led courses with a complimentary session. No obligations, just pure learning.</p>
+        </div>
+
+        <div class="booking-content">
+            <div class="booking-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Hands-on Experience</h3>
+                        <p>Practical training with real-world examples</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Expert Instructors</h3>
+                        <p>Learn from industry professionals</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Q&A Session</h3>
+                        <p>Get all your course-related questions answered</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Exclusive Offers</h3>
+                        <p>Special discounts for free session attendees</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booking-form">
+                <h2>Register for Free Session</h2>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Mobile Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your mobile number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course">Course Interested In</label>
+                        <select id="course" name="course" required>
+                            <option value="" disabled selected>Choose a course</option>
+                            <option value="data-science">Data Science</option>
+                            <option value="python">Python</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="android-development">Android Development</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="session-date">Preferred Session Date</label>
+                        <input type="date" id="session-date" name="session-date" min="" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="session-time">Preferred Time Slot</label>
+                        <select id="session-time" name="session-time" required>
+                            <option value="" disabled selected>Choose a time slot</option>
+                            <option value="morning">10:00 AM - 12:00 PM</option>
+                            <option value="afternoon">2:00 PM - 4:00 PM</option>
+                            <option value="evening">6:00 PM - 8:00 PM</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Book My Free Session</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="testimonial-heading">
+            <h2>What Our Students Say</h2>
+            <p>Hear from those who attended our free sessions and continued their learning journey</p>
+        </div>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>The free session was so informative that I immediately signed up for the full course. Best decision ever!</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Data Science Student</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>I was hesitant at first, but the free session convinced me that this was exactly what I needed for my career growth.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Michael Chen</h4>
+                        <p>Web Development Graduate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer_container">
+          <div class="footer_about">
+            <h2>White Fire</h2>
+            <p>Igniting innovation, driving success. Let's build something amazing together.</p>
+          </div>
+    
+          <div class="footer_links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+    
+        <div class="footer_social">
+          <h3>Follow Us</h3>
+          <div class="social_icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+    
+        <div class="footer_newsletter">
+          <h3>Subscribe</h3>
+          <p>Get the latest updates and offers.</p>
+          <form>
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+    
+        <div class="footer_bottom">
+          <p>&copy; 2025 White Fire. All rights reserved.</p>
+        </div>
+        </div>
+      </footer>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBqtR-mopnadnBWzSE6HJzdZeNVqIQRnfs",
+            authDomain: "white-fire-technologies.firebaseapp.com",
+            projectId: "white-fire-technologies",
+            storageBucket: "white-fire-technologies.firebasestorage.app",
+            messagingSenderId: "997726192451",
+            appId: "1:997726192451:web:c4ebf82504875f7174e5f6",
+            measurementId: "G-SLSNLSDR79"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("session-date").min = today;
+
+        document.getElementById("bookingForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            // Get form values
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const course = document.getElementById("course").value;
+            const sessionDate = document.getElementById("session-date").value;
+            const sessionTime = document.getElementById("session-time").value;
+
+            // Add a new document to Firestore
+            try {
+                await addDoc(collection(db, "free-sessions"), {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    course: course,
+                    sessionDate: sessionDate,
+                    sessionTime: sessionTime,
+                    status: "pending",
+                    timestamp: new Date()
+                });
+                alert("Free session booked successfully! We'll confirm your booking via email soon.");
+            } catch (e) {
+                console.error("Error booking session: ", e);
+                alert("Error booking free session. Please try again.");
+            }
+
+            // Clear the form after submission
+            document.getElementById("bookingForm").reset();
+        });
+
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
