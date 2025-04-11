@@ -522,69 +522,70 @@ body {
 
 @media (max-width: 768px) {
     .nav-links {
-        position: absolute;
+        position: fixed; /* Change from absolute to fixed */
         top: 90px;
         left: 0;
         width: 100%;
         background-color: #0d6985;
         flex-direction: column;
-        gap: 10px;
-        padding: 10px 0;
+        gap: 0px;
+        padding: 0;
         display: flex;
         max-height: 0;
-        overflow: hidden;
+        overflow-y: hidden; /* Initially hidden */
         opacity: 0;
         transform: translateY(-10px);
         transition: all 0.4s ease;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         border-radius: 0 0 10px 10px;
         align-items: stretch;
-      }
-
-      .nav-links.active {
-        max-height: 1000px; /* Increased to accommodate more links */
+        z-index: 99; /* Ensure it's above other content */
+    }
+    
+    .nav-links.active {
+        max-height: 80vh; /* Set to percentage of viewport height */
         opacity: 1;
         transform: translateY(0);
         padding: 15px 0;
-      }
-
-
-
-
-      .nav-links a {
+        overflow-y: auto; /* Enable scrolling */
+    }
+    
+    .nav-links a {
         padding: 12px 20px;
         display: block;
         text-align: left;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-        .menu-icon {
-          display: block;
-        }
-  
-        /* Show mobile-only links on mobile */
-    .mobile-only-links {
-      display: block;
-      width: 100%;
     }
+    
+    .menu-icon {
+        display: block;
+    }
+    
+    /* Show mobile-only links on mobile */
+    .mobile-only-links {
+        display: block;
+        width: 100%;
+    }
+    
     /* Hide dropdown on mobile */
     .dropdown {
-      display: none;
+        display: none;
     }
-  
+    
     /* Mobile specific link styling */
     .mobile-only-links a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.2rem;
-      padding: 12px 20px;
-      display: block;
-      transition: all 0.3s ease;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 12px 20px;
+        display: block;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-  
+    
     .mobile-only-links a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #ff9800;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ff9800;
     }
 
 
