@@ -343,7 +343,8 @@ body {
 }
 
 .topic-content li {
-    margin-bottom: 8px;
+    margin: 2px 0;
+    margin-bottom: -3px;
     font-size: 0.95rem;
 }
 
@@ -364,6 +365,8 @@ body {
 
 .see-more-btn {
     background-color: #0d6985;
+    text-align: center;
+    text-decoration: none;
     color: white;
     border: none;
     padding: 12px 20px;
