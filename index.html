@@ -1062,36 +1062,66 @@
       navLinks.classList.toggle('active');
     });
 
-    const whatsappButton = document.getElementById('whatsapp-button');
-    const whatsappChat = document.getElementById('whatsapp-chat');
-    const closeChat = document.getElementById('close-chat');
-    const sendMessage = document.getElementById('send-message');
-    const messageInput = document.getElementById('whatsapp-message');
-    const chatBody = document.getElementById('chat-body');
+    // WhatsApp functionality
+const whatsappButton = document.getElementById('whatsapp-button');
+const whatsappChat = document.getElementById('whatsapp-chat');
+const closeChat = document.getElementById('close-chat');
+const sendMessage = document.getElementById('send-message');
+const messageInput = document.getElementById('whatsapp-message');
+const chatBody = document.getElementById('chat-body');
+const whatsappNumber = '+447587675040'; // Your WhatsApp number
 
-    whatsappButton.addEventListener('click', () => {
-      whatsappChat.style.display = 'flex';
-    });
+whatsappButton.addEventListener('click', () => {
+  whatsappChat.style.display = 'flex';
+});
 
-    closeChat.addEventListener('click', () => {
-      whatsappChat.style.display = 'none';
-    });
+closeChat.addEventListener('click', () => {
+  whatsappChat.style.display = 'none';
+});
 
-    sendMessage.addEventListener('click', async () => {
-      const message = messageInput.value.trim();
-      if (message !== '') {
-        const userMsg = document.createElement('div');
-        userMsg.className = 'user-message';
-        userMsg.innerText = message;
-        chatBody.appendChild(userMsg);
-        chatBody.scrollTop = chatBody.scrollHeight;
-        messageInput.value = '';
+// Function to redirect to WhatsApp with the message
+function redirectToWhatsApp(message) {
+  // Format the number without spaces or special characters
+  const formattedNumber = whatsappNumber.replace(/\s+/g, '');
+  
+  // Create the WhatsApp URL with the message
+  const whatsappURL = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`;
+  
+  // Open WhatsApp in a new tab
+  window.open(whatsappURL, '_blank');
+}
 
-        // Optional: Send to backend (you can use fetch here)
-        // await fetch('http://localhost:5000/send-message', {...})
-      }
-    });
+sendMessage.addEventListener('click', () => {
+  handleMessageSend();
+});
 
+// Also handle pressing Enter key in the input field
+messageInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    handleMessageSend();
+  }
+});
+
+function handleMessageSend() {
+  const message = messageInput.value.trim();
+  if (message !== '') {
+    // Display the message in the chat interface
+    const userMsg = document.createElement('div');
+    userMsg.className = 'user-message';
+    userMsg.innerText = message;
+    chatBody.appendChild(userMsg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    
+    // Add a small delay so user can see their message before redirect
+    setTimeout(() => {
+      // Redirect to WhatsApp with the message
+      redirectToWhatsApp(message);
+      
+      // Clear the input field
+      messageInput.value = '';
+    }, 500);
+  }
+}
 
     function filterCourses() {
     let input = document.getElementById("search-box").value.toLowerCase();
