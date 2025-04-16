@@ -149,17 +149,111 @@
   </section>
 
 
-  <section class="aboutus">
-    <div class="aboutus_header">
-      <h2 class="aboutus_section-title">Why White Fire Technologies</h2>
+  <section class="why-us-section">
+    <div class="why-us-header">
+      <h2 class="section-title">Why White Fire Technologies</h2>
+      <p class="why-us-subtitle">Empowering your future with excellence in IT education</p>
     </div>
-    <div class="aboutus_content">
-      <div class="aboutus_content_content">
-        <h1 class="aboutus_content_content_one">Placement Assesment</h1>
-        <p class="aboutus_content_content_two">Our dedicated placement cell works tirelessly to connect our students with leading IT companies for job opportunities. With a strong network of corporate partners and frequent recruitment drives to ensure maximum exposure for our students, we achieve outstanding placement success. Our dedicated placement cell works tirelessly to connect our students with leading IT companies for job opportunities. With a strong network of corporate partners and frequent recruitment drives to ensure maximum exposure for our students, we achieve outstanding placement success.</p>
+    
+    <div class="value-container">
+      <div class="value-box">
+        <div class="value-image">
+          <img src="resources/course.jpg" alt="Certified Instructors" class="value-img">
+          <div class="value-overlay">
+            <i class="fas fa-certificate"></i>
+          </div>
+        </div>
+        <div class="value-details">
+          <h3 class="value-title">Certified Instructors</h3>
+          <p class="value-description">Learn from industry experts with years of professional experience and recognized certifications in their respective domains.</p>
+          <div class="value-stats">
+            <div class="stat">
+              <span class="stat-number">15+</span>
+              <span class="stat-text">Industry Partners</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-text">Certified Faculty</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="value-box">
+        <div class="value-image">
+          <img src="resources/course.jpg" alt="Flexible Learning" class="value-img">
+          <div class="value-overlay">
+            <i class="fas fa-clock"></i>
+          </div>
+        </div>
+        <div class="value-details">
+          <h3 class="value-title">Flexible Learning</h3>
+          <p class="value-description">Choose between online, offline, weekend, or weekday classes to fit learning around your schedule and preferences.</p>
+          <div class="learning-options">
+            <span class="option"><i class="fas fa-laptop"></i> Online</span>
+            <span class="option"><i class="fas fa-building"></i> Offline</span>
+            <span class="option"><i class="fas fa-calendar-alt"></i> Weekend</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="value-box">
+        <div class="value-image">
+          <img src="resources/course.jpg" alt="In-depth Understanding" class="value-img">
+          <div class="value-overlay">
+            <i class="fas fa-brain"></i>
+          </div>
+        </div>
+        <div class="value-details">
+          <h3 class="value-title">In-depth Understanding</h3>
+          <p class="value-description">Our curriculum goes beyond surface-level concepts, ensuring you gain thorough knowledge of fundamentals and advanced topics.</p>
+          <div class="topics-counter">
+            <div class="counter-item">
+              <span class="counter-number" data-count="500">500+</span>
+              <span class="counter-label">Topics Covered</span>
+            </div>
+            <div class="counter-item">
+              <span class="counter-number" data-count="200">200+</span>
+              <span class="counter-label">Hands-on Labs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="value-box">
+        <div class="value-image">
+          <img src="resources/course.jpg" alt="Real-time Project Experience" class="value-img">
+          <div class="value-overlay">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+        </div>
+        <div class="value-details">
+          <h3 class="value-title">Real-time Project Experience</h3>
+          <p class="value-description">Work on industry-standard projects that simulate real-world challenges and build a portfolio that impresses employers.</p>
+          <div class="project-badge">
+            <span class="badge"><i class="fas fa-check-circle"></i> Real World Applications</span>
+            <span class="badge"><i class="fas fa-check-circle"></i> Portfolio Development</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
   
   
 
@@ -290,6 +384,24 @@
         }
     });
     }
+
+
+
+
+    // Add hover effects for interactive elements
+  document.addEventListener('DOMContentLoaded', function() {
+    const valueBoxes = document.querySelectorAll('.value-box');
+    
+    valueBoxes.forEach(box => {
+      box.addEventListener('mouseenter', function() {
+        this.querySelector('.value-overlay i').classList.add('fa-spin');
+      });
+      
+      box.addEventListener('mouseleave', function() {
+        this.querySelector('.value-overlay i').classList.remove('fa-spin');
+      });
+    });
+  });
 
   </script>
 
