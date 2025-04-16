@@ -248,8 +248,132 @@
 
 
 
+  <section class="how-it-works-section">
+    <div class="how-it-works-header">
+      <h2 class="section-title">How It Works</h2>
+      <p class="how-it-works-subtitle">Your journey to IT excellence in four simple steps</p>
+    </div>
+    
+    <div class="process-container">
+      <!-- Step 1 -->
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <div class="step-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="step-image">
+            <img src="resources/course.jpg" alt="Browse Courses" class="step-img">
+          </div>
+          <h3 class="step-title">View All Courses</h3>
+          <p class="step-description">Browse our comprehensive catalog of specialized IT courses designed for various skill levels.</p>
+          <a href="other pages/courses.html" class="step-action">
+            Explore Courses <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Connection Line -->
+      <div class="connection-line">
+        <div class="line"></div>
+        <div class="line-arrow"><i class="fas fa-chevron-right"></i></div>
+      </div>
+      
+      <!-- Step 2 -->
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <div class="step-icon">
+            <i class="fas fa-clipboard-list"></i>
+          </div>
+          <div class="step-image">
+            <img src="resources/course.jpg" alt="Registration Process" class="step-img">
+          </div>
+          <h3 class="step-title">Choose & Register</h3>
+          <p class="step-description">Select the course that matches your career goals and complete a simple registration process.</p>
+          <a href="other pages/booksession.html" class="step-action">
+            Register Now <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Connection Line -->
+      <div class="connection-line">
+        <div class="line"></div>
+        <div class="line-arrow"><i class="fas fa-chevron-right"></i></div>
+      </div>
+      
+      <!-- Step 3 -->
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <div class="step-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="step-image">
+            <img src="resources/course.jpg" alt="Learning Process" class="step-img">
+          </div>
+          <h3 class="step-title">Learn & Practice</h3>
+          <p class="step-description">Attend classes, complete hands-on projects, and receive guidance from industry experts.</p>
+          <div class="step-features">
+            <span class="feature"><i class="fas fa-check"></i> Live sessions</span>
+            <span class="feature"><i class="fas fa-check"></i> Practical labs</span>
+            <span class="feature"><i class="fas fa-check"></i> 24/7 support</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Connection Line -->
+      <div class="connection-line">
+        <div class="line"></div>
+        <div class="line-arrow"><i class="fas fa-chevron-right"></i></div>
+      </div>
+      
+      <!-- Step 4 -->
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <div class="step-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="step-image">
+            <img src="resources/course.jpg" alt="Certification Achievement" class="step-img">
+          </div>
+          <h3 class="step-title">Get Certified</h3>
+          <p class="step-description">Complete your course, pass the assessment, and receive an industry-recognized certification.</p>
+          <div class="certification-badge">
+            <i class="fas fa-award"></i>
+            <span>Industry-Recognized Certification</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cta-container">
+      <div class="cta-image">
+        <img src="resources/course.jpg" alt="Start Learning" class="cta-img">
+      </div>
+      <p class="cta-text">Ready to start your learning journey with us?</p>
+      <a href="other pages/booksession.html" class="cta-button">Book Free Session</a>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
+
 
 
 
@@ -401,6 +525,51 @@
         this.querySelector('.value-overlay i').classList.remove('fa-spin');
       });
     });
+  });
+
+
+
+
+
+
+  // Add animation effects for icons
+  document.addEventListener('DOMContentLoaded', function() {
+    const processSteps = document.querySelectorAll('.process-step');
+    
+    processSteps.forEach(step => {
+      step.addEventListener('mouseenter', function() {
+        const icon = this.querySelector('.step-icon i');
+        
+        // Different animations based on the icon
+        if (icon.classList.contains('fa-search')) {
+          icon.classList.add('fa-beat');
+        } else if (icon.classList.contains('fa-clipboard-list')) {
+          icon.classList.add('fa-bounce');
+        } else if (icon.classList.contains('fa-laptop-code')) {
+          icon.classList.add('fa-flip');
+        } else if (icon.classList.contains('fa-certificate')) {
+          icon.classList.add('fa-spin');
+        }
+      });
+      
+      step.addEventListener('mouseleave', function() {
+        const icon = this.querySelector('.step-icon i');
+        icon.classList.remove('fa-beat', 'fa-bounce', 'fa-flip', 'fa-spin');
+      });
+    });
+    
+    // Add animation to connection arrows
+    const arrows = document.querySelectorAll('.line-arrow i');
+    
+    setInterval(() => {
+      arrows.forEach(arrow => {
+        arrow.classList.add('fa-beat');
+        
+        setTimeout(() => {
+          arrow.classList.remove('fa-beat');
+        }, 1000);
+      });
+    }, 3000);
   });
 
   </script>
