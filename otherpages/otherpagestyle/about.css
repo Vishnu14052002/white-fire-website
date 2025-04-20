@@ -16,25 +16,30 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 0 20px; /* Remove ALL top/bottom padding */
     background-color: #0d6985;
     color: #fff;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.logo img {
-    /* width: 40px; */
-    height: 50px;
-    margin-right: 10px;
+    height: auto; /* Let height be determined by content */
   }
-
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    margin: 0; /* Remove ALL margins */
+    padding: 0; /* Remove ALL padding */
+    line-height: 0; /* Remove line height spacing */
+    margin-left: -19px;
+  }
+  
   .logo img {
-    /* width: 40px; */
-    height: 50px;
-    margin-right: 10px;
+    height: 90px; /* Further reduced height */
+    margin: 7px; /* Remove ALL margins */
+    padding: 0; /* Remove ALL padding */
+    vertical-align: top; /* Align to top */
+    display: block; /* Block display removes extra space */
   }
 
 .logo span {

@@ -23,23 +23,31 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 20px;
+    padding: 0 20px; /* Remove ALL top/bottom padding */
     background-color: #0d6985;
     color: #fff;
     position: sticky;
     top: 0;
     z-index: 100;
-}
+    height: auto; /* Let height be determined by content */
+  }
 
-.logo {
+  .logo {
     display: flex;
     align-items: center;
-}
-
-.logo img {
-    height: 50px;
-    margin-right: 10px;
-}
+    margin: 0; /* Remove ALL margins */
+    padding: 0; /* Remove ALL padding */
+    line-height: 0; /* Remove line height spacing */
+    margin-left: -19px;
+  }
+  
+  .logo img {
+    height: 90px; /* Further reduced height */
+    margin: 7px; /* Remove ALL margins */
+    padding: 0; /* Remove ALL padding */
+    vertical-align: top; /* Align to top */
+    display: block; /* Block display removes extra space */
+  }
 
 .nav-links {
     display: flex;
