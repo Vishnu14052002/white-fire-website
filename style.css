@@ -558,6 +558,110 @@ body {
   color: #aaa;
 }
 
+
+
+
+
+
+
+
+.mobile-section-title {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #ff9800;
+  text-align: left;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Make all dropdown menu items behave similarly */
+.nav-links .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Special styling for Courses dropdown */
+.courses-dropdown .dropdown-content {
+  min-width: 250px;
+  left: 0;
+  right: auto;
+}
+
+
+
+
+
+
+
+.courses-dropdown .dropdown-content {
+  min-width: 250px;
+  left: 0;
+  right: auto;
+}
+
+/* Mobile Dropdown Styles */
+.mobile-dropdown {
+  width: 100%;
+}
+
+.mobile-dropdown-header {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-dropdown-header:hover,
+.mobile-dropdown-header.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ff9800;
+}
+
+.mobile-dropdown-header i {
+  transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-header.active i {
+  transform: rotate(180deg);
+}
+
+.mobile-dropdown-content {
+  display: none;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-dropdown-content.show {
+  display: block;
+}
+
+.mobile-dropdown-content a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 10px 30px; /* Extra padding for sub-menu items */
+  display: block;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ff9800;
+}
+
+
+
+
+
+
+
 @media (max-width: 768px) {
   .courses-container {
     display: grid;
@@ -574,6 +678,18 @@ body {
   #search-box {
     width: 100%;
     margin-top: 10px;
+  }
+
+
+  /* Hide all dropdowns on mobile */
+  .dropdown {
+    display: none !important;
+  }
+  
+  /* Keep mobile-only links visible */
+  .mobile-only-links {
+    display: block;
+    width: 100%;
   }
 }
 

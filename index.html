@@ -20,7 +20,17 @@
     </div>
     <nav class="nav-links" id="nav-links">
       <a href="#" class="active-link">Home</a>
-      <a href="otherpages/courses.html">Courses</a>
+      <div class="dropdown courses-dropdown">
+        <a href="otherpages/courses.html" class="dropbtn">Courses <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="/otherpages/coursespages/cloudcomputing.html">Cloud Computing</a>
+          <a href="/otherpages/coursespages/datasciencecourse.html">Data Science</a>
+          <a href="/otherpages/coursespages/database.html">Database Administration</a>
+          <a href="/otherpages/coursespages/itbasicskills.html">IT Basic Skills</a>
+          <a href="/otherpages/coursespages/networkadmin.html">Network Administration</a>
+          <a href="/otherpages/coursespages/programming.html">Programming Languages</a>
+        </div>
+      </div>
       <a href="otherpages/about.html">About Us</a>
       <a href="otherpages/contact.html">Contact Us</a>
       <a href="otherpages/booksession.html">Free Session</a>
@@ -44,16 +54,42 @@
 
       <!-- Mobile-only links -->
       <div class="mobile-only-links">
-        <a href="otherpages/scholarships.html">Scholarships</a>
-        <a href="otherpages/placements.html">Placements</a>
-        <a href="otherpages/hire-from-us.html">Hire From Us</a>
-        <a href="otherpages/gallery.html">Gallery</a>
-        <a href="otherpages/our-trainers.html">Our Trainers</a>
-        <a href="otherpages/become-trainer.html">Become A Trainer</a>
-        <a href="otherpages/other-careers.html">Other Careers</a>
-        <a href="otherpages/tech-blog.html">Tech Blog</a>
-        <a href="otherpages/testimonials.html">Testimonials</a>
-        <a href="otherpages/white-papers.html">White Papers</a>
+        <!-- Mobile Courses Menu - with dropdown toggle -->
+        <div class="mobile-dropdown">
+          <div class="mobile-dropdown-header" data-target="mobile-courses-dropdown">
+            Courses <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="mobile-dropdown-content" id="mobile-courses-dropdown">
+            <a href="/otherpages/coursespages/cloudcomputing.html">Cloud Computing</a>
+            <a href="/otherpages/coursespages/datasciencecourse.html">Data Science</a>
+            <a href="/otherpages/coursespages/database.html">Database Administration</a>
+            <a href="/otherpages/coursespages/itbasicskills.html">IT Basic Skills</a>
+            <a href="/otherpages/coursespages/networkadmin.html">Network Administration</a>
+            <a href="/otherpages/coursespages/programming.html">Programming Languages</a>
+          </div>
+        </div>
+        
+        <!-- Other mobile links -->
+        <div class="mobile-dropdown">
+          <div class="mobile-dropdown-header" data-target="mobile-more-dropdown">
+            More <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="mobile-dropdown-content" id="mobile-more-dropdown">
+            <a href="otherpages/scholarships.html">Scholarships</a>
+            <a href="otherpages/placements.html">Placements</a>
+            <a href="otherpages/hire-from-us.html">Hire From Us</a>
+            <a href="otherpages/gallery.html">Gallery</a>
+            <a href="otherpages/our-trainers.html">Our Trainers</a>
+            <a href="otherpages/become-trainer.html">Become A Trainer</a>
+            <a href="otherpages/other-careers.html">Other Careers</a>
+            <a href="otherpages/tech-blog.html">Tech Blog</a>
+            <a href="otherpages/testimonials.html">Testimonials</a>
+            <a href="otherpages/white-papers.html">White Papers</a>
+          </div>
+        </div>
+        
+        <!-- Keep other direct links -->
+       
       </div>
     </nav>
     <div class="menu-icon" id="menu-icon">☰</div>
@@ -1403,6 +1439,32 @@ document.addEventListener('DOMContentLoaded', function() {
       
       card.addEventListener('mouseleave', function() {
         icon.classList.remove('fa-beat');
+      });
+    });
+  });
+
+
+
+
+
+
+  // Mobile dropdown functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
+    
+    mobileDropdownHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        // Toggle active class on header
+        this.classList.toggle('active');
+        
+        // Find the target dropdown content
+        const targetId = this.getAttribute('data-target');
+        const dropdownContent = document.getElementById(targetId);
+        
+        // Toggle show class on content
+        if (dropdownContent) {
+          dropdownContent.classList.toggle('show');
+        }
       });
     });
   });
