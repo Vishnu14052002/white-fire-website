@@ -1,0 +1,915 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Remove ALL top/bottom padding */
+    background-color: #0d6985;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: auto; /* Let height be determined by content */
+}
+  
+.logo {
+    display: flex;
+    align-items: center;
+    margin: 0; /* Remove ALL margins */
+    padding: 0; /* Remove ALL padding */
+    line-height: 0; /* Remove line height spacing */
+    margin-left: -19px;
+}
+  
+.logo img {
+    height: 90px; /* Further reduced height */
+    margin: 7px; /* Remove ALL margins */
+    padding: 0; /* Remove ALL padding */
+    vertical-align: top; /* Align to top */
+    display: block; /* Block display removes extra space */
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff9800;
+}
+
+.nav-links a.active-link {
+    color: #ff9800;
+    font-weight: 600;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropbtn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: color 0.3s;
+    cursor: pointer;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0d6985;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    right: 0;
+}
+  
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+  
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+  
+.dropdown-content a:hover {
+    background-color: #0a546a;
+    color: #ff9800;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+.dropdown:hover .dropbtn {
+    color: #ff9800;
+}
+  
+/* Hide mobile-only links on desktop */
+.mobile-only-links {
+    display: none;
+}
+
+/* Crown Icon Styling */
+.crown-icon {
+    font-size: 3.5rem;
+    color: #FFD700; /* Gold color */
+    margin-bottom: 15px;
+    animation: glow 2s infinite alternate;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+
+.syllabus-link {
+  position: relative;
+}
+
+.nav-crown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-crown {
+  color: #FFD700; /* Gold color */
+  font-size: 0.8em;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.active-link .nav-crown {
+  /* Makes the crown brighter when the link is active */
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.9), 0 0 30px rgba(255, 215, 0, 0.7);
+    }
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 36, 36, 0.7);
+}
+
+.hero-text {
+    position: absolute;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+}
+
+.hero-text h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.sub-tagline {
+    font-size: 1.2rem;
+    color: #ffe600;
+    margin-top: 10px;
+}
+
+/* Syllabus Container */
+.syllabus-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.syllabus-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.syllabus-heading h2 {
+    font-size: 2.5rem;
+    color: #0d6985;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.syllabus-heading h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #ff9800;
+}
+
+.syllabus-heading p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* Syllabus Intro */
+.syllabus-intro {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.syllabus-intro p {
+    font-size: 1.1rem;
+    text-align: justify;
+    color: #444;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.feature-card {
+    display: flex;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    font-size: 24px;
+    color: #0d6985;
+    padding: 15px;
+    margin-right: 15px;
+    border-radius: 50%;
+    background-color: rgba(13, 105, 133, 0.1);
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-text h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #0d6985;
+}
+
+.feature-text p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, #0d6985 0%, #084e64 100%);
+    padding: 40px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.cta-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 25px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.primary-cta {
+    background-color: #ff9800;
+    color: #fff;
+}
+
+.primary-cta:hover {
+    background-color: #e68a00;
+    transform: translateY(-3px);
+}
+
+.secondary-cta {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.secondary-cta:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Job Tracks */
+.job-tracks h3 {
+    font-size: 2rem;
+    color: #0d6985;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.job-track-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.job-track-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job-track-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.track-icon {
+    font-size: 30px;
+    color: #ff9800;
+    margin-bottom: 15px;
+}
+
+.job-track-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #0d6985;
+}
+
+.job-track-card p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #111;
+    color: #fff;
+    padding: 40px 20px 20px;
+    font-family: 'Segoe UI', sans-serif;
+}
+  
+.footer_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+  
+.footer_about,
+.footer_links,
+.footer_social,
+.footer_newsletter {
+    flex: 1 1 220px;
+    min-width: 200px;
+}
+  
+.footer h2,
+.footer h3 {
+    margin-bottom: 10px;
+    color: #ff8c00;
+}
+  
+.footer_links ul {
+    list-style: none;
+    padding: 0;
+}
+  
+.footer_links li {
+    margin: 8px 0;
+}
+  
+.footer_links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+  
+.footer_links a:hover {
+    color: #fff;
+}
+  
+.social_icons a img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    filter: brightness(0.8);
+    transition: filter 0.3s;
+}
+  
+.social_icons a {
+    font-size: 20px;
+    color: #ccc;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+  
+.social_icons a:hover {
+    color: #ff8c00;
+}
+  
+.footer_newsletter input[type="email"] {
+    padding: 10px;
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+  
+.footer_newsletter button {
+    padding: 10px 20px;
+    background-color: #ff8c00;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+  
+.footer_newsletter button:hover {
+    background-color: #ffa733;
+}
+  
+.footer_bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.mobile-section-title {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    font-weight: 600;
+    color: #ff9800;
+    text-align: left;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Make all dropdown menu items behave similarly */
+.nav-links .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Special styling for Courses dropdown */
+.courses-dropdown .dropdown-content {
+    min-width: 250px;
+    left: 0;
+    right: auto;
+}
+
+/* Mobile Dropdown Styles */
+.mobile-dropdown {
+    width: 100%;
+}
+
+.mobile-dropdown-header {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-dropdown-header:hover,
+.mobile-dropdown-header.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ff9800;
+}
+
+.mobile-dropdown-header i {
+    transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-header.active i {
+    transform: rotate(180deg);
+}
+
+.mobile-dropdown-content {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-dropdown-content.show {
+    display: block;
+}
+
+.mobile-dropdown-content a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 30px; /* Extra padding for sub-menu items */
+    display: block;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ff9800;
+}
+
+
+
+
+.magic-syllabus-container {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  /* Special class for the nav link to ensure proper structure */
+  .nav-syllabus-link {
+    text-align: left;
+    display: inline-flex !important;
+  }
+  
+  * Special class for the nav link to ensure proper structure */
+.nav-syllabus-link {
+  text-align: left;
+  display: inline-flex !important;
+  position: relative; /* Add this to establish positioning context */
+}
+
+.magic-syllabus-container {
+  position: relative; /* Add this to create proper positioning context */
+}
+
+.syllabus-crown {
+  position: absolute;
+  color: #FFD700; /* Gold color for the crown */
+  font-size: 0.8em;
+  top: -12px; 
+  left: 2px; /* More negative value to move further left */
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  transform: rotate(-17deg);
+}
+
+/* Add a hover effect to make it more interactive */
+.active-link:hover .syllabus-crown {
+  animation: crownGlow 1.5s infinite alternate;
+}
+
+@keyframes crownGlow {
+  from {
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.9), 0 0 15px rgba(255, 215, 0, 0.7);
+  }
+}
+
+/* Ensure the text is positioned correctly */
+.magic-text {
+  position: relative;
+  margin-left: 5px; /* Add some space after the crown */
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .job-track-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .hero-text h1 {
+        font-size: 2.4rem;
+    }
+    
+    .crown-icon {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed; /* Change from absolute to fixed */
+        top: 90px;
+        left: 0;
+        width: 100%;
+        background-color: #0d6985;
+        flex-direction: column;
+        gap: 0px;
+        padding: 0;
+        display: flex;
+        max-height: 0;
+        overflow-y: hidden; /* Initially hidden */
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.4s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 0 0 10px 10px;
+        align-items: stretch;
+        z-index: 99; /* Ensure it's above other content */
+    }
+
+    .nav-links.active {
+        max-height: 80vh; /* Set to percentage of viewport height */
+        opacity: 1;
+        transform: translateY(0);
+        padding: 15px 0;
+        overflow-y: auto; /* Enable scrolling */
+    }
+
+    .nav-links a {
+        padding: 12px 20px;
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    /* Show mobile-only links on mobile */
+    .mobile-only-links {
+        display: block;
+        width: 100%;
+    }
+
+    /* Hide dropdown on mobile */
+    .dropdown {
+        display: none;
+    }
+
+    /* Mobile specific link styling */
+    .mobile-only-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 12px 20px;
+        display: block;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-only-links a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ff9800;
+    }
+    
+    .menu-icon {
+        display: block;
+    }
+    
+    .hero-section {
+        height: 30vh;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-text p {
+        font-size: 1.1rem;
+    }
+    
+    .sub-tagline {
+        font-size: 1rem;
+    }
+    
+    .syllabus-heading h2 {
+        font-size: 2rem;
+    }
+
+    .feature-card {
+        padding: 20px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .job-track-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .cta-section {
+        padding: 30px 20px;
+    }
+
+    .cta-section h3 {
+        font-size: 1.5rem;
+    }
+    
+    .crown-icon {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    /* Hide all dropdowns on mobile */
+    .dropdown {
+        display: none !important;
+    }
+  
+    /* Keep mobile-only links visible */
+    .mobile-only-links {
+        display: block;
+        width: 100%;
+    }
+
+    .magic-syllabus-container {
+        align-items: flex-start;
+        margin-left: 0; /* Remove left margin to align with other links */
+        width: 100%; /* Make container full width */
+        /* Match the padding of other nav links */
+      }
+      
+      .syllabus-crown {
+        font-size: 0.7em;
+        top: -10px;
+         /* Align crown with the start of text including padding */
+      }
+      
+      /* Make nav links consistent in mobile view */
+      .nav-links a.active-link {
+        padding: 12px 20px; /* Match padding of other links */
+        display: block;
+        width: 100%;
+      }
+      
+      /* Reset any additional margins */
+      .nav-links a.active-link .magic-syllabus-container {
+        margin: 0;
+      }
+}
+
+@media (max-width: 480px) {
+    .logo span {
+        font-size: 1.2rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 1.7rem;
+        margin-bottom: 10px;
+    }
+    
+    .hero-text p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    
+    .syllabus-heading h2 {
+        font-size: 1.8rem;
+    }
+    
+    .syllabus-heading p {
+        font-size: 0.9rem;
+    }
+    
+    .syllabus-intro {
+        padding: 20px;
+    }
+
+    .feature-card {
+        padding: 15px;
+    }
+    
+    .feature-icon {
+        padding: 10px;
+        font-size: 18px;
+        height: 45px;
+        width: 45px;
+    }
+    
+    .feature-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .feature-text p {
+        font-size: 0.9rem;
+    }
+
+    .job-track-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .job-track-card {
+        padding: 20px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cta-button {
+        width: 100%;
+    }
+    
+    .crown-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+}
