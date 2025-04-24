@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="otherpagestyle/testimonials.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <title>Testimonials - White Fire Technologies</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+          <a href="/index.html"><img src="../resources/Whitefirelogo.png" alt="Logo"></a>
+        </div>
+        <nav class="nav-links" id="nav-links">
+          <a href="../index.html">Home</a>
+          <div class="dropdown courses-dropdown">
+            <a href="otherpages/courses.html" class="dropbtn">Courses <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+              <a href="/otherpages/coursespages/cloudcomputing.html">Cloud Computing</a>
+              <a href="/otherpages/coursespages/datasciencecourse.html">Data Science</a>
+              <a href="/otherpages/coursespages/database.html">Database Administration</a>
+              <a href="/otherpages/coursespages/itbasicskills.html">IT Basic Skills</a>
+              <a href="/otherpages/coursespages/networkadmin.html">Network Administration</a>
+              <a href="/otherpages/coursespages/programming.html">Programming Languages</a>
+            </div>
+          </div>
+          <a href="../otherpages/about.html">About Us</a>
+          <a href="./contact.html">Contact Us</a>
+          <a href="../otherpages/booksession.html">Free Session</a>
+          
+          <!-- Added dropdown menu -->
+          <div class="dropdown">
+            <a href="#" class="dropbtn">More <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+              <a href="otherpages/scholarships.html">Scholarships</a>
+              <a href="otherpages/placements.html">Placements</a>
+              <a href="otherpages/hire-from-us.html">Hire From Us</a>
+              <a href="../otherpages/gallery.html">Gallery</a>
+              <a href="otherpages/our-trainers.html">Our Trainers</a>
+              <a href="otherpages/become-trainer.html">Become A Trainer</a>
+              <a href="otherpages/other-careers.html">Other Careers</a>
+              <a href="otherpages/tech-blog.html">Tech Blog</a>
+              <a href="otherpages/testimonials.html" class="active-link">Testimonials</a>
+              <a href="otherpages/white-papers.html">White Papers</a>
+            </div>
+          </div>
+
+          <!-- Mobile-only links -->
+          <div class="mobile-only-links">
+            <!-- Mobile Courses Menu - with dropdown toggle -->
+            <div class="mobile-dropdown">
+              <div class="mobile-dropdown-header" data-target="mobile-courses-dropdown">
+                Courses <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="mobile-dropdown-content" id="mobile-courses-dropdown">
+                <a href="/otherpages/coursespages/cloudcomputing.html">Cloud Computing</a>
+                <a href="/otherpages/coursespages/datasciencecourse.html">Data Science</a>
+                <a href="/otherpages/coursespages/database.html">Database Administration</a>
+                <a href="/otherpages/coursespages/itbasicskills.html">IT Basic Skills</a>
+                <a href="/otherpages/coursespages/networkadmin.html">Network Administration</a>
+                <a href="/otherpages/coursespages/programming.html">Programming Languages</a>
+              </div>
+            </div>
+            
+            <!-- Other mobile links -->
+            <div class="mobile-dropdown">
+              <div class="mobile-dropdown-header" data-target="mobile-more-dropdown">
+                More <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="mobile-dropdown-content" id="mobile-more-dropdown">
+                <a href="otherpages/scholarships.html">Scholarships</a>
+                <a href="otherpages/placements.html">Placements</a>
+                <a href="otherpages/hire-from-us.html">Hire From Us</a>
+                <a href="otherpages/gallery.html">Gallery</a>
+                <a href="otherpages/our-trainers.html">Our Trainers</a>
+                <a href="otherpages/become-trainer.html">Become A Trainer</a>
+                <a href="otherpages/other-careers.html">Other Careers</a>
+                <a href="otherpages/tech-blog.html">Tech Blog</a>
+                <a href="otherpages/testimonials.html" class="active-link">Testimonials</a>
+                <a href="otherpages/white-papers.html">White Papers</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="menu-icon" id="menu-icon">☰</div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <img src="otherpageresources/shutterstock_2288178513.jpg" alt="Testimonials Hero Image" class="hero-image">
+        <div class="hero-text">
+          <h1>Our Success Stories</h1>
+          <p>Hear what our students and trainers have to say about their experience</p>
+          <span class="sub-tagline">🔥 Real stories from the White Fire community!</span>
+        </div>
+    </section>
+
+    <section class="testimonials-container">
+        <div class="testimonials-heading">
+            <h2>Student Testimonials</h2>
+            <p>Discover how our courses have transformed careers and opened new opportunities</p>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="data-science">Data Science</button>
+            <button class="filter-btn" data-filter="web-dev">Web Development</button>
+            <button class="filter-btn" data-filter="cloud">Cloud Computing</button>
+            <button class="filter-btn" data-filter="network">Network Admin</button>
+        </div>
+
+        <div class="testimonials-grid">
+            <!-- Data Science Testimonials -->
+            <div class="testimonial-card" data-category="data-science">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p>The data science course completely changed my career trajectory. The hands-on projects and personal guidance from instructors were invaluable. I landed a job as a data analyst within two months of completing the course!</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="otherpageresources/student1.jpg" alt="Student">
+                    <div class="author-info">
+                        <h4>Robert Adams</h4>
+                        <p>Data Science Graduate</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card" data-category="data-science">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Coming from a non-technical background, I was worried about learning data science. The instructors broke down complex concepts into digestible parts and were always available for extra help. Now I work as a junior data scientist!</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="otherpageresources/student2.jpg" alt="Student">
+                    <div class="author-info">
+                        <h4>Priya Sharma</h4>
+                        <p>Data Science Graduate</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Development Testimonials -->
+            <div class="testimonial-card" data-category="web-dev">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p>As someone with no prior coding experience, I was nervous about learning web development. The step-by-step approach and supportive environment at White Fire made it possible for me to build my skills and confidence. I now work as a freelance developer.</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="otherpageresources/student3.jpg" alt="Student">
+                    <div class="author-info">
+                        <h4>Emily Chen</h4>
+                        <p>Web Development Graduate</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card" data-category="web-dev">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p>The web development bootcamp was intense but incredibly rewarding. The curriculum was up-to-date with the latest technologies, and the project-based learning approach prepared me well for real-world challenges. I received three job offers before graduation!</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="otherpageresources/student4.jpg" alt="Student">
+                    <div class="author-info">
+                        <h4>James Wilson</h4>
+                        <p>Web Development Graduate</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Computing Testimonials -->
+            <div class="testimonial-card" data-category="cloud">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p>The AWS certification course was comprehensive and practical. The lab exercises and real-world scenarios helped me understand cloud architecture deeply. I passed the certification exam on my first attempt and secured a cloud engineer position!</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="otherpageresources/student5.jpg" alt="Student">
+                    <div class="author-info">
+                        <h4>Michael Thompson</h4>
+                        <p>Cloud Computing Graduate</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Network Admin Testimonials -->
+            <div class="testimonial-card" data-category="network">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p>The network administration program gave me hands-on experience with the latest networking technologies. The CCNA exam prep was thorough, and the instructors shared valuable insights from their industry experience. I'm now working as a network specialist at a major telecom company.</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="otherpageresources/student6.jpg" alt="Student">
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Network Administration Graduate</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonials-heading trainer-heading">
+            <h2>Trainer Testimonials</h2>
+            <p>Insights from our expert trainers who are passionate about shaping the next generation of tech professionals</p>
+        </div>
+
+        <div class="trainers-testimonials">
+            <div class="trainer-testimonial">
+                <div class="trainer-image">
+                    <img src="otherpageresources/trainer1.jpg" alt="Trainer">
+                </div>
+                <div class="trainer-content">
+                    <h3>Dr. Alex Morgan</h3>
+                    <p class="trainer-role">Data Science Lead Instructor</p>
+                    <p class="trainer-quote">"Teaching at White Fire has been incredibly fulfilling. The enthusiasm of the students and their determination to learn keeps me motivated. Seeing them transform from beginners to confident data scientists is the greatest reward of my teaching career."</p>
+                    <p class="trainer-experience">Teaching at White Fire since 2020 | Previously: Senior Data Scientist at Tech Solutions Inc.</p>
+                </div>
+            </div>
+
+            <div class="trainer-testimonial reverse">
+                <div class="trainer-image">
+                    <img src="otherpageresources/trainer2.jpg" alt="Trainer">
+                </div>
+                <div class="trainer-content">
+                    <h3>Jessica Martinez</h3>
+                    <p class="trainer-role">Web Development Instructor</p>
+                    <p class="trainer-quote">"White Fire provides an ideal environment for both students and trainers to grow. The curriculum is constantly updated to reflect industry trends, and the focus on practical learning ensures our students are job-ready. It's rewarding to be part of a student's journey from their first HTML page to becoming full-stack developers."</p>
+                    <p class="trainer-experience">Teaching at White Fire since 2021 | Previously: Frontend Developer at Global Web Solutions</p>
+                </div>
+            </div>
+
+            <div class="trainer-testimonial">
+                <div class="trainer-image">
+                    <img src="otherpageresources/trainer3.jpg" alt="Trainer">
+                </div>
+                <div class="trainer-content">
+                    <h3>David Patel</h3>
+                    <p class="trainer-role">Cloud Computing Instructor</p>
+                    <p class="trainer-quote">"As someone who still works in the industry, I bring real-world challenges to the classroom. White Fire encourages this practical approach, which makes our courses truly effective. The small class sizes allow for personalized attention, and watching students master complex cloud architectures is incredibly satisfying."</p>
+                    <p class="trainer-experience">Teaching at White Fire since 2022 | Currently: Senior Cloud Architect at CloudTech</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h3>Join Our Community</h3>
+            <p>Ready to transform your career or share your knowledge as a trainer?</p>
+            <div class="cta-buttons">
+                <a href="../otherpages/courses.html" class="cta-btn">Explore Courses</a>
+                <a href="../otherpages/become-trainer.html" class="cta-btn secondary">Become a Trainer</a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    
+
+    <footer class="footer">
+        <div class="footer_container">
+          <div class="footer_about">
+            <h2>White Fire</h2>
+            <p>Igniting innovation, driving success. Let's build something amazing together.</p>
+          </div>
+    
+          <div class="footer_links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/otherpages/about.html">About Us</a></li>
+            <li><a href="/otherpages/courses.html">Courses</a></li>
+            <li><a href="/otherpages/contact.html">Contact</a></li>
+          </ul>
+        </div>
+    
+        <div class="footer_social">
+          <h3>Follow Us</h3>
+          <div class="social_icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+    
+        <div class="footer_newsletter">
+          <h3>Subscribe</h3>
+          <p>Get the latest updates and offers.</p>
+          <form>
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+    
+        <div class="footer_bottom">
+          <p>&copy; 2025 White Fire. All rights reserved.</p>
+        </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Mobile dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
+            
+            mobileDropdownHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    // Toggle active class on header
+                    this.classList.toggle('active');
+                    
+                    // Find the target dropdown content
+                    const targetId = this.getAttribute('data-target');
+                    const dropdownContent = document.getElementById(targetId);
+                    
+                    // Toggle show class on content
+                    if (dropdownContent) {
+                        dropdownContent.classList.toggle('show');
+                    }
+                });
+            });
+
+            // Filter testimonials
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    // Show/hide testimonials based on filter
+                    testimonialCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Rating system for form
+            const ratingStars = document.querySelectorAll('.rating-select i');
+            const ratingInput = document.getElementById('rating');
+
+            ratingStars.forEach(star => {
+                star.addEventListener('mouseover', () => {
+                    const rating = star.getAttribute('data-rating');
+                    highlightStars(rating);
+                });
+
+                star.addEventListener('click', () => {
+                    const rating = star.getAttribute('data-rating');
+                    ratingInput.value = rating;
+                    highlightStars(rating);
+                    // Make selection permanent until another click
+                    ratingStars.forEach(s => s.classList.add('selected'));
+                });
+
+                star.addEventListener('mouseout', () => {
+                    if (!ratingStars[0].classList.contains('selected')) {
+                        resetStars();
+                    } else {
+                        highlightStars(ratingInput.value);
+                    }
+                });
+            });
+
+            function highlightStars(rating) {
+                resetStars();
+                for (let i = 0; i < rating; i++) {
+                    ratingStars[i].classList.remove('far');
+                    ratingStars[i].classList.add('fas');
+                }
+            }
+
+            function resetStars() {
+                ratingStars.forEach(star => {
+                    star.classList.remove('fas');
+                    star.classList.add('far');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
