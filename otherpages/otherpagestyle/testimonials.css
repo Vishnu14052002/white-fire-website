@@ -40,6 +40,7 @@ body {
     padding: 0;
     vertical-align: top;
     display: block;
+    border-radius: 20px;
 }
 
 .logo span {
@@ -846,6 +847,68 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
     color: #ff9800;
 }
+
+
+
+
+.magic-syllabus-container {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  /* Special class for the nav link to ensure proper structure */
+  .nav-syllabus-link {
+    text-align: left;
+    display: inline-flex !important;
+  }
+  
+  * Special class for the nav link to ensure proper structure */
+  .nav-syllabus-link {
+  text-align: left;
+  display: inline-flex !important;
+  position: relative; /* Add this to establish positioning context */
+  }
+  
+  .magic-syllabus-container {
+  position: relative; /* Add this to create proper positioning context */
+  }
+  
+  .syllabus-crown {
+  position: absolute;
+  color: #FFD700; /* Gold color for the crown */
+  font-size: 0.8em;
+  top: -14px; 
+  left: 2px; /* More negative value to move further left */
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  transform: rotate(-17deg);
+  }
+  
+  /* Add a hover effect to make it more interactive */
+  .active-link:hover .syllabus-crown {
+  animation: crownGlow 1.5s infinite alternate;
+  }
+  
+  @keyframes crownGlow {
+  from {
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.9), 0 0 15px rgba(255, 215, 0, 0.7);
+  }
+  }
+  
+  /* Ensure the text is positioned correctly */
+  .magic-text {
+  position: relative;
+  margin-left: 5px; /* Add some space after the crown */
+  }
+  
+
+
+
 
 /* Responsive Styles */
 @media (max-width: 992px) {
