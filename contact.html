@@ -3,29 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="other page style/contact.css">
+    <link rel="stylesheet" href="./otherpages/otherpagestyle/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <title>Contact US</title>
 </head>
 <body>
-    <header class="main-header">
-        <div class="logo">
-          <img src="logo.png" alt="Logo">
-          <span>White Fire Technologies</span>
+  <header class="main-header">
+    <div class="logo">
+      <a href="/index.html"><img src="resources/Whitefirelogo.png" alt="Logo"></a>
+    </div>
+    <nav class="nav-links" id="nav-links">
+      <a href="#" class="active-link">Home</a>
+      <div class="dropdown courses-dropdown">
+        <a href="/courses.html" class="dropbtn">Courses <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="/cloudcomputing.html">Cloud Computing</a>
+          <a href="/datasciencecourse.html">Data Science</a>
+          <a href="/database.html">Database Administration</a>
+          <a href="/itbasicskills.html">IT Basic Skills</a>
+          <a href="/networkadmin.html">Network Administration</a>
+          <a href="/programming.html">Programming Languages</a>
         </div>
-        <nav class="nav-links" id="nav-links">
-          <a href="../index.html">Home</a>
-          <a href="./courses.html">Courses</a>
-          <a href="#">About Us</a>
-          <a href="#" class="active-link">Contact Us</a>
-          <a href="#">Gallery</a>
-        </nav>
-        <div class="menu-icon" id="menu-icon">☰</div>
-    </header>
+      </div>
+      <a href="/about.html">About Us</a>
+      <a href="/contact.html">Contact Us</a>
+      <a href="/syllabus.html" class="nav-syllabus-link">
+        <div class="magic-syllabus-container">
+          <i class="fas fa-crown syllabus-crown"></i>
+          <span class="magic-text">Magic Syllabus</span>
+        </div>
+      </a>
+      
+      <!-- Added dropdown menu -->
+      <div class="dropdown">
+        <a href="#" class="dropbtn">More <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="/placement.html">Placements</a>
+          <a href="/gallery.html">Gallery</a>
+          <a href="/careers.html">Careers</a>
+          <a href="/techblog.html">Tech Blog</a>
+          <a href="/testimonials.html">Testimonials</a>
+          <a href="/booksession.html">Free Session</a>
+        </div>
+      </div>
+
+      <!-- Mobile-only links -->
+      <div class="mobile-only-links">
+        <!-- Mobile Courses Menu - with dropdown toggle -->
+        <div class="mobile-dropdown">
+          <div class="mobile-dropdown-header" data-target="mobile-courses-dropdown">
+            Courses <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="mobile-dropdown-content" id="mobile-courses-dropdown">
+            <a href="/cloudcomputing.html">Cloud Computing</a>
+            <a href="/datasciencecourse.html">Data Science</a>
+            <a href="/database.html">Database Administration</a>
+            <a href="/itbasicskills.html">IT Basic Skills</a>
+            <a href="/networkadmin.html">Network Administration</a>
+            <a href="/programming.html">Programming Languages</a>
+          </div>
+        </div>
+        
+        <!-- Other mobile links -->
+        <div class="mobile-dropdown">
+          <div class="mobile-dropdown-header" data-target="mobile-more-dropdown">
+            More <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="mobile-dropdown-content" id="mobile-more-dropdown">
+            <!-- <a href="otherpages/scholarships.html">Scholarships</a> -->
+            <a href="otherpages/placements.html">Placements</a>
+            <!-- <a href="otherpages/hire-from-us.html">Hire From Us</a> -->
+            <a href="/gallery.html">Gallery</a>
+            <!-- <a href="otherpages/our-trainers.html">Our Trainers</a> -->
+            <!-- <a href="otherpages/become-trainer.html">Become A Trainer</a> -->
+            <a href="/careers.html">Other Careers</a>
+            <a href="/techblog.html">Tech Blog</a>
+            <a href="/testimonials.html">Testimonials</a>
+            <a href="/booksession.html">Free Session</a>
+            <!-- <a href="otherpages/white-papers.html">White Papers</a> -->
+          </div>
+        </div>
+        
+        <!-- Keep other direct links -->
+       
+      </div>
+    </nav>
+    <div class="menu-icon" id="menu-icon">☰</div>
+  </header>
 
     <section class="hero-section">
         <div class="hero-overlay"></div>
-        <img src="other page resources/shutterstock_2288178513.jpg" alt="Hero Image" class="hero-image">
+        <img src="./otherpages/otherpageresources/shutterstock_2288178513.jpg" alt="Hero Image" class="hero-image">
         <div class="hero-text">
           <h1>Contact Us for more details</h1>
           <p>We always ready to help and assist you</p>
@@ -138,10 +206,10 @@
           <div class="footer_links">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/otherpages/about.html">About Us</a></li>
+            <li><a href="/otherpages/courses.html">Courses</a></li>
+            <li><a href="/otherpages/contact.html">Contact</a></li>
           </ul>
         </div>
     
@@ -242,6 +310,29 @@
 
         menuIcon.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+        });
+
+
+
+        // Mobile dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
+            
+            mobileDropdownHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                // Toggle active class on header
+                this.classList.toggle('active');
+                
+                // Find the target dropdown content
+                const targetId = this.getAttribute('data-target');
+                const dropdownContent = document.getElementById(targetId);
+                
+                // Toggle show class on content
+                if (dropdownContent) {
+                dropdownContent.classList.toggle('show');
+                }
+            });
+            });
         });
 
         

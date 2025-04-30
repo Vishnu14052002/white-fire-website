@@ -7,21 +7,92 @@
   <link rel="stylesheet" href="style.css">
   <!-- Font Awesome CDN for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/resources/favicon.ico" type="image/x-icon">
+  
 
 </head>
 <body>
 
   <header class="main-header">
     <div class="logo">
-      <img src="logo.png" alt="Logo">
-      <span>White Fire Technologies</span>
+      <a href="/index.html"><img src="resources/Whitefirelogo.png" alt="Logo"></a>
     </div>
     <nav class="nav-links" id="nav-links">
       <a href="#" class="active-link">Home</a>
-      <a href="other pages/courses.html">Courses</a>
-      <a href="#">About Us</a>
-      <a href="other pages/contact.html">Contact Us</a>
-      <a href="#">Gallery</a>
+      <div class="dropdown courses-dropdown">
+        <a href="/courses.html" class="dropbtn">Courses <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="/cloudcomputing.html">Cloud Computing</a>
+          <a href="/datasciencecourse.html">Data Science</a>
+          <a href="/database.html">Database Administration</a>
+          <a href="/itbasicskills.html">IT Basic Skills</a>
+          <a href="/networkadmin.html">Network Administration</a>
+          <a href="/programming.html">Programming Languages</a>
+        </div>
+      </div>
+      <a href="/about.html">About Us</a>
+      <a href="/contact.html">Contact Us</a>
+      <a href="/syllabus.html" class="nav-syllabus-link">
+        <div class="magic-syllabus-container">
+          <i class="fas fa-crown syllabus-crown"></i>
+          <span class="magic-text">Magic Syllabus</span>
+        </div>
+      </a>
+      
+      <!-- Added dropdown menu -->
+      <div class="dropdown">
+        <a href="#" class="dropbtn">More <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="/placement.html">Placements</a>
+          <a href="/gallery.html">Gallery</a>
+          <a href="/careers.html">Careers</a>
+          <a href="/techblog.html">Tech Blog</a>
+          <a href="/testimonials.html">Testimonials</a>
+          <a href="/booksession.html">Free Session</a>
+        </div>
+      </div>
+
+      <!-- Mobile-only links -->
+      <div class="mobile-only-links">
+        <!-- Mobile Courses Menu - with dropdown toggle -->
+        <div class="mobile-dropdown">
+          <div class="mobile-dropdown-header" data-target="mobile-courses-dropdown">
+            Courses <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="mobile-dropdown-content" id="mobile-courses-dropdown">
+            <a href="/cloudcomputing.html">Cloud Computing</a>
+            <a href="/datasciencecourse.html">Data Science</a>
+            <a href="/database.html">Database Administration</a>
+            <a href="/itbasicskills.html">IT Basic Skills</a>
+            <a href="/networkadmin.html">Network Administration</a>
+            <a href="/programming.html">Programming Languages</a>
+          </div>
+        </div>
+        
+        <!-- Other mobile links -->
+        <div class="mobile-dropdown">
+          <div class="mobile-dropdown-header" data-target="mobile-more-dropdown">
+            More <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="mobile-dropdown-content" id="mobile-more-dropdown">
+            <!-- <a href="otherpages/scholarships.html">Scholarships</a> -->
+            <a href="otherpages/placements.html">Placements</a>
+            <!-- <a href="otherpages/hire-from-us.html">Hire From Us</a> -->
+            <a href="/gallery.html">Gallery</a>
+            <!-- <a href="otherpages/our-trainers.html">Our Trainers</a> -->
+            <!-- <a href="otherpages/become-trainer.html">Become A Trainer</a> -->
+            <a href="/careers.html">Other Careers</a>
+            <a href="/techblog.html">Tech Blog</a>
+            <a href="/testimonials.html">Testimonials</a>
+            <a href="/booksession.html">Free Session</a>
+            <!-- <a href="otherpages/white-papers.html">White Papers</a> -->
+          </div>
+        </div>
+        
+        <!-- Keep other direct links -->
+       
+      </div>
     </nav>
     <div class="menu-icon" id="menu-icon">☰</div>
   </header>
@@ -34,8 +105,8 @@
       <p>Committed to equipping you with industry-leading skills</p>
       <span class="sub-tagline">🚀 Turn your passion into profession with us!</span>
       <div class="hero-buttons">
-        <a href="other pages/courses.html"><button class="learn-btn">Explore Courses</button></a>
-        <a href="other pages/contact.html"><button class="contact-btn">Contact Now</button></a>
+        <a href="otherpages/courses.html"><button class="learn-btn">Explore Courses</button></a>
+        <a href="otherpages/contact.html"><button class="contact-btn">Contact Now</button></a>
       </div>
     </div>
   </section>
@@ -43,75 +114,88 @@
 
   <section class="courses-section">
     <div class="courses-header">
-      <h2 class="section-title">High Demand Courses</h2>
+      <h2 class="section-title">High Demand Domain</h2>
       <!-- <input type="text" id="search-box" placeholder="Search courses..." onkeyup="filterCourses()"> -->
     </div>
   
     <div class="courses-container" id="courses-container">
       <!-- Course 1: Cloud Computing -->
       <div class="course-box" data-name="Cloud Computing">
-        <img src="resources/course.jpg" alt="Cloud Computing" class="course-image">
+        <a href="/otherpages/coursespages/cloudcomputing.html">
+        <img src="/otherpages/otherpageresources/cloudcomputing.jpeg" alt="Cloud Computing" class="course-image">
         <div class="course-details">
-          <h3 class="course-name">Cloud Computing</h3>
+          <a href="/otherpages/coursespages/cloudcomputing.html"><h3 class="course-name">Cloud Computing</h3></a>
           <p class="course-description">Learn to build scalable cloud infrastructure and manage cloud resources effectively.</p>
           <p><strong>Duration:</strong> 6 Months</p>
           <p><strong>Topics:</strong> 15+ Topics</p>
+        
         </div>
+      </a>
       </div>
   
       <!-- Course 2: Data Science -->
       <div class="course-box" data-name="Data Science">
-        <img src="resources/course.jpg" alt="Data Science" class="course-image">
+        <a href="/otherpages/coursespages/datasciencecourse.html">
+        <img src="/otherpages/otherpageresources/datascience.jpeg" alt="Data Science" class="course-image">
         <div class="course-details">
-          <h3 class="course-name">Data Science</h3>
+          <a href="/otherpages/coursespages/datasciencecourse.html"><h3 class="course-name">Data Science</h3></a>
           <p class="course-description">Gain hands-on experience with data manipulation, analysis, and visualization techniques.</p>
           <p><strong>Duration:</strong> 8 Months</p>
           <p><strong>Topics:</strong> 20+ Topics</p>
         </div>
+      </a>
       </div>
   
       <!-- Course 3: Database Administration -->
       <div class="course-box" data-name="Database Administration">
-        <img src="resources/course.jpg" alt="Database Administration" class="course-image">
+        <a href="/otherpages/coursespages/database.html">
+        <img src="/otherpages/otherpageresources/databaseadmin.jpeg" alt="Database Administration" class="course-image">
         <div class="course-details">
-          <h3 class="course-name">Database Administration</h3>
+          <a href="/otherpages/coursespages/database.html"><h3 class="course-name">Database Administration</h3></a>
           <p class="course-description">Master database design, implementation, and optimization strategies.</p>
           <p><strong>Duration:</strong> 5 Months</p>
           <p><strong>Topics:</strong> 12+ Topics</p>
         </div>
+        </a>
       </div>
 
       <!-- Course 3: Database Administration -->
       <div class="course-box" data-name="Database Administration">
-        <img src="resources/course.jpg" alt="Database Administration" class="course-image">
+        <a href="/otherpages/coursespages/itbasicskills.html">
+        <img src="/otherpages/otherpageresources/itbasicskills.jpeg" alt="Database Administration" class="course-image">
         <div class="course-details">
-          <h3 class="course-name">Database Administration</h3>
-          <p class="course-description">Master database design, implementation, and optimization strategies.</p>
+          <a href="/otherpages/coursespages/itbasicskills.html"><h3 class="course-name">IT basics skills</h3></a>
+          <p class="course-description">IT basics: hardware, software, networks, security, troubleshooting, communication, documentation, maintenance.</p>
           <p><strong>Duration:</strong> 5 Months</p>
           <p><strong>Topics:</strong> 12+ Topics</p>
         </div>
+        </a>
       </div>
 
       <!-- Course 3: Database Administration -->
       <div class="course-box" data-name="Database Administration">
-        <img src="resources/course.jpg" alt="Database Administration" class="course-image">
+        <a href="/otherpages/coursespages/networkadmin.html">
+        <img src="/otherpages/otherpageresources/networkadmin.jpeg" alt="Database Administration" class="course-image">
         <div class="course-details">
-          <h3 class="course-name">Database Administration</h3>
-          <p class="course-description">Master database design, implementation, and optimization strategies.</p>
+          <a href="/otherpages/coursespages/networkadmin.html"><h3 class="course-name">Network Administration</h3></a>
+          <p class="course-description">Network Administration: routing, switching, security, monitoring, troubleshooting, configuration, maintenance, documentation.</p>
           <p><strong>Duration:</strong> 5 Months</p>
           <p><strong>Topics:</strong> 12+ Topics</p>
         </div>
+        </a>
       </div>
 
       <!-- Course 3: Database Administration -->
       <div class="course-box" data-name="Database Administration">
-        <img src="resources/course.jpg" alt="Database Administration" class="course-image">
+        <a href="/otherpages/coursespages/programming.html">
+        <img src="/otherpages/otherpageresources/programminglanguages.jpeg" alt="Database Administration" class="course-image">
         <div class="course-details">
-          <h3 class="course-name">Database Administration</h3>
-          <p class="course-description">Master database design, implementation, and optimization strategies.</p>
+          <a href="/otherpages/coursespages/programming.html"><h3 class="course-name">Programming languages</h3></a>
+          <p class="course-description">Programming Languages: syntax, logic, debugging, algorithms, frameworks, libraries, paradigms, documentation.</p>
           <p><strong>Duration:</strong> 5 Months</p>
           <p><strong>Topics:</strong> 12+ Topics</p>
         </div>
+        </a>
       </div>
   
       <!-- Add more courses here -->
@@ -119,20 +203,831 @@
   </section>
 
 
-  <section class="aboutus">
-    <div class="aboutus_header">
-      <h2 class="aboutus_section-title">Why White Fire Technologies</h2>
+  <section class="why-us-section">
+    <div class="why-us-header">
+      <h2 class="section-title">Why White Fire Technologies</h2>
+      <p class="why-us-subtitle">Empowering your future with excellence in IT education</p>
     </div>
-    <div class="aboutus_content">
-      <div class="aboutus_content_content">
-        <h1 class="aboutus_content_content_one">Placement Assesment</h1>
-        <p class="aboutus_content_content_two">Our dedicated placement cell works tirelessly to connect our students with leading IT companies for job opportunities. With a strong network of corporate partners and frequent recruitment drives to ensure maximum exposure for our students, we achieve outstanding placement success. Our dedicated placement cell works tirelessly to connect our students with leading IT companies for job opportunities. With a strong network of corporate partners and frequent recruitment drives to ensure maximum exposure for our students, we achieve outstanding placement success.</p>
+    
+    <div class="value-container">
+      <div class="value-box">
+        <div class="value-image">
+          <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Certified Instructors" class="value-img">
+          <div class="value-overlay">
+            <i class="fas fa-certificate"></i>
+          </div>
+        </div>
+        <div class="value-details">
+          <h3 class="value-title">Certified Instructors</h3>
+          <p class="value-description">Learn from industry experts with years of professional experience and recognized certifications in their respective domains.</p>
+          <div class="value-stats">
+            <div class="stat">
+              <span class="stat-number">15+</span>
+              <span class="stat-text">Industry Partners</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-text">Certified Faculty</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="aboutus_content_banner">
-        <img class="aboutus_content_banner_image_image" src="resources/excited-businessman-celebrating-success-on-transparent-background.png.webp" alt="Business man celebrating" class="aboutus_content_banner_image">
-      </div>  
+  
+      <div class="value-box">
+        <div class="value-image">
+          <img src="/otherpages/otherpageresources/flexiblelearning.jpeg" alt="Flexible Learning" class="value-img">
+          <div class="value-overlay">
+            <i class="fas fa-clock"></i>
+          </div>
+        </div>
+        <div class="value-details">
+          <h3 class="value-title">Flexible Learning</h3>
+          <p class="value-description">Choose between online, offline, weekend, or weekday classes to fit learning around your schedule and preferences.</p>
+          <div class="learning-options">
+            <span class="option"><i class="fas fa-laptop"></i> Online</span>
+            <span class="option"><i class="fas fa-building"></i> Offline</span>
+            <span class="option"><i class="fas fa-calendar-alt"></i> Weekend</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="value-box">
+        <div class="value-image">
+          <img src="/otherpages/otherpageresources/indepthunderstanding.jpeg" alt="In-depth Understanding" class="value-img">
+          <div class="value-overlay">
+            <i class="fas fa-brain"></i>
+          </div>
+        </div>
+        <div class="value-details">
+          <h3 class="value-title">In-depth Understanding</h3>
+          <p class="value-description">Our curriculum goes beyond surface-level concepts, ensuring you gain thorough knowledge of fundamentals and advanced topics.</p>
+          <div class="topics-counter">
+            <div class="counter-item">
+              <span class="counter-number" data-count="500">500+</span>
+              <span class="counter-label">Topics Covered</span>
+            </div>
+            <div class="counter-item">
+              <span class="counter-number" data-count="200">200+</span>
+              <span class="counter-label">Hands-on Labs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="value-box">
+        <div class="value-image">
+          <img src="/otherpages/otherpageresources/realtimeproject.jpeg" alt="Real-time Project Experience" class="value-img">
+          <div class="value-overlay">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+        </div>
+        <div class="value-details">
+          <h3 class="value-title">Real-time Project Experience</h3>
+          <p class="value-description">Work on industry-standard projects that simulate real-world challenges and build a portfolio that impresses employers.</p>
+          <div class="project-badge">
+            <span class="badge"><i class="fas fa-check-circle"></i> Real World Applications</span>
+            <span class="badge"><i class="fas fa-check-circle"></i> Portfolio Development</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+
+
+
+
+
+
+
+
+
+  <section class="how-it-works-section">
+    <div class="how-it-works-header">
+      <h2 class="section-title">How It Works</h2>
+      <p class="how-it-works-subtitle">Your journey to IT excellence in four simple steps</p>
+    </div>
+    
+    <div class="process-container">
+      <!-- Step 1 -->
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <div class="step-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="step-image">
+            <img src="/otherpages/otherpageresources/viewallcourses.jpeg" alt="Browse Courses" class="step-img">
+          </div>
+          <h3 class="step-title">View All Courses</h3>
+          <p class="step-description">Browse our comprehensive catalog of specialized IT courses designed for various skill levels.</p>
+          <a href="otherpages/courses.html" class="step-action">
+            Explore Courses <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Connection Line -->
+      <div class="connection-line">
+        <div class="line"></div>
+        <div class="line-arrow"><i class="fas fa-chevron-right"></i></div>
+      </div>
+      
+      <!-- Step 2 -->
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <div class="step-icon">
+            <i class="fas fa-clipboard-list"></i>
+          </div>
+          <div class="step-image">
+            <img src="/otherpages/otherpageresources/chooseandregister.jpeg" alt="Registration Process" class="step-img">
+          </div>
+          <h3 class="step-title">Choose & Register</h3>
+          <p class="step-description">Select the course that matches your career goals and complete a simple registration process.</p>
+          <a href="otherpages/booksession.html" class="step-action">
+            Register Now <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Connection Line -->
+      <div class="connection-line">
+        <div class="line"></div>
+        <div class="line-arrow"><i class="fas fa-chevron-right"></i></div>
+      </div>
+      
+      <!-- Step 3 -->
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <div class="step-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="step-image">
+            <img src="/otherpages/otherpageresources/learnandpractice.jpeg" alt="Learning Process" class="step-img">
+          </div>
+          <h3 class="step-title">Learn & Practice</h3>
+          <p class="step-description">Attend classes, complete hands-on projects, and receive guidance from industry experts.</p>
+          <div class="step-features">
+            <span class="feature"><i class="fas fa-check"></i> Live sessions</span>
+            <span class="feature"><i class="fas fa-check"></i> Practical labs</span>
+            <span class="feature"><i class="fas fa-check"></i> 24/7 support</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Connection Line -->
+      <div class="connection-line">
+        <div class="line"></div>
+        <div class="line-arrow"><i class="fas fa-chevron-right"></i></div>
+      </div>
+      
+      <!-- Step 4 -->
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <div class="step-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="step-image">
+            <img src="/otherpages/otherpageresources/getcertified.jpeg" alt="Certification Achievement" class="step-img">
+          </div>
+          <h3 class="step-title">Get Certified</h3>
+          <p class="step-description">Complete your course, pass the assessment, and receive an industry-recognized certification.</p>
+          <div class="certification-badge">
+            <i class="fas fa-award"></i>
+            <span>Industry-Recognized Certification</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cta-container">
+      <div class="cta-image">
+        <img src="/otherpages/otherpageresources/learningjourney.jpeg" alt="Start Learning" class="cta-img">
+      </div>
+      <p class="cta-text">Ready to start your learning journey with us?</p>
+      <a href="otherpages/booksession.html" class="cta-button">Book Free Session</a>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+  <section class="testimonials-section">
+    <div class="testimonials-header">
+      <h2 class="section-title">Student Reviews</h2>
+      <p class="testimonials-subtitle">Hear what our learners have to say about their journey with us</p>
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Student Satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4.8</div>
+          <div class="stat-label">Average Rating</div>
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10k+</div>
+          <div class="stat-label">Successful Graduates</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="testimonial-slider-container">
+      <div class="testimonial-slider">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-card-inner">
+            <div class="testimonial-header">
+              <div class="testimonial-image">
+                <img src="resources/course.jpg" alt="Student 1" class="student-img">
+              </div>
+              <div class="testimonial-meta">
+                <h4 class="student-name">Sarah Johnson</h4>
+                <p class="course-namee">Full Stack Web Development</p>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span class="rating-text">5.0</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <p>"The curriculum was comprehensive and relevant to industry standards. Instructors were knowledgeable and supportive. Within a month of completing the course, I landed a job at a top tech company. Best investment I've made in my career!"</p>
+            </div>
+            <div class="testimonial-footer">
+              <span class="testimonial-date">March 2025</span>
+              
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-card-inner">
+            <div class="testimonial-header">
+              <div class="testimonial-image">
+                <img src="resources/course.jpg" alt="Student 2" class="student-img">
+              </div>
+              <div class="testimonial-meta">
+                <h4 class="student-name">David Chen</h4>
+                <p class="course-namee">Cloud Computing & DevOps</p>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span class="rating-text">4.5</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <p>"I had some experience with AWS but wanted to formalize my knowledge. The hands-on labs and real-world projects were exactly what I needed. The instructors have actual industry experience and provide valuable insights beyond what's in the textbooks."</p>
+            </div>
+            <div class="testimonial-footer">
+              <span class="testimonial-date">February 2025</span>
+              
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-card-inner">
+            <div class="testimonial-header">
+              <div class="testimonial-image">
+                <img src="resources/course.jpg" alt="Student 3" class="student-img">
+              </div>
+              <div class="testimonial-meta">
+                <h4 class="student-name">Jessica Martinez</h4>
+                <p class="course-namee">Cybersecurity Fundamentals</p>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span class="rating-text">5.0</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <p>"As someone transitioning from a different field, I was worried about keeping up. The course was structured perfectly for beginners while still covering advanced concepts. The 24/7 support team was incredibly helpful whenever I got stuck."</p>
+            </div>
+            <div class="testimonial-footer">
+              <span class="testimonial-date">January 2025</span>
+              
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 4 -->
+        <div class="testimonial-card">
+          <div class="testimonial-card-inner">
+            <div class="testimonial-header">
+              <div class="testimonial-image">
+                <img src="resources/course.jpg" alt="Student 4" class="student-img">
+              </div>
+              <div class="testimonial-meta">
+                <h4 class="student-name">Michael Taylor</h4>
+                <p class="course-namee">Data Science & Machine Learning</p>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span class="rating-text">5.0</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <p>"The projects in this course gave me practical experience with real-world datasets. I built a portfolio that impressed interviewers and helped me transition into a data science role. The community of students and alumni is an invaluable resource."</p>
+            </div>
+            <div class="testimonial-footer">
+              <span class="testimonial-date">March 2025</span>
+              
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 5 -->
+        <div class="testimonial-card">
+          <div class="testimonial-card-inner">
+            <div class="testimonial-header">
+              <div class="testimonial-image">
+                <img src="resources/course.jpg" alt="Student 5" class="student-img">
+              </div>
+              <div class="testimonial-meta">
+                <h4 class="student-name">Olivia Wilson</h4>
+                <p class="course-namee">UI/UX Design Masterclass</p>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span class="rating-text">4.5</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <p>"Coming from a graphic design background, this course helped me transition to digital product design seamlessly. The instructors provided excellent feedback on my projects, and the career support helped me build a professional portfolio."</p>
+            </div>
+            <div class="testimonial-footer">
+              <span class="testimonial-date">February 2025</span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slider Navigation -->
+      <div class="slider-controls">
+        <button class="slider-arrow prev-arrow" aria-label="Previous testimonial">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="slider-dots">
+          <span class="slider-dot active" data-index="0"></span>
+          <span class="slider-dot" data-index="1"></span>
+          <span class="slider-dot" data-index="2"></span>
+          <span class="slider-dot" data-index="3"></span>
+          <span class="slider-dot" data-index="4"></span>
+        </div>
+        <button class="slider-arrow next-arrow" aria-label="Next testimonial">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Video Modal -->
+    <div class="video-modal" id="video-modal">
+      <div class="modal-content">
+        <button class="close-modal">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-video-container">
+          <div class="video-placeholder">
+            <img src="resources/course.jpg" alt="Video Thumbnail" class="video-thumbnail">
+            <div class="play-icon">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="video-text">
+              <p>Video testimonial would play here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section class="instructors-section">
+    <div class="instructors-header">
+      <h2 class="section-title">Instructor Highlights</h2>
+      <p class="instructors-subtitle">Learn from industry experts who are passionate about education</p>
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Years Average Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Industry Certified Instructors</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">92%</div>
+          <div class="stat-label">Success Rate</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="instructor-slider-container">
+      <div class="instructor-slider">
+        <!-- Instructor 1 -->
+        <div class="instructor-card">
+          <div class="instructor-card-inner">
+            <div class="instructor-image-container">
+              <div class="instructor-image">
+                <img src="resources/course.jpg" alt="Instructor 1" class="instructor-img">
+              </div>
+              <div class="instructor-stats">
+                <div class="stat">
+                  <i class="fas fa-user-graduate"></i>
+                  <span>2,500+ Students</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-star"></i>
+                  <span>4.9 Rating</span>
+                </div>
+              </div>
+            </div>
+            <div class="instructor-info">
+              <h3 class="instructor-name">Dr. Robert Anderson</h3>
+              <p class="instructor-title">Lead Software Engineering Instructor</p>
+              <div class="instructor-specialties">
+                <span class="specialty-tag">Full Stack</span>
+                <span class="specialty-tag">Cloud Architecture</span>
+                <span class="specialty-tag">DevOps</span>
+              </div>
+              <p class="instructor-bio">Former Senior Engineer at Google with 12+ years of industry experience. Dr. Anderson specializes in scalable architecture and modern development practices. He's passionate about bridging the gap between theory and practical application.</p>
+              <!-- <div class="instructor-footer">
+                <div class="social-links">
+                  <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                  <a href="#" class="social-link"><i class="fas fa-globe"></i></a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Instructor 2 -->
+        <div class="instructor-card">
+          <div class="instructor-card-inner">
+            <div class="instructor-image-container">
+              <div class="instructor-image">
+                <img src="resources/course.jpg" alt="Instructor 2" class="instructor-img">
+              </div>
+              <div class="instructor-stats">
+                <div class="stat">
+                  <i class="fas fa-user-graduate"></i>
+                  <span>3,100+ Students</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-star"></i>
+                  <span>4.8 Rating</span>
+                </div>
+              </div>
+            </div>
+            <div class="instructor-info">
+              <h3 class="instructor-name">Dr. Maria Rodriguez</h3>
+              <p class="instructor-title">Data Science & AI Instructor</p>
+              <div class="instructor-specialties">
+                <span class="specialty-tag">Machine Learning</span>
+                <span class="specialty-tag">NLP</span>
+                <span class="specialty-tag">Big Data</span>
+              </div>
+              <p class="instructor-bio">PhD in Computer Science with specialization in AI. Previously led data science teams at Amazon and Netflix. Dr. Rodriguez brings real-world applications of ML and AI into the classroom, making complex concepts accessible.</p>
+              <!-- <div class="instructor-footer">
+                
+                <div class="social-links">
+                  <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                  <a href="#" class="social-link"><i class="fas fa-globe"></i></a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Instructor 3 -->
+        <div class="instructor-card">
+          <div class="instructor-card-inner">
+            <div class="instructor-image-container">
+              <div class="instructor-image">
+                <img src="resources/course.jpg" alt="Instructor 3" class="instructor-img">
+              </div>
+              <div class="instructor-stats">
+                <div class="stat">
+                  <i class="fas fa-user-graduate"></i>
+                  <span>1,800+ Students</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-star"></i>
+                  <span>4.9 Rating</span>
+                </div>
+              </div>
+            </div>
+            <div class="instructor-info">
+              <h3 class="instructor-name">Alex Johnson</h3>
+              <p class="instructor-title">UX/UI Design Lead</p>
+              <div class="instructor-specialties">
+                <span class="specialty-tag">UX Research</span>
+                <span class="specialty-tag">UI Design</span>
+                <span class="specialty-tag">Prototyping</span>
+              </div>
+              <p class="instructor-bio">Award-winning designer with experience at top design agencies. Alex has led UX teams for Fortune 500 companies and startups alike. His approach combines aesthetic excellence with user-centered design principles and conversion optimization.</p>
+              <!-- <div class="instructor-footer">
+                
+                <div class="social-links">
+                  <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                  <a href="#" class="social-link"><i class="fas fa-globe"></i></a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Instructor 4 -->
+        <div class="instructor-card">
+          <div class="instructor-card-inner">
+            <div class="instructor-image-container">
+              <div class="instructor-image">
+                <img src="resources/course.jpg" alt="Instructor 4" class="instructor-img">
+              </div>
+              <div class="instructor-stats">
+                <div class="stat">
+                  <i class="fas fa-user-graduate"></i>
+                  <span>2,200+ Students</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-star"></i>
+                  <span>4.7 Rating</span>
+                </div>
+              </div>
+            </div>
+            <div class="instructor-info">
+              <h3 class="instructor-name">Sarah Kim</h3>
+              <p class="instructor-title">Cybersecurity Specialist</p>
+              <div class="instructor-specialties">
+                <span class="specialty-tag">Ethical Hacking</span>
+                <span class="specialty-tag">Network Security</span>
+                <span class="specialty-tag">Cryptography</span>
+              </div>
+              <p class="instructor-bio">Certified Information Systems Security Professional (CISSP) with 10+ years in cybersecurity. Sarah has consulted for government agencies and financial institutions on security architecture and threat prevention strategies.</p>
+              <!-- <div class="instructor-footer">
+                
+                <div class="social-links">
+                  <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                  <a href="#" class="social-link"><i class="fas fa-globe"></i></a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Instructor 5 -->
+        <div class="instructor-card">
+          <div class="instructor-card-inner">
+            <div class="instructor-image-container">
+              <div class="instructor-image">
+                <img src="resources/course.jpg" alt="Instructor 5" class="instructor-img">
+              </div>
+              <div class="instructor-stats">
+                <div class="stat">
+                  <i class="fas fa-user-graduate"></i>
+                  <span>1,950+ Students</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-star"></i>
+                  <span>4.8 Rating</span>
+                </div>
+              </div>
+            </div>
+            <div class="instructor-info">
+              <h3 class="instructor-name">James Wilson</h3>
+              <p class="instructor-title">Cloud Computing & DevOps Expert</p>
+              <div class="instructor-specialties">
+                <span class="specialty-tag">AWS</span>
+                <span class="specialty-tag">Kubernetes</span>
+                <span class="specialty-tag">CI/CD</span>
+              </div>
+              <p class="instructor-bio">AWS Certified Solutions Architect with extensive experience in cloud migration and infrastructure optimization. James previously worked as a Lead DevOps Engineer at Microsoft, orchestrating complex cloud deployments.</p>
+              <!-- <div class="instructor-footer">
+                
+                <div class="social-links">
+                  <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                  <a href="#" class="social-link"><i class="fas fa-globe"></i></a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slider Navigation -->
+      <div class="slider-controls">
+        <button class="slider-arrow prev-arrow" aria-label="Previous instructor">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="slider-dots">
+          <span class="slider-dot active" data-index="0"></span>
+          <span class="slider-dot" data-index="1"></span>
+          <span class="slider-dot" data-index="2"></span>
+          <span class="slider-dot" data-index="3"></span>
+          <span class="slider-dot" data-index="4"></span>
+        </div>
+        <button class="slider-arrow next-arrow" aria-label="Next instructor">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+    
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section class="blog-resources-section">
+    <div class="blog-header">
+      <h2 class="section-title">Blog & Resources</h2>
+      <p class="blog-subtitle">Stay updated with the latest in tech education and career insights</p>
+    </div>
+    
+    <div class="blog-filter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="articles">Articles</button>
+      <button class="filter-btn" data-filter="tips">Study Tips</button>
+      <button class="filter-btn" data-filter="courses">Course Highlights</button>
+      <button class="filter-btn" data-filter="news">Industry News</button>
+    </div>
+    
+    <div class="blog-container">
+      <!-- Article 1 -->
+      <div class="blog-card" data-category="articles news">
+        <a style="text-decoration: none;" href="/otherpages/techblog/cloudcomputingtrends.html">
+        <div class="blog-image">
+          <div class="blog-tag">Article</div>
+          <img src="/otherpages/otherpageresources/cloudcomputing.jpeg" alt="Cloud Computing Trends" class="card-img">
+          <div class="blog-date">
+            <span class="day">15</span>
+            <span class="month">Apr</span>
+          </div>
+        </div>
+        <div class="blog-content">
+          <h3 class="blog-title">Top Cloud Computing Trends to Watch in 2025</h3>
+          <p class="blog-excerpt">Discover the latest innovations and developments shaping the future of cloud technology and how they impact businesses.</p>
+          <div class="blog-meta">
+            <span class="blog-author"><i class="fas fa-user"></i> John Smith</span>
+            <span class="blog-comments"><i class="fas fa-comment"></i> 24 Comments</span>
+          </div>
+          <a href="/otherpages/techblog/cloudcomputingtrends.html" class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+        </a>
+        </div>
+      </div>
+      
+      <!-- Article 2 -->
+      <div class="blog-card" data-category="tips">
+        <a style="text-decoration: none;" href="/otherpages/techblog/cloudcomputingtrends.html">
+        <div class="blog-image">
+          <div class="blog-tag">Study Tips</div>
+          <img src="/otherpages/otherpageresources/learnandpractice.jpeg" alt="Study Techniques" class="card-img">
+          <div class="blog-date">
+            <span class="day">10</span>
+            <span class="month">Apr</span>
+          </div>
+        </div>
+        <div class="blog-content">
+          <h3 class="blog-title">5 Effective Study Techniques for IT Certification Exams</h3>
+          <p class="blog-excerpt">Master these proven study methods to increase your retention and maximize your chances of passing certification exams.</p>
+          <div class="blog-meta">
+            <span class="blog-author"><i class="fas fa-user"></i> Sarah Johnson</span>
+            <span class="blog-comments"><i class="fas fa-comment"></i> 18 Comments</span>
+          </div>
+          <a href="/otherpages/techblog/cloudcomputingtrends.html" class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+        </div>
+      </a>
+      </div>
+      
+      <!-- Article 3 -->
+      <div class="blog-card" data-category="courses">
+        <a style="text-decoration: none;" href="/otherpages/techblog/cloudcomputingtrends.html">
+        <div class="blog-image">
+          <div class="blog-tag">Course Highlight</div>
+          <img src="/otherpages/otherpageresources/datascience.jpeg" alt="Data Science Course" class="card-img">
+          <div class="blog-date">
+            <span class="day">05</span>
+            <span class="month">Apr</span>
+          </div>
+        </div>
+        <div class="blog-content">
+          <h3 class="blog-title">What You'll Learn in Our Advanced Data Science Course</h3>
+          <p class="blog-excerpt">A deep dive into our comprehensive data science curriculum, industry projects, and career opportunities for graduates.</p>
+          <div class="blog-meta">
+            <span class="blog-author"><i class="fas fa-user"></i> Michael Chen</span>
+            <span class="blog-comments"><i class="fas fa-comment"></i> 12 Comments</span>
+          </div>
+          <a href="/otherpages/techblog/cloudcomputingtrends.html" class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+        </div>
+      </a>
+      </div>
+  
+      <!-- Article 4 -->
+      <div class="blog-card" data-category="news">
+        <a style="text-decoration: none;" href="/otherpages/techblog/cloudcomputingtrends.html">
+        <div class="blog-image">
+          <div class="blog-tag">Industry News</div>
+          <img src="/otherpages/otherpageresources/itbasicskills.jpeg" alt="AI Development" class="card-img">
+          <div class="blog-date">
+            <span class="day">28</span>
+            <span class="month">Mar</span>
+          </div>
+        </div>
+        <div class="blog-content">
+          <h3 class="blog-title">How AI is Revolutionizing Software Development</h3>
+          <p class="blog-excerpt">Explore the impact of artificial intelligence on coding practices, automation, and the changing landscape of IT jobs.</p>
+          <div class="blog-meta">
+            <span class="blog-author"><i class="fas fa-user"></i> Emily Watson</span>
+            <span class="blog-comments"><i class="fas fa-comment"></i> 31 Comments</span>
+          </div>
+          <a href="/otherpages/techblog/cloudcomputingtrends.html" class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+        </div>
+      </div>
+    </a>
+    </div>
+    
+    <div class="view-all-btn-container">
+      <a href="/otherpages/techblog.html" class="view-all-btn">View All Articles <i class="fas fa-arrow-right"></i></a>
+    </div>
+    
+  
+  </section>
+
+
+
+
+
+
+
   
   
 
@@ -175,10 +1070,10 @@
       <div class="footer_links">
       <h3>Quick Links</h3>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/otherpages/about.html">About Us</a></li>
+        <li><a href="/otherpages/courses.html">Courses</a></li>
+        <li><a href="/otherpages/contact.html">Contact</a></li>
       </ul>
     </div>
 
@@ -210,15 +1105,6 @@
     </div>
   </footer>
 
-
-
-
-
-
-
-
-
-
   <script>
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
@@ -227,36 +1113,66 @@
       navLinks.classList.toggle('active');
     });
 
-    const whatsappButton = document.getElementById('whatsapp-button');
-    const whatsappChat = document.getElementById('whatsapp-chat');
-    const closeChat = document.getElementById('close-chat');
-    const sendMessage = document.getElementById('send-message');
-    const messageInput = document.getElementById('whatsapp-message');
-    const chatBody = document.getElementById('chat-body');
+    // WhatsApp functionality
+const whatsappButton = document.getElementById('whatsapp-button');
+const whatsappChat = document.getElementById('whatsapp-chat');
+const closeChat = document.getElementById('close-chat');
+const sendMessage = document.getElementById('send-message');
+const messageInput = document.getElementById('whatsapp-message');
+const chatBody = document.getElementById('chat-body');
+const whatsappNumber = '+447587675040'; // Your WhatsApp number
 
-    whatsappButton.addEventListener('click', () => {
-      whatsappChat.style.display = 'flex';
-    });
+whatsappButton.addEventListener('click', () => {
+  whatsappChat.style.display = 'flex';
+});
 
-    closeChat.addEventListener('click', () => {
-      whatsappChat.style.display = 'none';
-    });
+closeChat.addEventListener('click', () => {
+  whatsappChat.style.display = 'none';
+});
 
-    sendMessage.addEventListener('click', async () => {
-      const message = messageInput.value.trim();
-      if (message !== '') {
-        const userMsg = document.createElement('div');
-        userMsg.className = 'user-message';
-        userMsg.innerText = message;
-        chatBody.appendChild(userMsg);
-        chatBody.scrollTop = chatBody.scrollHeight;
-        messageInput.value = '';
+// Function to redirect to WhatsApp with the message
+function redirectToWhatsApp(message) {
+  // Format the number without spaces or special characters
+  const formattedNumber = whatsappNumber.replace(/\s+/g, '');
+  
+  // Create the WhatsApp URL with the message
+  const whatsappURL = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`;
+  
+  // Open WhatsApp in a new tab
+  window.open(whatsappURL, '_blank');
+}
 
-        // Optional: Send to backend (you can use fetch here)
-        // await fetch('http://localhost:5000/send-message', {...})
-      }
-    });
+sendMessage.addEventListener('click', () => {
+  handleMessageSend();
+});
 
+// Also handle pressing Enter key in the input field
+messageInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    handleMessageSend();
+  }
+});
+
+function handleMessageSend() {
+  const message = messageInput.value.trim();
+  if (message !== '') {
+    // Display the message in the chat interface
+    const userMsg = document.createElement('div');
+    userMsg.className = 'user-message';
+    userMsg.innerText = message;
+    chatBody.appendChild(userMsg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    
+    // Add a small delay so user can see their message before redirect
+    setTimeout(() => {
+      // Redirect to WhatsApp with the message
+      redirectToWhatsApp(message);
+      
+      // Clear the input field
+      messageInput.value = '';
+    }, 500);
+  }
+}
 
     function filterCourses() {
     let input = document.getElementById("search-box").value.toLowerCase();
@@ -273,10 +1189,309 @@
     });
     }
 
+
+
+
+    // Add hover effects for interactive elements
+  document.addEventListener('DOMContentLoaded', function() {
+    const valueBoxes = document.querySelectorAll('.value-box');
+    
+    valueBoxes.forEach(box => {
+      box.addEventListener('mouseenter', function() {
+        this.querySelector('.value-overlay i').classList.add('fa-spin');
+      });
+      
+      box.addEventListener('mouseleave', function() {
+        this.querySelector('.value-overlay i').classList.remove('fa-spin');
+      });
+    });
+  });
+
+
+
+
+
+
+  // Add animation effects for icons
+  document.addEventListener('DOMContentLoaded', function() {
+    const processSteps = document.querySelectorAll('.process-step');
+    
+    processSteps.forEach(step => {
+      step.addEventListener('mouseenter', function() {
+        const icon = this.querySelector('.step-icon i');
+        
+        // Different animations based on the icon
+        if (icon.classList.contains('fa-search')) {
+          icon.classList.add('fa-beat');
+        } else if (icon.classList.contains('fa-clipboard-list')) {
+          icon.classList.add('fa-bounce');
+        } else if (icon.classList.contains('fa-laptop-code')) {
+          icon.classList.add('fa-flip');
+        } else if (icon.classList.contains('fa-certificate')) {
+          icon.classList.add('fa-spin');
+        }
+      });
+      
+      step.addEventListener('mouseleave', function() {
+        const icon = this.querySelector('.step-icon i');
+        icon.classList.remove('fa-beat', 'fa-bounce', 'fa-flip', 'fa-spin');
+      });
+    });
+    
+    // Add animation to connection arrows
+    const arrows = document.querySelectorAll('.line-arrow i');
+    
+    setInterval(() => {
+      arrows.forEach(arrow => {
+        arrow.classList.add('fa-beat');
+        
+        setTimeout(() => {
+          arrow.classList.remove('fa-beat');
+        }, 1000);
+      });
+    }, 3000);
+  });
+
+
+
+
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+  // === TESTIMONIAL SLIDER ===
+  const testimonialSlider = document.querySelector('.testimonial-slider');
+  const testimonialCards = document.querySelectorAll('.testimonial-card');
+  const testimonialDots = document.querySelectorAll('.testimonials-section .slider-dot');
+  const testimonialPrev = document.querySelector('.testimonials-section .prev-arrow');
+  const testimonialNext = document.querySelector('.testimonials-section .next-arrow');
+  
+  if (testimonialSlider && testimonialCards.length > 0) {
+    let testimonialIndex = 0;
+    const cardWidth = testimonialCards[0].offsetWidth + 20;
+
+    function updateSlider(index) {
+      if (index < 0) index = testimonialCards.length - 1;
+      if (index >= testimonialCards.length) index = 0;
+      testimonialIndex = index;
+      testimonialSlider.scrollLeft = cardWidth * testimonialIndex;
+
+      testimonialDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === testimonialIndex);
+      });
+    }
+
+    testimonialDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => updateSlider(i));
+    });
+
+    testimonialPrev?.addEventListener('click', () => updateSlider(testimonialIndex - 1));
+    testimonialNext?.addEventListener('click', () => updateSlider(testimonialIndex + 1));
+
+    testimonialSlider.addEventListener('scroll', () => {
+      const activeIndex = Math.round(testimonialSlider.scrollLeft / cardWidth);
+      testimonialDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === activeIndex);
+      });
+      testimonialIndex = activeIndex;
+    });
+
+    let autoScroll = setInterval(() => updateSlider(testimonialIndex + 1), 5000);
+
+    testimonialSlider.addEventListener('mouseenter', () => clearInterval(autoScroll));
+    testimonialSlider.addEventListener('mouseleave', () => {
+      autoScroll = setInterval(() => updateSlider(testimonialIndex + 1), 5000);
+    });
+  }
+
+  // === INSTRUCTOR SLIDER ===
+  const instructorSlider = document.querySelector('.instructor-slider');
+  const instructorCards = document.querySelectorAll('.instructor-card');
+  const instructorDots = document.querySelectorAll('.instructors-section .slider-dot');
+  const instructorPrev = document.querySelector('.instructors-section .prev-arrow');
+  const instructorNext = document.querySelector('.instructors-section .next-arrow');
+
+  if (instructorSlider && instructorCards.length > 0) {
+    let instructorIndex = 0;
+    const cardWidth = instructorCards[0].offsetWidth + 20;
+
+    function updateInstructorSlider(index) {
+      if (index < 0) index = instructorCards.length - 1;
+      if (index >= instructorCards.length) index = 0;
+      instructorIndex = index;
+      instructorSlider.scrollLeft = cardWidth * instructorIndex;
+      
+      instructorDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === instructorIndex);
+      });
+    }
+
+    instructorDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => updateInstructorSlider(i));
+    });
+
+    instructorPrev?.addEventListener('click', () => updateInstructorSlider(instructorIndex - 1));
+    instructorNext?.addEventListener('click', () => updateInstructorSlider(instructorIndex + 1));
+
+    instructorSlider.addEventListener('scroll', () => {
+      const activeIndex = Math.round(instructorSlider.scrollLeft / cardWidth);
+      instructorDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === activeIndex);
+      });
+      instructorIndex = activeIndex;
+    });
+
+    let autoInstructor = setInterval(() => updateInstructorSlider(instructorIndex + 1), 6000);
+    
+    instructorSlider.addEventListener('mouseenter', () => clearInterval(autoInstructor));
+    instructorSlider.addEventListener('mouseleave', () => {
+      autoInstructor = setInterval(() => updateInstructorSlider(instructorIndex + 1), 6000);
+    });
+  }
+
+  // === OTHER BUTTONS / MODALS ===
+  const reviewBtn = document.querySelector('.submit-review-btn');
+  reviewBtn?.addEventListener('mouseenter', () => {
+    reviewBtn.innerHTML = '<i class="fas fa-edit fa-bounce"></i> Submit Your Review';
+  });
+  reviewBtn?.addEventListener('mouseleave', () => {
+    reviewBtn.innerHTML = '<i class="fas fa-edit"></i> Submit Your Review';
+  });
+
+  const instructorBtn = document.querySelector('.become-instructor-btn');
+  instructorBtn?.addEventListener('mouseenter', () => {
+    instructorBtn.innerHTML = '<i class="fas fa-chalkboard-teacher fa-bounce"></i> Become an Instructor';
+  });
+  instructorBtn?.addEventListener('mouseleave', () => {
+    instructorBtn.innerHTML = '<i class="fas fa-chalkboard-teacher"></i> Become an Instructor';
+  });
+
+  // === Video Modal Handling (if used) ===
+  const videoModal = document.getElementById('video-modal');
+  const videoLinks = document.querySelectorAll('.video-link');
+  const closeModal = document.querySelector('.close-modal');
+
+  videoLinks?.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      videoModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeModal?.addEventListener('click', () => {
+    videoModal.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+
+  videoModal?.addEventListener('click', (e) => {
+    if (e.target === videoModal) {
+      videoModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Filter functionality for blog cards
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        
+        blogCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'flex';
+          } else {
+            const categories = card.getAttribute('data-category').split(' ');
+            if (categories.includes(filter)) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+    
+    // View All button animation
+    const viewAllBtn = document.querySelector('.view-all-btn');
+    if (viewAllBtn) {
+      viewAllBtn.addEventListener('mouseenter', function() {
+        this.querySelector('i').classList.add('fa-beat');
+      });
+      
+      viewAllBtn.addEventListener('mouseleave', function() {
+        this.querySelector('i').classList.remove('fa-beat');
+      });
+    }
+    
+    // Hover effects for blog cards
+    blogCards.forEach(card => {
+      const readMoreLink = card.querySelector('.read-more');
+      const icon = readMoreLink.querySelector('i');
+      
+      card.addEventListener('mouseenter', function() {
+        icon.classList.add('fa-beat');
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        icon.classList.remove('fa-beat');
+      });
+    });
+  });
+
+
+
+
+
+
+  // Mobile dropdown functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
+    
+    mobileDropdownHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        // Toggle active class on header
+        this.classList.toggle('active');
+        
+        // Find the target dropdown content
+        const targetId = this.getAttribute('data-target');
+        const dropdownContent = document.getElementById(targetId);
+        
+        // Toggle show class on content
+        if (dropdownContent) {
+          dropdownContent.classList.toggle('show');
+        }
+      });
+    });
+  });
+
   </script>
-
-
-
 
 </body>
 </html>

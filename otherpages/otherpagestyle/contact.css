@@ -16,25 +16,32 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 0 20px; /* Remove ALL top/bottom padding */
     background-color: #0d6985;
     color: #fff;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
+    height: auto; /* Let height be determined by content */
+  }
+  
+  .logo {
     display: flex;
     align-items: center;
-}
-
-.logo img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
+    margin: 0; /* Remove ALL margins */
+    padding: 0; /* Remove ALL padding */
+    line-height: 0; /* Remove line height spacing */
+    margin-left: -19px;
+  }
+  
+  .logo img {
+    height: 90px; /* Further reduced height */
+    margin: 7px; /* Remove ALL margins */
+    padding: 0; /* Remove ALL padding */
+    vertical-align: top; /* Align to top */
+    display: block; /* Block display removes extra space */
+    border-radius: 20px;
+  }
 
 .logo span {
     font-size: 1.5rem;
@@ -44,16 +51,15 @@ body {
 .nav-links {
     display: flex;
     gap: 20px;
-}
+    align-items: center;
+  }
 
-.nav-links a {
+  .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-    padding: 5px 10px;
-    border-radius: 4px;
-}
+    font-size: 1.3rem;
+    transition: color 0.3s;
+  }
 
 .nav-links a:hover {
     color: #ff9800;
@@ -69,6 +75,75 @@ body {
     font-size: 1.8rem;
     cursor: pointer;
 }
+
+
+
+
+
+  /* Dropdown Menu Styles */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropbtn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: color 0.3s;
+    cursor: pointer;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0d6985;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    right: 0;
+  }
+  
+  .dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .dropdown-content a:last-child {
+    border-bottom: none;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #0a546a;
+    color: #ff9800;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    color: #ff9800;
+  }
+  
+  /* Hide mobile-only links on desktop */
+  .mobile-only-links {
+    display: none;
+  }
+
+
+
+
 
 /* Hero Section */
 .hero-section {
@@ -391,6 +466,165 @@ body {
 
 
 
+
+
+
+.mobile-section-title {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #ff9800;
+  text-align: left;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Make all dropdown menu items behave similarly */
+.nav-links .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Special styling for Courses dropdown */
+.courses-dropdown .dropdown-content {
+  min-width: 250px;
+  left: 0;
+  right: auto;
+}
+
+
+
+
+
+
+
+.courses-dropdown .dropdown-content {
+  min-width: 250px;
+  left: 0;
+  right: auto;
+}
+
+/* Mobile Dropdown Styles */
+.mobile-dropdown {
+  width: 100%;
+}
+
+.mobile-dropdown-header {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-dropdown-header:hover,
+.mobile-dropdown-header.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ff9800;
+}
+
+.mobile-dropdown-header i {
+  transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-header.active i {
+  transform: rotate(180deg);
+}
+
+.mobile-dropdown-content {
+  display: none;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-dropdown-content.show {
+  display: block;
+}
+
+.mobile-dropdown-content a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 10px 30px; /* Extra padding for sub-menu items */
+  display: block;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ff9800;
+}
+
+
+
+.magic-syllabus-container {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Special class for the nav link to ensure proper structure */
+.nav-syllabus-link {
+  text-align: left;
+  display: inline-flex !important;
+}
+
+* Special class for the nav link to ensure proper structure */
+.nav-syllabus-link {
+text-align: left;
+display: inline-flex !important;
+position: relative; /* Add this to establish positioning context */
+}
+
+.magic-syllabus-container {
+position: relative; /* Add this to create proper positioning context */
+}
+
+.syllabus-crown {
+position: absolute;
+color: #FFD700; /* Gold color for the crown */
+font-size: 0.8em;
+top: -14px; 
+left: 2px; /* More negative value to move further left */
+text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+transform: rotate(-17deg);
+}
+
+/* Add a hover effect to make it more interactive */
+.active-link:hover .syllabus-crown {
+animation: crownGlow 1.5s infinite alternate;
+}
+
+@keyframes crownGlow {
+from {
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+to {
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.9), 0 0 15px rgba(255, 215, 0, 0.7);
+}
+}
+
+/* Ensure the text is positioned correctly */
+.magic-text {
+position: relative;
+margin-left: 5px; /* Add some space after the crown */
+}
+
+
+
+
+
+
+
+
+
   
 
 
@@ -407,30 +641,78 @@ body {
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background-color: #0d6985;
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px 0;
-        display: flex;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.4s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        border-radius: 0 0 10px 10px;
-    }
+  .nav-links {
+    position: fixed; /* Change from absolute to fixed */
+    top: 90px;
+    left: 0;
+    width: 100%;
+    background-color: #0d6985;
+    flex-direction: column;
+    gap: 0px;
+    padding: 0;
+    display: flex;
+    max-height: 0;
+    overflow-y: hidden; /* Initially hidden */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 10px 10px;
+    align-items: stretch;
+    z-index: 99; /* Ensure it's above other content */
+}
 
-    .nav-links.active {
-        max-height: 500px;
-        opacity: 1;
-        transform: translateY(0);
-    }
+.nav-links.active {
+    max-height: 80vh; /* Set to percentage of viewport height */
+    opacity: 1;
+    transform: translateY(0);
+    padding: 15px 0;
+    overflow-y: auto; /* Enable scrolling */
+}
+
+.nav-links a {
+    padding: 12px 20px;
+    display: block;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-icon {
+    display: block;
+}
+
+/* Show mobile-only links on mobile */
+.mobile-only-links {
+    display: block;
+    width: 100%;
+}
+
+/* Hide dropdown on mobile */
+.dropdown {
+    display: none;
+}
+
+/* Mobile specific link styling */
+.mobile-only-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    display: block;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-only-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ff9800;
+}
+
+
+
+
+
+
     
     .menu-icon {
         display: block;
@@ -459,6 +741,17 @@ body {
     .info-card {
         padding: 15px;
     }
+
+      /* Hide all dropdowns on mobile */
+  .dropdown {
+    display: none !important;
+  }
+  
+  /* Keep mobile-only links visible */
+  .mobile-only-links {
+    display: block;
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {

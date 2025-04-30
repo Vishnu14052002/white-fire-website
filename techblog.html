@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./otherpages/otherpagestyle/techblog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <title>Tech Blog - White Fire Technologies</title>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">
+      <a href="/index.html"><img src="resources/Whitefirelogo.png" alt="Logo"></a>
+    </div>
+    <nav class="nav-links" id="nav-links">
+      <a href="#" class="active-link">Home</a>
+      <div class="dropdown courses-dropdown">
+        <a href="/courses.html" class="dropbtn">Courses <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="/cloudcomputing.html">Cloud Computing</a>
+          <a href="/datasciencecourse.html">Data Science</a>
+          <a href="/database.html">Database Administration</a>
+          <a href="/itbasicskills.html">IT Basic Skills</a>
+          <a href="/networkadmin.html">Network Administration</a>
+          <a href="/programming.html">Programming Languages</a>
+        </div>
+      </div>
+      <a href="/about.html">About Us</a>
+      <a href="/contact.html">Contact Us</a>
+      <a href="/syllabus.html" class="nav-syllabus-link">
+        <div class="magic-syllabus-container">
+          <i class="fas fa-crown syllabus-crown"></i>
+          <span class="magic-text">Magic Syllabus</span>
+        </div>
+      </a>
+      
+      <!-- Added dropdown menu -->
+      <div class="dropdown">
+        <a href="#" class="dropbtn">More <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="/placement.html">Placements</a>
+          <a href="/gallery.html">Gallery</a>
+          <a href="/careers.html">Careers</a>
+          <a href="/techblog.html">Tech Blog</a>
+          <a href="/testimonials.html">Testimonials</a>
+          <a href="/booksession.html">Free Session</a>
+        </div>
+      </div>
+
+      <!-- Mobile-only links -->
+      <div class="mobile-only-links">
+        <!-- Mobile Courses Menu - with dropdown toggle -->
+        <div class="mobile-dropdown">
+          <div class="mobile-dropdown-header" data-target="mobile-courses-dropdown">
+            Courses <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="mobile-dropdown-content" id="mobile-courses-dropdown">
+            <a href="/cloudcomputing.html">Cloud Computing</a>
+            <a href="/datasciencecourse.html">Data Science</a>
+            <a href="/database.html">Database Administration</a>
+            <a href="/itbasicskills.html">IT Basic Skills</a>
+            <a href="/networkadmin.html">Network Administration</a>
+            <a href="/programming.html">Programming Languages</a>
+          </div>
+        </div>
+        
+        <!-- Other mobile links -->
+        <div class="mobile-dropdown">
+          <div class="mobile-dropdown-header" data-target="mobile-more-dropdown">
+            More <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="mobile-dropdown-content" id="mobile-more-dropdown">
+            <!-- <a href="otherpages/scholarships.html">Scholarships</a> -->
+            <a href="otherpages/placements.html">Placements</a>
+            <!-- <a href="otherpages/hire-from-us.html">Hire From Us</a> -->
+            <a href="/gallery.html">Gallery</a>
+            <!-- <a href="otherpages/our-trainers.html">Our Trainers</a> -->
+            <!-- <a href="otherpages/become-trainer.html">Become A Trainer</a> -->
+            <a href="/careers.html">Other Careers</a>
+            <a href="/techblog.html">Tech Blog</a>
+            <a href="/testimonials.html">Testimonials</a>
+            <a href="/booksession.html">Free Session</a>
+            <!-- <a href="otherpages/white-papers.html">White Papers</a> -->
+          </div>
+        </div>
+        
+        <!-- Keep other direct links -->
+       
+      </div>
+    </nav>
+    <div class="menu-icon" id="menu-icon">☰</div>
+  </header>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <img src="../otherpages/otherpageresources/shutterstock_2288178513.jpg" alt="Tech Blog Hero Image" class="hero-image">
+        <div class="hero-text">
+          <h1>White Fire Tech Blog</h1>
+          <p>Stay updated with the latest trends, insights, and innovations in tech</p>
+          <span class="sub-tagline">🔥 Knowledge that ignites your tech journey!</span>
+        </div>
+    </section>
+
+    <section class="blog-container">
+        <div class="blog-heading">
+            <h2>Latest Articles</h2>
+            <p>Explore our collection of tech insights, tutorials, and industry updates</p>
+        </div>
+
+        <div class="blog-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="articles">Articles</button>
+          <button class="filter-btn" data-filter="tips">Study Tips</button>
+          <button class="filter-btn" data-filter="courses">Course Highlights</button>
+          <button class="filter-btn" data-filter="news">Industry News</button>
+        </div>
+        
+        <div class="blog-grid">
+          <!-- Article 1 -->
+          <div class="blog-card" data-category="articles news">
+            <a href="techblog/cloudcomputingtrends.html">
+            <div class="blog-image">
+              <div class="blog-tag">Article</div>
+              <img src="../otherpages/otherpageresources/cloudcomputing.jpeg" alt="Cloud Computing Trends" class="card-img">
+              <div class="blog-date">
+                <span class="day">15</span>
+                <span class="month">Apr</span>
+              </div>
+            </a> 
+            </div>
+            <a style="text-decoration: none;" href="techblog/cloudcomputingtrends.html">
+            <div class="blog-content">
+              <h3 class="blog-title">Top Cloud Computing Trends to Watch in 2025</h3>
+              <p class="blog-excerpt">Discover the latest innovations and developments shaping the future of cloud technology and how they impact businesses.</p>
+              <div class="blog-meta">
+                <span class="blog-author"><i class="fas fa-user"></i> John Smith</span>
+              </div>
+              <a href="techblog/cloudcomputingtrends.html" class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+          </a>
+          </div>
+          
+          <!-- Article 2 -->
+          <div class="blog-card" data-category="tips">
+            <a href="techblog/cloudcomputingtrends.html">
+            <div class="blog-image">
+              <div class="blog-tag">Study Tips</div>
+              <img src="../otherpages/otherpageresources/learnandpractice.jpeg" alt="Study Techniques" class="card-img">
+              <div class="blog-date">
+                <span class="day">10</span>
+                <span class="month">Apr</span>
+              </div>
+            </a>
+            </div>
+            <a style="text-decoration: none;" href="techblog/cloudcomputingtrends.html">
+            <div class="blog-content">
+              <h3 class="blog-title">5 Effective Study Techniques for IT Certification Exams</h3>
+              <p class="blog-excerpt">Master these proven study methods to increase your retention and maximize your chances of passing certification exams.</p>
+              <div class="blog-meta">
+                <span class="blog-author"><i class="fas fa-user"></i> Sarah Johnson</span>
+              </div>
+              <a href="#" class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+          </a>
+          </div>
+          
+          <!-- Article 3 -->
+          <div class="blog-card" data-category="courses">
+            <a href="techblog/cloudcomputingtrends.html">
+            <div class="blog-image">
+              <div class="blog-tag">Course Highlight</div>
+              <img src="../otherpages/otherpageresources/datascience.jpeg" alt="Data Science Course" class="card-img">
+              <div class="blog-date">
+                <span class="day">05</span>
+                <span class="month">Apr</span>
+              </div>
+            </a>
+            </div>
+            <a style="text-decoration: none;" href="techblog/cloudcomputingtrends.html">
+            <div class="blog-content">
+              <h3 class="blog-title">What You'll Learn in Our Advanced Data Science Course</h3>
+              <p class="blog-excerpt">A deep dive into our comprehensive data science curriculum, industry projects, and career opportunities for graduates.</p>
+              <div class="blog-meta">
+                <span class="blog-author"><i class="fas fa-user"></i> Michael Chen</span>
+              </div>
+              <a href="#" class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+          </a>
+          </div>
+      
+          <!-- Article 4 -->
+          <div class="blog-card" data-category="news">
+            <a href="techblog/cloudcomputingtrends.html">
+            <div class="blog-image">
+              <div class="blog-tag">Industry News</div>
+              <img src="../otherpages/otherpageresources/itbasicskills.jpeg" alt="AI Development" class="card-img">
+              <div class="blog-date">
+                <span class="day">28</span>
+                <span class="month">Mar</span>
+              </div>
+            </a>
+            </div>
+            <a style="text-decoration: none;" href="techblog/cloudcomputingtrends.html">
+            <div class="blog-content">
+              <h3 class="blog-title">How AI is Revolutionizing Software Development</h3>
+              <p class="blog-excerpt">Explore the impact of artificial intelligence on coding practices, automation, and the changing landscape of IT jobs.</p>
+              <div class="blog-meta">
+                <span class="blog-author"><i class="fas fa-user"></i> Emily Watson</span>
+              </div>
+              <a href="#" class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+          </a>
+          </div>
+
+          
+        </div>
+
+        <!-- <div class="pagination">
+          <a href="#" class="page-link active">1</a>
+          <a href="#" class="page-link">2</a>
+          <a href="#" class="page-link">3</a>
+          <a href="#" class="page-link">4</a>
+          <a href="#" class="page-link"><i class="fas fa-arrow-right"></i></a>
+        </div> -->
+    </section>
+
+    <section class="subscribe-section">
+      <div class="subscribe-container">
+        <div class="subscribe-content">
+          <h2>Subscribe to Our Newsletter</h2>
+          <p>Get the latest tech articles, tutorials, and industry insights delivered to your inbox.</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="privacy-note">We respect your privacy and will never share your email with third parties.</p>
+        </div>
+        <div class="subscribe-image">
+          <img src="../otherpages/otherpageresources/learningjourney.jpeg" alt="Newsletter Image">
+        </div>
+      </div>
+    </section>
+
+    
+
+    <footer class="footer">
+        <div class="footer_container">
+          <div class="footer_about">
+            <h2>White Fire</h2>
+            <p>Igniting innovation, driving success. Let's build something amazing together.</p>
+          </div>
+    
+          <div class="footer_links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/otherpages/about.html">About Us</a></li>
+            <li><a href="/otherpages/courses.html">Courses</a></li>
+            <li><a href="/otherpages/contact.html">Contact</a></li>
+          </ul>
+        </div>
+    
+        <div class="footer_social">
+          <h3>Follow Us</h3>
+          <div class="social_icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+    
+        <div class="footer_newsletter">
+          <h3>Subscribe</h3>
+          <p>Get the latest updates and offers.</p>
+          <form>
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+    
+        <div class="footer_bottom">
+          <p>&copy; 2025 White Fire. All rights reserved.</p>
+        </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Mobile dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
+            
+            mobileDropdownHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    // Toggle active class on header
+                    this.classList.toggle('active');
+                    
+                    // Find the target dropdown content
+                    const targetId = this.getAttribute('data-target');
+                    const dropdownContent = document.getElementById(targetId);
+                    
+                    // Toggle show class on content
+                    if (dropdownContent) {
+                        dropdownContent.classList.toggle('show');
+                    }
+                });
+            });
+
+            // Blog filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = button.getAttribute('data-filter');
+                    
+                    // Filter blog cards
+                    blogCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
