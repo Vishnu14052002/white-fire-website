@@ -30,17 +30,28 @@
           <a href="/it-basics-skill-training-course-chelmsford.html">IT Basic Skills</a>
           <a href="/network-administration-training-course-chelmsford.html">Network Administration</a>
           <a href="/programming-training-course-chelmsford.html">Programming Languages</a>
-
         </div>
       </div>
       <a href="/about.html">About Us</a>
-      <a href="/contact.html">Contact Us</a>
+      
       <a href="/syllabus.html" class="nav-syllabus-link">
         <div class="magic-syllabus-container">
           <i class="fas fa-crown syllabus-crown"></i>
           <span class="magic-text">Magic Syllabus</span>
         </div>
       </a>
+      
+      <!-- Authentication Links - Modified for Firebase Auth -->
+      <div class="auth-section">
+        <!-- This section will be dynamically replaced based on auth state -->
+        <div id="loggedOutView">
+          <a href="#" id="loginBtn">Login/Register</a>
+        </div>
+        <div id="loggedInView" style="display: none;">
+          <span id="welcomeUser"></span>
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </div>
       
       <!-- Added dropdown menu -->
       <div class="dropdown">
@@ -64,11 +75,11 @@
           </div>
           <div class="mobile-dropdown-content" id="mobile-courses-dropdown">
             <a href="/cloud-computing-training-courses-chelmsford.html">Cloud Computing</a>
-          <a href="/data-science-training-course-chelmsford.html">Data Science</a>
-          <a href="/data-base-administration-training-course-chelmsford.html">Database Administration</a>
-          <a href="/it-basics-skill-training-course-chelmsford.html">IT Basic Skills</a>
-          <a href="/network-administration-training-course-chelmsford.html">Network Administration</a>
-          <a href="/programming-training-course-chelmsford.html">Programming Languages</a>
+            <a href="/data-science-training-course-chelmsford.html">Data Science</a>
+            <a href="/data-base-administration-training-course-chelmsford.html">Database Administration</a>
+            <a href="/it-basics-skill-training-course-chelmsford.html">IT Basic Skills</a>
+            <a href="/network-administration-training-course-chelmsford.html">Network Administration</a>
+            <a href="/programming-training-course-chelmsford.html">Programming Languages</a>
           </div>
         </div>
         
@@ -78,26 +89,69 @@
             More <i class="fas fa-chevron-down"></i>
           </div>
           <div class="mobile-dropdown-content" id="mobile-more-dropdown">
-            <!-- <a href="otherpages/scholarships.html">Scholarships</a> -->
             <a href="/placements.html">Placements</a>
-            <!-- <a href="otherpages/hire-from-us.html">Hire From Us</a> -->
             <a href="/gallery.html">Gallery</a>
-            <!-- <a href="otherpages/our-trainers.html">Our Trainers</a> -->
-            <!-- <a href="otherpages/become-trainer.html">Become A Trainer</a> -->
             <a href="/careers.html">Other Careers</a>
             <a href="/blog.html">Tech Blog</a>
             <a href="/testimonials.html">Testimonials</a>
             <a href="/booksession.html">Free Session</a>
-            <!-- <a href="otherpages/white-papers.html">White Papers</a> -->
           </div>
         </div>
-        
-        <!-- Keep other direct links -->
-       
       </div>
     </nav>
     <div class="menu-icon" id="menu-icon">☰</div>
   </header>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Login</h2>
+      <div id="loginError" class="error-message"></div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" required>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#" id="switchToRegister">Register here</a></p>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal" id="registerModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Register</h2>
+      <div id="registerError" class="error-message"></div>
+      <div id="registerSuccess" class="success-message"></div>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="registerName">Full Name</label>
+          <input type="text" id="registerName" required>
+        </div>
+        <div class="form-group">
+          <label for="registerPhone">Phone Number</label>
+          <input type="tel" id="registerPhone" required>
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Password</label>
+          <input type="password" id="registerPassword" required>
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <a href="#" id="switchToLogin">Login here</a></p>
+    </div>
+  </div>
 
   <section class="hero-section">
     <div class="hero-overlay"></div>
@@ -1107,6 +1161,15 @@
     </div>
   </footer>
 
+
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script src="script.js"></script>
+
+
+  
+
   <script>
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
@@ -1494,6 +1557,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   </script>
+
+
+
+
+
+<!-- Firebase SDK -->
+
 
 </body>
 </html>
