@@ -1,12 +1,12 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyDN_kbDoVeO0KfB_eMSCT01xeIs4Gthqw8",
-    authDomain: "login-and-logout-c04df.firebaseapp.com",
-    projectId: "login-and-logout-c04df",
-    storageBucket: "login-and-logout-c04df.firebasestorage.app",
-    messagingSenderId: "732386429201",
-    appId: "1:732386429201:web:96686ff6041198564064b0",
-    measurementId: "G-2PRGBKDHLZ"
-  };
+  apiKey: "AIzaSyBqtR-mopnadnBWzSE6HJzdZeNVqIQRnfs",
+  authDomain: "white-fire-technologies.firebaseapp.com",
+  projectId: "white-fire-technologies",
+  storageBucket: "white-fire-technologies.firebasestorage.app",
+  messagingSenderId: "997726192451",
+  appId: "1:997726192451:web:c4ebf82504875f7174e5f6",
+  measurementId: "G-SLSNLSDR79"
+};
 
 
 // Fixed Firebase Registration Functionality
