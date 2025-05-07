@@ -821,9 +821,12 @@ form a:hover {
   color: #ff9800;
 }
 #welcomeUser {
-  margin-right: 10px;
+  margin-right: 20px;
   font-weight: bold;
+  font-size: 20px;
   color: #fff;
+  display: flex;
+  align-items: center;
 }
 #logoutBtn {
   background-color: #f44336;
@@ -837,6 +840,13 @@ form a:hover {
 #logoutBtn:hover {
   background-color: #d32f2f;
 }
+
+/* .switchToRegister{
+  text-decoration: none;
+  color: #000;
+} */
+
+
 
 
 
@@ -1969,7 +1979,7 @@ form a:hover {
 .modal-content {
   background-color: #fff;
   width: 90%;
-  max-width: 800px;
+  max-width: 500px;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
