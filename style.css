@@ -1047,10 +1047,10 @@ form a:hover {
   /* Style for the auth section in mobile view */
   .auth-section {
     width: 100%;
-    order: 9999; /* Force it to be at the end */
-    margin-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 15px;
+    order: 9999; /* Keep this to ensure it stays at the end */
+    margin-top: 0; /* Change from 15px to 0 */
+    border-top: none; /* Remove the border that's creating additional space */
+    padding-top: 0; /* Remove padding that's creating additional space */
   }
 
   .auth-section #loggedOutView a,
@@ -1059,6 +1059,7 @@ form a:hover {
     display: block;
     text-align: left;
     width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Add border to the button itself */
   }
 
   #loggedInView {
@@ -1068,6 +1069,14 @@ form a:hover {
     width: 100%;
   }
 
+
+  .mobile-dropdown-content {
+    margin-bottom: 0;
+  }
+
+  .mobile-only-links .mobile-dropdown:last-child .mobile-dropdown-content a:last-child {
+    border-bottom: none;
+  }
   #welcomeUser {
     margin-right: 0;
   }

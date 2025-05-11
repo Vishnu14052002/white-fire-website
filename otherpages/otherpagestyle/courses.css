@@ -703,6 +703,56 @@
     color: #000;
   } */
   
+
+
+
+    /* Google Sign-in Button Styles */
+    .google-signin-btn {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: white;
+      color: #757575;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .google-signin-btn i {
+      color: #4285F4;
+      font-size: 18px;
+    }
+    
+    .google-signin-btn:hover {
+      background-color: #f5f5f5;
+    }
+    
+    /* Separator styles */
+    .separator {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    .separator::before,
+    .separator::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .separator span {
+      padding: 0 10px;
+      color: #757575;
+      font-size: 14px;
+    }
   
   
 
@@ -870,10 +920,10 @@
     /* Style for the auth section in mobile view */
     .auth-section {
       width: 100%;
-      order: 9999; /* Force it to be at the end */
-      margin-top: 15px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 15px;
+      order: 9999; /* Keep this to ensure it stays at the end */
+      margin-top: 0; /* Change from 15px to 0 */
+      border-top: none; /* Remove the border that's creating additional space */
+      padding-top: 0; /* Remove padding that's creating additional space */
     }
   
     .auth-section #loggedOutView a,
@@ -882,6 +932,7 @@
       display: block;
       text-align: left;
       width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.1); /* Add border to the button itself */
     }
   
     #loggedInView {
@@ -889,6 +940,13 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
+    }
+    .mobile-dropdown-content {
+      margin-bottom: 0;
+    }
+
+    .mobile-only-links .mobile-dropdown:last-child .mobile-dropdown-content a:last-child {
+      border-bottom: none;
     }
   
     #welcomeUser {
