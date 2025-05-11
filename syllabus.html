@@ -618,36 +618,84 @@
       }
 
       // For the register form
-      const registerForm = document.getElementById('registerForm');
-      if (registerForm) {
-        registerForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          const email = document.getElementById('registerEmail').value;
-          const password = document.getElementById('registerPassword').value;
-          const name = document.getElementById('registerName').value;
-          const phone = document.getElementById('registerPhone').value;
-          
-          firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-              // Save additional user info to Firestore
-              const user = userCredential.user;
-              firebase.firestore().collection('users').doc(user.uid).set({
-                name: name,
-                phone: phone,
-                email: email
-              })
-              .then(() => {
-                // Close the modal
-                document.getElementById('registerModal').style.display = 'none';
-                // Content visibility will be handled by onAuthStateChanged
-              });
-            })
-            .catch((error) => {
-              document.getElementById('registerError').style.display = 'block';
-              document.getElementById('registerError').textContent = error.message;
-            });
+      // For the register form
+const registerForm = document.getElementById('registerForm');
+if (registerForm) {
+  registerForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show loading state or disable the button
+    const submitBtn = this.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing...';
+    }
+    
+    // Get form values
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const name = document.getElementById('registerName').value;
+    const phone = document.getElementById('registerPhone').value; // Get phone value
+    
+    // Clear previous errors
+    const errorElement = document.getElementById('registerError');
+    if (errorElement) {
+      errorElement.style.display = 'none';
+      errorElement.textContent = '';
+    }
+    
+    // Create the user in Firebase Auth
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Save additional user info to Firestore
+        const user = userCredential.user;
+        
+        // Log to confirm phone is included
+        console.log('Saving user data with phone:', { name, phone, email });
+        
+        // Important: Return the Firestore promise so we can chain .then
+        return firebase.firestore().collection('users').doc(user.uid).set({
+          name: name,
+          phone: phone, // Make sure phone is included
+          email: email,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
-      }
+      })
+      .then(() => {
+        // This .then will only execute if the Firestore operation succeeds
+        console.log('User profile created successfully with phone number');
+        
+        // Show success message
+        const successElement = document.getElementById('registerSuccess');
+        if (successElement) {
+          successElement.style.display = 'block';
+          successElement.textContent = 'Registration successful!';
+        }
+        
+        // Close the modal after a short delay
+        setTimeout(() => {
+          document.getElementById('registerModal').style.display = 'none';
+          // Content visibility will be handled by onAuthStateChanged
+        }, 1500);
+      })
+      .catch((error) => {
+        console.error('Registration error:', error);
+        
+        // Show error message
+        if (errorElement) {
+          errorElement.style.display = 'block';
+          errorElement.textContent = error.message;
+        }
+      })
+      .finally(() => {
+        // Re-enable the button regardless of outcome
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Register';
+        }
+      });
+  });
+}
 
       // Handle modal open/close for login/register
       const loginBtn = document.getElementById('loginBtn');
