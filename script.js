@@ -8,8 +8,7 @@ const firebaseConfig = {
   measurementId: "G-SLSNLSDR79"
 };
 
-
-// Fixed Firebase Registration Functionality
+// Firebase Auth and Registration Functionality with Google Auth
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded, initializing Firebase auth UI');
   
@@ -25,6 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const auth = firebase.auth();
     const db = firebase.firestore();
     console.log('Firebase initialized successfully');
+    
+    // Create Google Auth Provider
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+    // Optional: Request additional scopes if needed
+    // googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     
     // DOM Elements
     const loginBtn = document.getElementById('loginBtn');
@@ -42,6 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const welcomeUser = document.getElementById('welcomeUser');
     const loggedInView = document.getElementById('loggedInView');
     const loggedOutView = document.getElementById('loggedOutView');
+    
+    // Google Sign-in Buttons
+    const googleSignInBtn = document.getElementById('googleSignInBtn');
+    const googleSignInBtnLogin = document.getElementById('googleSignInBtnLogin');
     
     // Event Listeners for opening modals
     if (loginBtn) {
@@ -130,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Login form not found');
     }
     
-    // Register Form Submission - FIXED
+    // Register Form Submission
     if (registerForm) {
       registerForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -154,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
               name: name,
               phone: phone,
               email: email,
+              authProvider: 'email',
               createdAt: firebase.firestore.FieldValue.serverTimestamp()
             });
           })
@@ -196,6 +205,81 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Register form not found');
     }
     
+    // Google Sign In Button Event Listeners
+    if (googleSignInBtn) {
+      googleSignInBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Google sign-in button clicked');
+        signInWithGoogle();
+      });
+    }
+    
+    if (googleSignInBtnLogin) {
+      googleSignInBtnLogin.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Google sign-in button from login clicked');
+        signInWithGoogle();
+      });
+    }
+    
+    // Function to handle Google Sign In
+    function signInWithGoogle() {
+      auth.signInWithPopup(googleProvider)
+        .then((result) => {
+          // This gives you a Google Access Token
+          const credential = result.credential;
+          
+          // The signed-in user info
+          const user = result.user;
+          console.log('Google sign-in successful', user);
+          
+          // Check if this is a new user (first time sign-in)
+          const isNewUser = result.additionalUserInfo.isNewUser;
+          
+          if (isNewUser) {
+            // This is a new user, save their profile data to Firestore
+            return db.collection('users').doc(user.uid).set({
+              name: user.displayName || '',
+              email: user.email,
+              phone: user.phoneNumber || '',
+              photoURL: user.photoURL || '',
+              authProvider: 'google',
+              createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+          } else {
+            // This is a returning user, update their last login time
+            return db.collection('users').doc(user.uid).update({
+              lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+            });
+          }
+        })
+        .then(() => {
+          // Close modals after successful sign-in
+          if (loginModal) loginModal.style.display = 'none';
+          if (registerModal) registerModal.style.display = 'none';
+          console.log('User data saved to Firestore successfully!');
+        })
+        .catch((error) => {
+          // Handle Errors here
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error('Google sign-in error:', errorMessage);
+          
+          // Display error message to user
+          if (loginModal && loginModal.style.display === 'block') {
+            if (loginError) {
+              loginError.textContent = 'Google sign-in failed: ' + errorMessage;
+              loginError.style.display = 'block';
+            }
+          } else if (registerModal && registerModal.style.display === 'block') {
+            if (registerError) {
+              registerError.textContent = 'Google sign-in failed: ' + errorMessage;
+              registerError.style.display = 'block';
+            }
+          }
+        });
+    }
+    
     // Logout event
     if (logoutBtn) {
       logoutBtn.addEventListener('click', () => {
@@ -221,17 +305,19 @@ document.addEventListener('DOMContentLoaded', function() {
               console.log('User data retrieved:', userData);
               
               // Display user name
-              welcomeUser.textContent = `Welcome, ${userData.name}`;
+              welcomeUser.textContent = `Welcome, ${userData.name || userData.email.split('@')[0]}`;
             } else if (welcomeUser) {
               // No user document found, fallback to email
               const emailName = user.email.split('@')[0];
-              welcomeUser.textContent = `Welcome, ${emailName}`;
+              welcomeUser.textContent = `Welcome, ${user.displayName || emailName}`;
               console.log('Creating new user document for:', emailName);
               
               // Create a document for this user for future use
               db.collection('users').doc(user.uid).set({
                 email: user.email,
-                name: emailName,
+                name: user.displayName || emailName,
+                photoURL: user.photoURL || '',
+                authProvider: user.providerData[0].providerId,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
               });
             }
@@ -248,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Fallback to email if there's an error
             if (welcomeUser) {
               const emailName = user.email.split('@')[0];
-              welcomeUser.textContent = `Welcome, ${emailName}`;
+              welcomeUser.textContent = `Welcome, ${user.displayName || emailName}`;
             }
             
             // Update UI for logged in state
