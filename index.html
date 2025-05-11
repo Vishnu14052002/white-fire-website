@@ -41,8 +41,6 @@
         </div>
       </a>
       
-      
-      
       <!-- Added dropdown menu -->
       <div class="dropdown">
         <a href="#" class="dropbtn">More <i class="fas fa-chevron-down"></i></a>
@@ -55,20 +53,8 @@
           <a href="/booksession.html">Free Session</a>
         </div>
       </div>
-
-      <!-- Authentication Links - Modified for Firebase Auth -->
-      <div class="auth-section">
-        <!-- This section will be dynamically replaced based on auth state -->
-        <div id="loggedOutView">
-          <a href="#" id="loginBtn">Login/Register</a>
-        </div>
-        <div id="loggedInView" style="display: none;">
-          <span id="welcomeUser"></span>
-          <button id="logoutBtn">Logout</button>
-        </div>
-      </div>
-
-      <!-- Mobile-only links -->
+  
+      <!-- Mobile-only links - MOVED ABOVE auth-section -->
       <div class="mobile-only-links">
         <!-- Mobile Courses Menu - with dropdown toggle -->
         <div class="mobile-dropdown">
@@ -98,6 +84,18 @@
             <a href="/testimonials.html">Testimonials</a>
             <a href="/booksession.html">Free Session</a>
           </div>
+        </div>
+      </div>
+  
+      <!-- Authentication Links - MOVED BELOW mobile-only-links -->
+      <div class="auth-section">
+        <!-- This section will be dynamically replaced based on auth state -->
+        <div id="loggedOutView">
+          <a href="#" id="loginBtn">Login/Register</a>
+        </div>
+        <div id="loggedInView" style="display: none;">
+          <span id="welcomeUser"></span>
+          <button id="logoutBtn">Logout</button>
         </div>
       </div>
     </nav>

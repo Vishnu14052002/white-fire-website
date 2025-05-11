@@ -990,6 +990,56 @@ form a:hover {
   .hero-buttons {
     flex-direction: column;
   }
+
+
+
+  /* Style for the auth section in mobile view */
+  .auth-section {
+    width: 100%;
+    order: 9999; /* Force it to be at the end */
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+  }
+
+  .auth-section #loggedOutView a,
+  .auth-section #loggedInView {
+    padding: 12px 20px;
+    display: block;
+    text-align: left;
+    width: 100%;
+  }
+
+  #loggedInView {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  #welcomeUser {
+    margin-right: 0;
+  }
+
+  /* Improve visibility of mobile dropdown headers */
+  .mobile-dropdown-header {
+    background-color: rgba(13, 105, 133, 0.2);
+  }
+
+  .mobile-dropdown-header.active {
+    background-color: rgba(13, 105, 133, 0.3);
+  }
+
+  /* Make the navigation menu look better in mobile view */
+  .nav-links.active {
+    padding-bottom: 0; /* Remove padding at the bottom */
+  }
+
+  /* Ensure proper stacking of elements in mobile nav */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 1287px) {
