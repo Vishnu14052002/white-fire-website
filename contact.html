@@ -165,34 +165,31 @@
         document.getElementById("contactForm").addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        // Get form values
         const name = document.getElementById("name").value;
         const email = document.getElementById("email").value;
         const phone = document.getElementById("phone").value;
         const course = document.getElementById("course").value;
         const message = document.getElementById("message").value;
-        
 
+        const data = { name, email, phone, course, message };
 
-        // Add a new document to Firestore
         try {
-            await addDoc(collection(db, "contacts"), {
-            name: name,
-            email: email,
-            phone: phone,
-            course: course,
-            message: message,
-            timestamp: new Date()
-            });
-            alert("Form submitted successfully!");
-        } catch (e) {
-            console.error("Error adding document: ", e);
-            alert("Error submitting form.");
-        }
-
-        // Clear the form after submission
-        document.getElementById("contactForm").reset();
+        const response = await fetch("http://localhost:3000/submit-form", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
         });
+
+        const result = await response.json();
+        alert(result.message);
+        document.getElementById("contactForm").reset();
+        } catch (error) {
+        console.error("Error:", error);
+        alert("Something went wrong!");
+        }
+    });
 
 
   
