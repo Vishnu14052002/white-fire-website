@@ -1,16 +1,6 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyBqtR-mopnadnBWzSE6HJzdZeNVqIQRnfs",
-  authDomain: "white-fire-technologies.firebaseapp.com",
-  projectId: "white-fire-technologies",
-  storageBucket: "white-fire-technologies.firebasestorage.app",
-  messagingSenderId: "997726192451",
-  appId: "1:997726192451:web:c4ebf82504875f7174e5f6",
-  measurementId: "G-SLSNLSDR79"
-};
-
-// Firebase Auth and Registration Functionality with Google Auth
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded, initializing Firebase auth UI');
+// Expose the Firebase initialization function globally so it can be called from header.js
+function initializeFirebaseAuth() {
+  console.log('Initializing Firebase auth...');
   
   // Check if Firebase is properly initialized
   try {
@@ -19,25 +9,14 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     
-    // Initialize Firebase services
-    firebase.initializeApp(firebaseConfig);
+    // Firebase services should already be initialized in the main script
     const auth = firebase.auth();
     const db = firebase.firestore();
-    console.log('Firebase initialized successfully');
     
     // Create Google Auth Provider
     const googleProvider = new firebase.auth.GoogleAuthProvider();
-    // Optional: Request additional scopes if needed
-    // googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     
     // DOM Elements
-    const loginBtn = document.getElementById('loginBtn');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const loginModal = document.getElementById('loginModal');
-    const registerModal = document.getElementById('registerModal');
-    const closeButtons = document.querySelectorAll('.close');
-    const switchToRegister = document.getElementById('switchToRegister');
-    const switchToLogin = document.getElementById('switchToLogin');
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
     const loginError = document.getElementById('loginError');
@@ -46,69 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const welcomeUser = document.getElementById('welcomeUser');
     const loggedInView = document.getElementById('loggedInView');
     const loggedOutView = document.getElementById('loggedOutView');
-    
-    // Google Sign-in Buttons
     const googleSignInBtn = document.getElementById('googleSignInBtn');
     const googleSignInBtnLogin = document.getElementById('googleSignInBtnLogin');
-    
-    // Event Listeners for opening modals
-    if (loginBtn) {
-      loginBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        console.log('Login button clicked');
-        if (loginModal) {
-          loginModal.style.display = 'block';
-          if (loginError) loginError.style.display = 'none';
-          if (loginForm) loginForm.reset();
-        } else {
-          console.error('Login modal not found');
-        }
-      });
-    } else {
-      console.error('Login button not found');
-    }
-    
-    // Event Listeners for closing modals
-    if (closeButtons) {
-      closeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          if (loginModal) loginModal.style.display = 'none';
-          if (registerModal) registerModal.style.display = 'none';
-        });
-      });
-    }
-    
-    // Click outside modal to close
-    window.addEventListener('click', (e) => {
-      if (loginModal && e.target === loginModal) loginModal.style.display = 'none';
-      if (registerModal && e.target === registerModal) registerModal.style.display = 'none';
-    });
-    
-    // Switch between login and register forms
-    if (switchToRegister) {
-      switchToRegister.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (loginModal) loginModal.style.display = 'none';
-        if (registerModal) {
-          registerModal.style.display = 'block';
-          if (registerError) registerError.style.display = 'none';
-          if (registerSuccess) registerSuccess.style.display = 'none';
-          if (registerForm) registerForm.reset();
-        }
-      });
-    }
-    
-    if (switchToLogin) {
-      switchToLogin.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (registerModal) registerModal.style.display = 'none';
-        if (loginModal) {
-          loginModal.style.display = 'block';
-          if (loginError) loginError.style.display = 'none';
-          if (loginForm) loginForm.reset();
-        }
-      });
-    }
+    const logoutBtn = document.getElementById('logoutBtn');
+    const loginModal = document.getElementById('loginModal');
+    const registerModal = document.getElementById('registerModal');
     
     // Login Form Submission
     if (loginForm) {
@@ -134,8 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           });
       });
-    } else {
-      console.error('Login form not found');
     }
     
     // Register Form Submission
@@ -201,28 +120,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           });
       });
-    } else {
-      console.error('Register form not found');
     }
     
-    // Google Sign In Button Event Listeners
-    if (googleSignInBtn) {
-      googleSignInBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        console.log('Google sign-in button clicked');
-        signInWithGoogle();
-      });
-    }
-    
-    if (googleSignInBtnLogin) {
-      googleSignInBtnLogin.addEventListener('click', function(e) {
-        e.preventDefault();
-        console.log('Google sign-in button from login clicked');
-        signInWithGoogle();
-      });
-    }
-    
-    // Function to handle Google Sign In
+    // Google Sign In functionality
     function signInWithGoogle() {
       auth.signInWithPopup(googleProvider)
         .then((result) => {
@@ -278,6 +178,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           }
         });
+    }
+    
+    // Google Sign In Button Event Listeners
+    if (googleSignInBtn) {
+      googleSignInBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Google sign-in button clicked');
+        signInWithGoogle();
+      });
+    }
+    
+    if (googleSignInBtnLogin) {
+      googleSignInBtnLogin.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Google sign-in button from login clicked');
+        signInWithGoogle();
+      });
     }
     
     // Logout event
@@ -351,27 +268,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
+    
   } catch (error) {
-    console.error('Error initializing Firebase:', error);
-  }
-});
-
-// Function to update user profile in Firestore
-function updateUserProfile(name, phone, photoURL) {
-  const auth = firebase.auth();
-  const db = firebase.firestore();
-  
-  const user = auth.currentUser;
-  
-  if (user) {
-    // Update in Firestore
-    return db.collection('users').doc(user.uid).update({
-      name: name,
-      phone: phone,
-      photoURL: photoURL,
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
-  } else {
-    return Promise.reject(new Error("No user is signed in"));
+    console.error('Error initializing Firebase auth:', error);
   }
 }
+
+// Make sure Firebase is initialized on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    console.log('Firebase initialized in script.js');
+  } catch (error) {
+    console.error('Error initializing Firebase in script.js:', error);
+  }
+});
