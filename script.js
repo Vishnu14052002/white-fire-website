@@ -1,3 +1,4 @@
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBqtR-mopnadnBWzSE6HJzdZeNVqIQRnfs",
   authDomain: "white-fire-technologies.firebaseapp.com",
@@ -8,27 +9,75 @@ const firebaseConfig = {
   measurementId: "G-SLSNLSDR79"
 };
 
-// Firebase Auth and Registration Functionality with Google Auth
+// Main initialization function when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded, initializing Firebase auth UI');
+  console.log('DOM loaded, initializing site functionality');
   
-  // Check if Firebase is properly initialized
+  // Initialize mobile menu functionality first
+  initMobileMenu();
+  
+  // Initialize Firebase
+  initFirebase();
+  
+  // WhatsApp functionality
+  initWhatsApp();
+  
+  // Other initialization functions for different parts of the site
+  initSliders();
+  initBlogFilter();
+});
+
+// Mobile menu functionality
+function initMobileMenu() {
+  const menuIcon = document.getElementById('menu-icon');
+  const navLinks = document.getElementById('nav-links');
+  
+  if (menuIcon && navLinks) {
+    console.log('Mobile menu elements found, initializing event listener');
+    menuIcon.addEventListener('click', function() {
+      console.log('Menu icon clicked');
+      navLinks.classList.toggle('active');
+    });
+  } else {
+    console.error('Mobile menu elements not found', { menuIcon, navLinks });
+  }
+  
+  // Initialize mobile dropdowns
+  const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
+  
+  mobileDropdownHeaders.forEach(header => {
+    header.addEventListener('click', function() {
+      // Toggle active class on header
+      this.classList.toggle('active');
+      
+      // Find the target dropdown content
+      const targetId = this.getAttribute('data-target');
+      const dropdownContent = document.getElementById(targetId);
+      
+      // Toggle show class on content
+      if (dropdownContent) {
+        dropdownContent.classList.toggle('show');
+      }
+    });
+  });
+}
+
+// Firebase initialization and auth functionality
+function initFirebase() {
   try {
-    if (typeof firebase === 'undefined') {
-      console.error('Firebase is not defined. Make sure Firebase SDK is loaded correctly.');
-      return;
+    // Check if firebase is already initialized
+    if (firebase.apps.length === 0) {
+      console.log('Initializing Firebase');
+      firebase.initializeApp(firebaseConfig);
+    } else {
+      console.log('Firebase already initialized');
     }
     
-    // Initialize Firebase services
-    firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
-    console.log('Firebase initialized successfully');
     
     // Create Google Auth Provider
     const googleProvider = new firebase.auth.GoogleAuthProvider();
-    // Optional: Request additional scopes if needed
-    // googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     
     // DOM Elements
     const loginBtn = document.getElementById('loginBtn');
@@ -64,8 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
           console.error('Login modal not found');
         }
       });
-    } else {
-      console.error('Login button not found');
     }
     
     // Event Listeners for closing modals
@@ -134,8 +181,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           });
       });
-    } else {
-      console.error('Login form not found');
     }
     
     // Register Form Submission
@@ -148,8 +193,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const phone = document.getElementById('registerPhone').value;
         const email = document.getElementById('registerEmail').value;
         const password = document.getElementById('registerPassword').value;
-        
-        console.log('Attempting to create user with:', { email });
         
         // Create user with Firebase Authentication
         auth.createUserWithEmailAndPassword(email, password)
@@ -201,8 +244,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           });
       });
-    } else {
-      console.error('Register form not found');
     }
     
     // Google Sign In Button Event Listeners
@@ -354,9 +395,251 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch (error) {
     console.error('Error initializing Firebase:', error);
   }
-});
+}
 
-// Function to update user profile in Firestore
+// WhatsApp chat functionality
+function initWhatsApp() {
+  const whatsappButton = document.getElementById('whatsapp-button');
+  const whatsappChat = document.getElementById('whatsapp-chat');
+  const closeChat = document.getElementById('close-chat');
+  const sendMessage = document.getElementById('send-message');
+  const messageInput = document.getElementById('whatsapp-message');
+  const chatBody = document.getElementById('chat-body');
+  const whatsappNumber = '+447587675040'; // Your WhatsApp number
+
+  if (whatsappButton && whatsappChat) {
+    whatsappButton.addEventListener('click', () => {
+      whatsappChat.style.display = 'flex';
+    });
+  }
+
+  if (closeChat) {
+    closeChat.addEventListener('click', () => {
+      whatsappChat.style.display = 'none';
+    });
+  }
+
+  // Function to redirect to WhatsApp with the message
+  function redirectToWhatsApp(message) {
+    // Format the number without spaces or special characters
+    const formattedNumber = whatsappNumber.replace(/\s+/g, '');
+    
+    // Create the WhatsApp URL with the message
+    const whatsappURL = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappURL, '_blank');
+  }
+
+  if (sendMessage && messageInput && chatBody) {
+    sendMessage.addEventListener('click', () => {
+      handleMessageSend();
+    });
+
+    // Also handle pressing Enter key in the input field
+    messageInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        handleMessageSend();
+      }
+    });
+
+    function handleMessageSend() {
+      const message = messageInput.value.trim();
+      if (message !== '') {
+        // Display the message in the chat interface
+        const userMsg = document.createElement('div');
+        userMsg.className = 'user-message';
+        userMsg.innerText = message;
+        chatBody.appendChild(userMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        
+        // Add a small delay so user can see their message before redirect
+        setTimeout(() => {
+          // Redirect to WhatsApp with the message
+          redirectToWhatsApp(message);
+          
+          // Clear the input field
+          messageInput.value = '';
+        }, 500);
+      }
+    }
+  }
+}
+
+// Testimonial and instructor sliders functionality
+function initSliders() {
+  // === TESTIMONIAL SLIDER ===
+  const testimonialSlider = document.querySelector('.testimonial-slider');
+  const testimonialCards = document.querySelectorAll('.testimonial-card');
+  const testimonialDots = document.querySelectorAll('.testimonials-section .slider-dot');
+  const testimonialPrev = document.querySelector('.testimonials-section .prev-arrow');
+  const testimonialNext = document.querySelector('.testimonials-section .next-arrow');
+  
+  if (testimonialSlider && testimonialCards.length > 0) {
+    let testimonialIndex = 0;
+    const cardWidth = testimonialCards[0].offsetWidth + 20;
+
+    function updateSlider(index) {
+      if (index < 0) index = testimonialCards.length - 1;
+      if (index >= testimonialCards.length) index = 0;
+      testimonialIndex = index;
+      testimonialSlider.scrollLeft = cardWidth * testimonialIndex;
+
+      testimonialDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === testimonialIndex);
+      });
+    }
+
+    testimonialDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => updateSlider(i));
+    });
+
+    if (testimonialPrev) testimonialPrev.addEventListener('click', () => updateSlider(testimonialIndex - 1));
+    if (testimonialNext) testimonialNext.addEventListener('click', () => updateSlider(testimonialIndex + 1));
+
+    testimonialSlider.addEventListener('scroll', () => {
+      const activeIndex = Math.round(testimonialSlider.scrollLeft / cardWidth);
+      testimonialDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === activeIndex);
+      });
+      testimonialIndex = activeIndex;
+    });
+
+    let autoScroll = setInterval(() => updateSlider(testimonialIndex + 1), 5000);
+
+    testimonialSlider.addEventListener('mouseenter', () => clearInterval(autoScroll));
+    testimonialSlider.addEventListener('mouseleave', () => {
+      autoScroll = setInterval(() => updateSlider(testimonialIndex + 1), 5000);
+    });
+  }
+
+  // === INSTRUCTOR SLIDER ===
+  const instructorSlider = document.querySelector('.instructor-slider');
+  const instructorCards = document.querySelectorAll('.instructor-card');
+  const instructorDots = document.querySelectorAll('.instructors-section .slider-dot');
+  const instructorPrev = document.querySelector('.instructors-section .prev-arrow');
+  const instructorNext = document.querySelector('.instructors-section .next-arrow');
+
+  if (instructorSlider && instructorCards.length > 0) {
+    let instructorIndex = 0;
+    const cardWidth = instructorCards[0].offsetWidth + 20;
+
+    function updateInstructorSlider(index) {
+      if (index < 0) index = instructorCards.length - 1;
+      if (index >= instructorCards.length) index = 0;
+      instructorIndex = index;
+      instructorSlider.scrollLeft = cardWidth * instructorIndex;
+      
+      instructorDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === instructorIndex);
+      });
+    }
+
+    instructorDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => updateInstructorSlider(i));
+    });
+
+    if (instructorPrev) instructorPrev.addEventListener('click', () => updateInstructorSlider(instructorIndex - 1));
+    if (instructorNext) instructorNext.addEventListener('click', () => updateInstructorSlider(instructorIndex + 1));
+
+    instructorSlider.addEventListener('scroll', () => {
+      const activeIndex = Math.round(instructorSlider.scrollLeft / cardWidth);
+      instructorDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === activeIndex);
+      });
+      instructorIndex = activeIndex;
+    });
+
+    let autoInstructor = setInterval(() => updateInstructorSlider(instructorIndex + 1), 6000);
+    
+    instructorSlider.addEventListener('mouseenter', () => clearInterval(autoInstructor));
+    instructorSlider.addEventListener('mouseleave', () => {
+      autoInstructor = setInterval(() => updateInstructorSlider(instructorIndex + 1), 6000);
+    });
+  }
+}
+
+// Blog filter functionality
+function initBlogFilter() {
+  // Filter functionality for blog cards
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const blogCards = document.querySelectorAll('.blog-card');
+  
+  if (filterBtns.length && blogCards.length) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        
+        blogCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'flex';
+          } else {
+            const categories = card.getAttribute('data-category').split(' ');
+            if (categories.includes(filter)) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+  }
+  
+  // View All button animation
+  const viewAllBtn = document.querySelector('.view-all-btn');
+  if (viewAllBtn) {
+    viewAllBtn.addEventListener('mouseenter', function() {
+      const icon = this.querySelector('i');
+      if (icon) icon.classList.add('fa-beat');
+    });
+    
+    viewAllBtn.addEventListener('mouseleave', function() {
+      const icon = this.querySelector('i');
+      if (icon) icon.classList.remove('fa-beat');
+    });
+  }
+  
+  // Hover effects for blog cards
+  blogCards.forEach(card => {
+    const readMoreLink = card.querySelector('.read-more');
+    if (readMoreLink) {
+      const icon = readMoreLink.querySelector('i');
+      
+      card.addEventListener('mouseenter', function() {
+        if (icon) icon.classList.add('fa-beat');
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        if (icon) icon.classList.remove('fa-beat');
+      });
+    }
+  });
+}
+
+// Function to filter courses
+function filterCourses() {
+  let input = document.getElementById("search-box").value.toLowerCase();
+  let courseBoxes = document.querySelectorAll(".course-box");
+
+  courseBoxes.forEach((box) => {
+    let courseName = box.getAttribute("data-name").toLowerCase();
+
+    if (courseName.includes(input)) {
+      box.style.display = "block";
+    } else {
+      box.style.display = "none";
+    }
+  });
+}
+
+// Function to update user profile in Firestore - kept outside document ready for global access
 function updateUserProfile(name, phone, photoURL) {
   const auth = firebase.auth();
   const db = firebase.firestore();
