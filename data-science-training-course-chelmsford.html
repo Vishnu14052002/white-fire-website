@@ -7,13 +7,500 @@
     <link rel="stylesheet" href="commoncssforloginlogout.css" class="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <title>Data Science Courses</title>
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            width: 500px;
+            max-width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #ff9800;
+        }
+
+        .enrol-now-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px 30px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .enrol-now-btn:hover {
+            background-color: #0d6985;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Booking Form Styles */
+        .booking-section {
+            padding: 60px 0;
+            background-color: #f0f7fa;
+        }
+        
+        .booking-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .booking-form-container .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .booking-form-container label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .booking-form-container input,
+        .booking-form-container select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .booking-form-container input:focus,
+        .booking-form-container select:focus {
+            outline: none;
+            border-color: #0d6985;
+        }
+        
+        .booking-form-container input[readonly] {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+        }
+        
+        .book-session-btn {
+            background-color: #0d6985;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .book-session-btn:hover {
+            background-color: #ff9800;
+            transform: translateY(-3px);
+        }
+        
+        #bookingSuccess {
+            display: none;
+            background-color: #e8f5e9;
+            color: #4CAF50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        #enrollmentSuccess {
+            display: none;
+            background-color: #e8f5e9;
+            color: #4CAF50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+        /* Add these styles at the end of your existing styles */
+        .brochure-notification {
+            background-color: #e8f5e9;
+            color: #4CAF50;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            animation: fadeIn 0.5s ease;
+            font-weight: 500;
+        }
+
+        .download-in-progress {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            text-align: center;
+        }
+
+        .download-in-progress i {
+            font-size: 48px;
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .download-in-progress p {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .booking-form-container {
+                padding: 20px;
+            }
+        }
+
+        /* Career Progression Section Styles */
+        .career-section {
+            padding: 60px 0;
+            background-color: #f5f7f9;
+        }
+        
+        .career-path-container {
+            margin-top: 50px;
+        }
+        
+        /* Career Levels Bar */
+        .career-levels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            position: relative;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .career-levels:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+        
+        .level {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            background-color: #f5f7f9;
+            padding: 0 15px;
+        }
+        
+        .level-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .beginner .level-icon {
+            background-color: rgba(13, 105, 133, 0.1);
+            color: #0d6985;
+        }
+        
+        .intermediate .level-icon {
+            background-color: rgba(255, 152, 0, 0.1);
+            color: #ff9800;
+        }
+        
+        .advanced .level-icon {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+        
+        .level h3 {
+            font-size: 1.2rem;
+            margin: 0 0 5px;
+            text-align: center;
+        }
+        
+        .experience {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Career Flow Diagram */
+        .career-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .career-stage {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .career-card {
+            background-color: #fff;
+            padding: 25px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+            width: 280px;
+            position: relative;
+        }
+        
+        .career-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .beginner-stage .career-card {
+            border-top: 4px solid #0d6985;
+        }
+        
+        .intermediate-stage .career-card {
+            border-top: 4px solid #ff9800;
+        }
+        
+        .advanced-stage .career-card {
+            border-top: 4px solid #4CAF50;
+        }
+        
+        .career-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        
+        .beginner-stage .career-icon {
+            background-color: rgba(13, 105, 133, 0.1);
+        }
+        
+        .beginner-stage .career-icon i {
+            color: #0d6985;
+        }
+        
+        .intermediate-stage .career-icon {
+            background-color: rgba(255, 152, 0, 0.1);
+        }
+        
+        .intermediate-stage .career-icon i {
+            color: #ff9800;
+        }
+        
+        .advanced-stage .career-icon {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+        
+        .advanced-stage .career-icon i {
+            color: #4CAF50;
+        }
+        
+        .career-card h4 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .career-card p {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .salary-range {
+            background-color: #f5f7f9;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .salary-range span {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        /* Path Connectors */
+        .path-connector {
+            position: relative;
+            height: 40px;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .connector-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: #ddd;
+            transform: translateX(-50%);
+        }
+        
+        .connector-arrow {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            border-right: 4px solid #ddd;
+            border-bottom: 4px solid #ddd;
+            transform: translateX(-50%) rotate(45deg);
+            margin-bottom: -10px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            .career-levels {
+                max-width: 90%;
+            }
+            
+            .career-card {
+                width: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .career-levels {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+            
+            .career-levels:after {
+                width: 4px;
+                height: 100%;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .level {
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .career-stage {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .career-card {
+                width: 90%;
+                max-width: 350px;
+            }
+            
+            .path-connector {
+                height: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .career-card {
+                padding: 20px 15px;
+            }
+            
+            .career-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .career-card h4 {
+                font-size: 1.1rem;
+            }
+            
+            .career-card p {
+                font-size: 0.9rem;
+            }
+            
+            .level h3 {
+                font-size: 1.1rem;
+            }
+            
+            .experience {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="header-container"></div>
-
-
-
-
 
     <section class="hero-section">
         <div class="hero-overlay"></div>
@@ -114,7 +601,6 @@
                         </ul>
                         <div class="fade-overlay"></div>
                     </div>
-                    <a href="/booksession.html" class="see-more-btn">Book a session</a>
                 </div>
 
                 <div class="topic-box">
@@ -149,7 +635,6 @@
                         </ul>
                         <div class="fade-overlay"></div>
                     </div>
-                    <a href="/booksession.html" class="see-more-btn">Book a session</a>
                 </div>
 
                 <div class="topic-box">
@@ -182,7 +667,6 @@
                         </ul>
                         <div class="fade-overlay"></div>
                     </div>
-                    <a href="/booksession.html" class="see-more-btn">Book a session</a>
                 </div>
 
                 <div class="topic-box">
@@ -217,7 +701,6 @@
                         </ul>
                         <div class="fade-overlay"></div>
                     </div>
-                    <a href="/booksession.html" class="see-more-btn">Book a session</a>
                 </div>
 
                 <div class="topic-box">
@@ -251,7 +734,6 @@
                         </ul>
                         <div class="fade-overlay"></div>
                     </div>
-                    <a href="/booksession.html" class="see-more-btn">Book a session</a>
                 </div>
 
                 <div class="topic-box">
@@ -284,97 +766,263 @@
                         </ul>
                         <div class="fade-overlay"></div>
                     </div>
-                    <a href="/booksession.html" class="see-more-btn">Book a session</a>
+                </div>
+            </div>
+            
+            <!-- Enrol Now button after curriculum -->
+            <button id="enrolNowBtn" class="enrol-now-btn">Enrol Now</button>
+        </div>
+    </section>
+    
+    <!-- Modal for Enrollment Form -->
+    <div id="enrolModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 style="text-align: center; color: #0d6985; margin-bottom: 20px;">Enrol in Data Science Course</h2>
+            <form id="enrollmentForm">
+                <div class="form-group">
+                    <label for="enrollFullName">Full Name</label>
+                    <input type="text" id="enrollFullName" name="enrollFullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="enrollEmail">Email Address</label>
+                    <input type="email" id="enrollEmail" name="enrollEmail" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="enrollPhone">Phone Number</label>
+                    <input type="tel" id="enrollPhone" name="enrollPhone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="enrollCourse">Course Interested In</label>
+                    <input type="text" id="enrollCourse" name="enrollCourse" value="Data Science" readonly>
+                </div>
+
+                <button type="submit" class="enroll-btn" style="background-color: #0d6985; color: white; padding: 12px; border: none; border-radius: 5px; width: 100%; font-size: 1.1rem; margin-top: 20px; cursor: pointer;">Submit Enrollment</button>
+            </form>
+            <div id="enrollmentSuccess" style="display: none;">
+                Your enrollment has been submitted successfully! We'll contact you shortly with next steps.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Book a Session Section -->
+    <section class="booking-section">
+        <div class="container">
+            <h2 class="section-title">Book a Free Session</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; color: #555;">
+                Reserve your spot in our upcoming free Data Science training session and discover how our program can help advance your career.
+            </p>
+            
+            <div class="booking-form-container">
+                <form id="bookSessionForm">
+                    <div class="booking-form-grid">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="courseInterested">Course Interested In</label>
+                            <input type="text" id="courseInterested" name="courseInterested" value="Data Science" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredDate">Preferred Date</label>
+                            <input type="date" id="preferredDate" name="preferredDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredTime">Preferred Time</label>
+                            <select id="preferredTime" name="preferredTime" required>
+                                <option value="" disabled selected>Select your preferred time</option>
+                                <option value="morning">Morning (10:00 AM - 12:00 PM)</option>
+                                <option value="afternoon">Afternoon (2:00 PM - 4:00 PM)</option>
+                                <option value="evening">Evening (6:00 PM - 8:00 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 20px;">
+                        <button type="submit" class="book-session-btn">
+                            Book My Free Session
+                        </button>
+                    </div>
+                </form>
+                <div id="bookingSuccess">
+                    Your session has been booked successfully! We'll contact you shortly to confirm your booking.
                 </div>
             </div>
         </div>
     </section>
-
-
-    <!-- Add this section after the curriculum-section and before the career-section -->
-    <section class="enrollment-section">
-        <div class="container">
-            <h2 class="section-title">Enroll Now</h2>
-            <p class="enrollment-intro">Take the first step towards becoming a certified Data Scientist. Fill out the form below to enroll in our comprehensive training program.</p>
-            
-            <div class="enrollment-form-container">
-                <form id="enrollmentForm" class="enrollment-form">
-                    <div class="form-group">
-                        <label for="fullName">Full Name</label>
-                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="courseInterested">Course Interested In</label>
-                        <input type="text" id="courseInterested" name="courseInterested" value="Data Science" readonly>
-                    </div>
-
-                    <button type="submit" class="enroll-btn">Submit Enrollment</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
 
 
 
     <section class="career-section">
         <div class="container">
-            <h2 class="section-title">Career Opportunities</h2>
-            <div class="career-grid">
-                <div class="career-card">
-                    <div class="career-icon">
-                        <i class="fas fa-chart-line"></i>
+            <h2 class="section-title">Career Progression</h2>
+            <p class="career-intro" style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; color: #555;">
+                Follow your journey from entry-level positions to advanced roles in the data science industry
+            </p>
+            
+            <div class="career-path-container">
+                <!-- Career Level Indicators -->
+                <div class="career-levels">
+                    <div class="level beginner">
+                        <div class="level-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <h3>Beginner Level</h3>
+                        <span class="experience">0-2 Years</span>
                     </div>
-                    <h3>Data Scientist</h3>
-                    <p>Analyze complex data to help companies make better decisions.</p>
-                    <div class="salary-range">
-                        <span>Average Salary:</span> $95,000 - $150,000
+                    <div class="level intermediate">
+                        <div class="level-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>Intermediate Level</h3>
+                        <span class="experience">2-5 Years</span>
                     </div>
-                </div>
-                <div class="career-card">
-                    <div class="career-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Machine Learning Engineer</h3>
-                    <p>Build and deploy ML models and systems at scale.</p>
-                    <div class="salary-range">
-                        <span>Average Salary:</span> $110,000 - $165,000
-                    </div>
-                </div>
-                <div class="career-card">
-                    <div class="career-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Data Engineer</h3>
-                    <p>Design and maintain data pipelines and infrastructure.</p>
-                    <div class="salary-range">
-                        <span>Average Salary:</span> $90,000 - $140,000
+                    <div class="level advanced">
+                        <div class="level-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Advanced Level</h3>
+                        <span class="experience">5+ Years</span>
                     </div>
                 </div>
-                <div class="career-card">
-                    <div class="career-icon">
-                        <i class="fas fa-search"></i>
+                
+                <!-- Career Path Flow Diagram -->
+                <div class="career-flow">
+                    <!-- Beginner Level Jobs -->
+                    <div class="career-stage beginner-stage">
+                        <div class="career-card">
+                            <div class="career-icon">
+                                <i class="fas fa-table"></i>
+                            </div>
+                            <h4>Junior Data Analyst</h4>
+                            <p>Analyze data sets to identify trends and create basic visualizations</p>
+                            <div class="salary-range">
+                                <span>Average Salary:</span> £35,000 - £45,000
+                            </div>
+                        </div>
+                        
+                        <div class="career-card">
+                            <div class="career-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h4>Business Intelligence Analyst</h4>
+                            <p>Create reports and dashboards to support business decision-making</p>
+                            <div class="salary-range">
+                                <span>Average Salary:</span> £38,000 - £48,000
+                            </div>
+                        </div>
+                        
+                        <div class="career-card">
+                            <div class="career-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4>Junior Data Scientist</h4>
+                            <p>Build and implement basic machine learning models</p>
+                            <div class="salary-range">
+                                <span>Average Salary:</span> £40,000 - £50,000
+                            </div>
+                        </div>
                     </div>
-                    <h3>Data Analyst</h3>
-                    <p>Interpret data and provide actionable insights.</p>
-                    <div class="salary-range">
-                        <span>Average Salary:</span> $70,000 - $110,000
+                    
+                    <!-- Path Connector -->
+                    <div class="path-connector">
+                        <div class="connector-line"></div>
+                        <div class="connector-arrow"></div>
+                    </div>
+                    
+                    <!-- Intermediate Level Jobs -->
+                    <div class="career-stage intermediate-stage">
+                        <div class="career-card">
+                            <div class="career-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>Data Scientist</h4>
+                            <p>Develop complex predictive models and perform statistical analysis</p>
+                            <div class="salary-range">
+                                <span>Average Salary:</span> £55,000 - £70,000
+                            </div>
+                        </div>
+                        
+                        <div class="career-card">
+                            <div class="career-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4>Data Engineer</h4>
+                            <p>Build and optimize data pipelines and infrastructure</p>
+                            <div class="salary-range">
+                                <span>Average Salary:</span> £60,000 - £75,000
+                            </div>
+                        </div>
+                        
+                        <div class="career-card">
+                            <div class="career-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4>Machine Learning Engineer</h4>
+                            <p>Design, build and productionize machine learning systems</p>
+                            <div class="salary-range">
+                                <span>Average Salary:</span> £60,000 - £78,000
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Path Connector -->
+                    <div class="path-connector">
+                        <div class="connector-line"></div>
+                        <div class="connector-arrow"></div>
+                    </div>
+                    
+                    <!-- Advanced Level Jobs -->
+                    <div class="career-stage advanced-stage">
+                        <div class="career-card">
+                            <div class="career-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>Lead Data Scientist</h4>
+                            <p>Lead teams and develop advanced AI solutions for complex problems</p>
+                            <div class="salary-range">
+                                <span>Average Salary:</span> £75,000 - £95,000
+                            </div>
+                        </div>
+                        
+                        <div class="career-card">
+                            <div class="career-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <h4>Director of Data Science</h4>
+                            <p>Direct data science strategy and oversee multiple teams</p>
+                            <div class="salary-range">
+                                <span>Average Salary:</span> £85,000 - £110,000
+                            </div>
+                        </div>
+                        
+                        <div class="career-card">
+                            <div class="career-icon">
+                                <i class="fas fa-chess-king"></i>
+                            </div>
+                            <h4>Chief Data Officer</h4>
+                            <p>Drive organization-wide data strategy and governance</p>
+                            <div class="salary-range">
+                                <span>Average Salary:</span> £100,000 - £150,000+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -387,7 +1035,7 @@
                 <h2>Ready to Start Your Data Science Journey?</h2>
                 <p>Join our next batch and transform your career with in-demand skills.</p>
                 <div class="cta-buttons">
-                    <a href="#" class="cta-button primary">Enroll Now</a>
+                    <a href="#" class="cta-button primary" id="ctaEnrolBtn">Enrol Now</a>
                     <a href="#" class="cta-button secondary">Download Brochure</a>
                 </div>
             </div>
@@ -404,7 +1052,6 @@
                         <p>The hands-on projects really helped me understand complex ML algorithms. Within 3 months of completing the course, I landed a job as a junior data scientist!</p>
                     </div>
                     <div class="testimonial-author">
-                        <img src="otherpageresources/testimonial-1.jpg" alt="Student Portrait">
                         <div class="author-info">
                             <h4>Sarah Johnson</h4>
                             <p>Data Scientist at TechCorp</p>
@@ -414,10 +1061,9 @@
                 <div class="testimonial-card">
                     <div class="testimonial-quote">
                         <i class="fas fa-quote-left"></i>
-                        <p>As someone from a non-technical background, I was worried about keeping up. The instructors were incredibly supportive, and the curriculum was well-structured for beginners.</p>
+                        <p>Coming from a non-technical background, I was worried about keeping up. The instructors were incredibly supportive, and the curriculum was well-structured for beginners.</p>
                     </div>
                     <div class="testimonial-author">
-                        <img src="otherpageresources/testimonial-2.jpg" alt="Student Portrait">
                         <div class="author-info">
                             <h4>Michael Chen</h4>
                             <p>Data Analyst at FinTech Solutions</p>
@@ -475,21 +1121,237 @@
     <div id="footer"></div>
     <script src="footer.js"></script>
 
+    <div id="download-notification" class="download-in-progress">
+        <i class="fas fa-file-download"></i>
+        <p>Starting your download...</p>
+    </div>
 
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="header.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
 
-
-
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-<script src="header.js"></script>
-<script src="auth.js"></script>
-<script src="script.js"></script>
-
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Brochure download script loaded');
+            
+            // Initialize Firebase if it hasn't been already
+            try {
+                if (!firebase.apps.length) {
+                    firebase.initializeApp({
+                        apiKey: "AIzaSyBqtR-mopnadnBWzSE6HJzdZeNVqIQRnfs",
+                        authDomain: "white-fire-technologies.firebaseapp.com",
+                        projectId: "white-fire-technologies",
+                        storageBucket: "white-fire-technologies.firebasestorage.app",
+                        messagingSenderId: "997726192451",
+                        appId: "1:997726192451:web:c4ebf82504875f7174e5f6",
+                        measurementId: "G-SLSNLSDR79"
+                    });
+                    console.log('Firebase initialized in brochure script');
+                }
+            } catch (error) {
+                console.error('Error initializing Firebase:', error);
+            }
+            
+            // Wait a moment to ensure DOM is fully loaded
+            setTimeout(setupBrochureDownload, 1000);
+            
+            function setupBrochureDownload() {
+                // Find the download brochure button
+                const downloadButton = document.querySelector('.cta-button.secondary');
+                
+                if (!downloadButton) {
+                    console.error('Download brochure button not found');
+                    return;
+                }
+                
+                console.log('Download button found, adding event listener');
+                
+                // Find modals or create them
+                let loginModal = document.getElementById('loginModal');
+                let registerModal = document.getElementById('registerModal');
+                
+                // Add notification elements to modals if they exist
+                if (loginModal) {
+                    const modalContent = loginModal.querySelector('.modal-content');
+                    if (modalContent && !document.getElementById('brochureMessage')) {
+                        const brochureMessage = document.createElement('div');
+                        brochureMessage.id = 'brochureMessage';
+                        brochureMessage.className = 'brochure-notification';
+                        brochureMessage.style.display = 'none';
+                        brochureMessage.textContent = 'Please login or register to download the Data Science brochure.';
+                        
+                        // Insert after the heading
+                        const heading = modalContent.querySelector('h2');
+                        if (heading) {
+                            heading.parentNode.insertBefore(brochureMessage, heading.nextSibling);
+                        } else {
+                            modalContent.prepend(brochureMessage);
+                        }
+                    }
+                }
+                
+                if (registerModal) {
+                    const modalContent = registerModal.querySelector('.modal-content');
+                    if (modalContent && !document.getElementById('registerBrochureMessage')) {
+                        const registerBrochureMessage = document.createElement('div');
+                        registerBrochureMessage.id = 'registerBrochureMessage';
+                        registerBrochureMessage.className = 'brochure-notification';
+                        registerBrochureMessage.style.display = 'none';
+                        registerBrochureMessage.textContent = 'Register to download the Data Science brochure.';
+                        
+                        // Insert after the heading
+                        const heading = modalContent.querySelector('h2');
+                        if (heading) {
+                            heading.parentNode.insertBefore(registerBrochureMessage, heading.nextSibling);
+                        } else {
+                            modalContent.prepend(registerBrochureMessage);
+                        }
+                    }
+                }
+                
+                // Add click event to the download button
+                downloadButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Download button clicked');
+                    
+                    try {
+                        // Check if user is logged in
+                        if (firebase.auth().currentUser) {
+                            // User is logged in, download the brochure
+                            downloadBrochure();
+                        } else {
+                            // User is not logged in, show login modal
+                            if (loginModal) {
+                                const brochureMessage = document.getElementById('brochureMessage');
+                                if (brochureMessage) {
+                                    brochureMessage.style.display = 'block';
+                                }
+                                
+                                loginModal.style.display = 'block';
+                                
+                                // Hide any previous errors
+                                const loginError = document.getElementById('loginError');
+                                if (loginError) {
+                                    loginError.style.display = 'none';
+                                }
+                            } else {
+                                console.log('Please login or register to download the brochure.');
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error in download button click handler:', error);
+                        console.log('Please login or register to download the brochure.');
+                    }
+                });
+                
+                // Handle auth state changes
+                firebase.auth().onAuthStateChanged(function(user) {
+                    console.log('Auth state changed in brochure script:', user ? 'User logged in' : 'User logged out');
+                    
+                    if (user) {
+                        // Check if we need to download the brochure
+                        const brochureMessage = document.getElementById('brochureMessage');
+                        const registerBrochureMessage = document.getElementById('registerBrochureMessage');
+                        
+                        if ((brochureMessage && brochureMessage.style.display === 'block') || 
+                            (registerBrochureMessage && registerBrochureMessage.style.display === 'block')) {
+                            
+                            // Close modals
+                            if (loginModal) loginModal.style.display = 'none';
+                            if (registerModal) registerModal.style.display = 'none';
+                            
+                            // Hide messages
+                            if (brochureMessage) brochureMessage.style.display = 'none';
+                            if (registerBrochureMessage) registerBrochureMessage.style.display = 'none';
+                            
+                            // Download brochure
+                            setTimeout(downloadBrochure, 500);
+                        }
+                    }
+                });
+                
+                // Handle switch between login and register modals
+                const switchToRegister = document.getElementById('switchToRegister');
+                const switchToLogin = document.getElementById('switchToLogin');
+                
+                if (switchToRegister) {
+                    switchToRegister.addEventListener('click', function(e) {
+                        const brochureMessage = document.getElementById('brochureMessage');
+                        const registerBrochureMessage = document.getElementById('registerBrochureMessage');
+                        
+                        if (brochureMessage && brochureMessage.style.display === 'block' && registerBrochureMessage) {
+                            registerBrochureMessage.style.display = 'block';
+                        }
+                    });
+                }
+                
+                if (switchToLogin) {
+                    switchToLogin.addEventListener('click', function(e) {
+                        const brochureMessage = document.getElementById('brochureMessage');
+                        const registerBrochureMessage = document.getElementById('registerBrochureMessage');
+                        
+                        if (registerBrochureMessage && registerBrochureMessage.style.display === 'block' && brochureMessage) {
+                            brochureMessage.style.display = 'block';
+                        }
+                    });
+                }
+            }
+            
+            // Function to handle brochure download
+            window.downloadBrochure = function() {
+                console.log('Starting brochure download');
+                
+                // Show download notification
+                const downloadNotification = document.getElementById('download-notification');
+                if (downloadNotification) {
+                    downloadNotification.style.display = 'block';
+                    
+                    // Hide notification after 3 seconds
+                    setTimeout(function() {
+                        downloadNotification.style.display = 'none';
+                    }, 3000);
+                }
+                
+                // Create temporary link for download
+                const link = document.createElement('a');
+                link.href = '/resources/cloud-computing-brochure.pdf';
+                link.download = 'WhiteFire-Data-Science-Brochure.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Log download to Firestore
+                try {
+                    const db = firebase.firestore();
+                    const user = firebase.auth().currentUser;
+                    
+                    if (user) {
+                        db.collection('brochure_downloads').add({
+                            userId: user.uid,
+                            userEmail: user.email,
+                            course: 'Data Science',
+                            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                        })
+                        .then(() => {
+                            console.log('Download logged successfully');
+                        })
+                        .catch(error => {
+                            console.error('Error logging download:', error);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error logging download to Firestore:', error);
+                }
+                
+                return false; // Prevent default link behavior
+            };
+        });
+    </script>
 
     <script type="module">
-
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js";
@@ -509,15 +1371,52 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Enrollment form submission handler
+        // Modal functionality
+        const modal = document.getElementById("enrolModal");
+        const enrolBtn = document.getElementById("enrolNowBtn");
+        const ctaEnrolBtn = document.getElementById("ctaEnrolBtn");
+        const closeBtn = document.getElementsByClassName("close-modal")[0];
+        
+        // Set minimum date to today for the session booking form
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("preferredDate").min = today;
+
+        // Open modal when Enrol Now button is clicked
+        enrolBtn.addEventListener("click", function() {
+            modal.style.display = "block";
+        });
+        
+        // Also open modal from CTA button
+        if (ctaEnrolBtn) {
+            ctaEnrolBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                modal.style.display = "block";
+            });
+        }
+
+        // Close modal when X is clicked
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+            console.log("Modal closed by X button");
+        });
+
+        // Close modal when clicking outside the modal
+        window.addEventListener("click", function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                console.log("Modal closed by outside click");
+            }
+        });
+
+        // Form submission handler for enrollment
         document.getElementById("enrollmentForm").addEventListener("submit", async (event) => {
             event.preventDefault();
 
             // Get form values
-            const fullName = document.getElementById("fullName").value;
-            const email = document.getElementById("email").value;
-            const phone = document.getElementById("phone").value;
-            const courseInterested = document.getElementById("courseInterested").value;
+            const fullName = document.getElementById("enrollFullName").value;
+            const email = document.getElementById("enrollEmail").value;
+            const phone = document.getElementById("enrollPhone").value;
+            const courseInterested = document.getElementById("enrollCourse").value;
 
             // Add a new document to Firestore
             try {
@@ -528,48 +1427,71 @@
                     courseInterested: courseInterested,
                     timestamp: new Date()
                 });
-                alert("Enrollment submitted successfully! We'll contact you shortly.");
+                
+                // Hide form and show success message
+                document.getElementById("enrollmentForm").style.display = "none";
+                document.getElementById("enrollmentSuccess").style.display = "block";
+                
+                // Reset the form (hidden but reset for next time)
+                document.getElementById("enrollmentForm").reset();
+                // Reset the course field
+                document.getElementById("enrollCourse").value = "Data Science";
+                
+                // Close modal after 3 seconds
+                setTimeout(() => {
+                    modal.style.display = "none";
+                    // Reset view for next time
+                    document.getElementById("enrollmentForm").style.display = "block";
+                    document.getElementById("enrollmentSuccess").style.display = "none";
+                }, 3000);
+                
             } catch (e) {
-                console.error("Error adding enrollment: ", e);
+                console.error("Error submitting enrollment: ", e);
                 alert("Error submitting enrollment. Please try again.");
             }
-
-            // Clear the form after submission
-            document.getElementById("enrollmentForm").reset();
-            // Reset the course field to Cloud Computing
-            document.getElementById("courseInterested").value = "Data Science";
         });
 
+        // Form submission handler for booking a session
+        document.getElementById("bookSessionForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
 
+            // Get form values
+            const fullName = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const courseInterested = document.getElementById("courseInterested").value;
+            const preferredDate = document.getElementById("preferredDate").value;
+            const preferredTime = document.getElementById("preferredTime").value;
 
-        // Menu toggle for mobile
-        const menuIcon = document.getElementById('menu-icon');
-        const navLinks = document.getElementById('nav-links');
-
-        menuIcon.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Topic content toggle
-        // const seeMoreButtons = document.querySelectorAll('.see-more-btn');
-        
-        // seeMoreButtons.forEach(button => {
-        //     button.addEventListener('click', function() {
-        //         const topicBox = this.closest('.topic-box');
-        //         const topicContent = topicBox.querySelector('.topic-content');
-        //         const fadeOverlay = topicBox.querySelector('.fade-overlay');
+            // Add a new document to Firestore
+            try {
+                await addDoc(collection(db, "session-bookings"), {
+                    fullName: fullName,
+                    email: email,
+                    phone: phone,
+                    courseInterested: courseInterested,
+                    preferredDate: preferredDate,
+                    preferredTime: preferredTime,
+                    status: "pending",
+                    timestamp: new Date()
+                });
                 
-        //         if (topicContent.classList.contains('expanded')) {
-        //             topicContent.classList.remove('expanded');
-        //             fadeOverlay.style.display = 'block';
-        //             this.textContent = 'Click to see more';
-        //         } else {
-        //             topicContent.classList.add('expanded');
-        //             fadeOverlay.style.display = 'none';
-        //             this.textContent = 'Show less';
-        //         }
-        //     });
-        // });
+                // Show success message and reset form
+                document.getElementById("bookingSuccess").style.display = "block";
+                document.getElementById("bookSessionForm").reset();
+                // Reset the course field to Data Science
+                document.getElementById("courseInterested").value = "Data Science";
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById("bookingSuccess").style.display = "none";
+                }, 5000);
+                
+            } catch (e) {
+                console.error("Error booking session: ", e);
+                alert("Error booking session. Please try again.");
+            }
+        });
 
         // FAQ toggle
         const faqQuestions = document.querySelectorAll('.faq-question');
@@ -588,25 +1510,24 @@
             });
         });
 
-
         // Mobile dropdown functionality
         document.addEventListener('DOMContentLoaded', function() {
             const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
             
             mobileDropdownHeaders.forEach(header => {
-            header.addEventListener('click', function() {
-                // Toggle active class on header
-                this.classList.toggle('active');
-                
-                // Find the target dropdown content
-                const targetId = this.getAttribute('data-target');
-                const dropdownContent = document.getElementById(targetId);
-                
-                // Toggle show class on content
-                if (dropdownContent) {
-                dropdownContent.classList.toggle('show');
-                }
-            });
+                header.addEventListener('click', function() {
+                    // Toggle active class on header
+                    this.classList.toggle('active');
+                    
+                    // Find the target dropdown content
+                    const targetId = this.getAttribute('data-target');
+                    const dropdownContent = document.getElementById(targetId);
+                    
+                    // Toggle show class on content
+                    if (dropdownContent) {
+                        dropdownContent.classList.toggle('show');
+                    }
+                });
             });
         });
     </script>
