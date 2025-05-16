@@ -375,3 +375,69 @@ function updateUserProfile(name, phone, photoURL) {
     return Promise.reject(new Error("No user is signed in"));
   }
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Get modals
+  const loginModal = document.getElementById('loginModal');
+  const registerModal = document.getElementById('registerModal');
+  
+  // Get all close buttons
+  const closeButtons = document.querySelectorAll('.modal .close');
+  
+  // Get login/register switch links
+  const switchToRegister = document.getElementById('switchToRegister');
+  const switchToLogin = document.getElementById('switchToLogin');
+  
+  // Login button in the header
+  const loginBtn = document.getElementById('loginBtn');
+  
+  // Add click event to all close buttons
+  closeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Hide all modals
+      loginModal.style.display = 'none';
+      registerModal.style.display = 'none';
+      
+      // Log for debugging
+      console.log('Modal closed');
+    });
+  });
+  
+  // Login button opens login modal
+  if (loginBtn) {
+    loginBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      loginModal.style.display = 'block';
+    });
+  }
+  
+  // Switch between modals
+  if (switchToRegister) {
+    switchToRegister.addEventListener('click', function(e) {
+      e.preventDefault();
+      loginModal.style.display = 'none';
+      registerModal.style.display = 'block';
+    });
+  }
+  
+  if (switchToLogin) {
+    switchToLogin.addEventListener('click', function(e) {
+      e.preventDefault();
+      registerModal.style.display = 'none';
+      loginModal.style.display = 'block';
+    });
+  }
+  
+  // Close modals when clicking outside
+  window.addEventListener('click', function(e) {
+    if (e.target === loginModal) {
+      loginModal.style.display = 'none';
+    }
+    if (e.target === registerModal) {
+      registerModal.style.display = 'none';
+    }
+  });
+});
