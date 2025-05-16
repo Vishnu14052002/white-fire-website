@@ -84,7 +84,20 @@
                 </div>
 
                 <div class="team-links">
-                    <a href="#" class="team-link"><i class="fas fa-file-contract"></i> Placement Policy</a>
+                    <a href="#" style="text-decoration: none; display: block;
+                    width: 250px;
+                    margin: 30px auto;
+                    padding: 15px 30px;
+                    background-color: #ff9800;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    text-decoration: none;" class="cta-button secondary" class="team-link"><i class="fas fa-file-contract"></i> Placement Policy</a>
                 </div>
             </div>
 
@@ -208,6 +221,233 @@
 
     <div id="footer"></div>
     <script src="footer.js"></script>
+
+
+
+
+    <div id="download-notification" class="download-in-progress">
+        <i class="fas fa-file-download"></i>
+        <p>Starting your download...</p>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Brochure download script loaded');
+            
+            // Initialize Firebase if it hasn't been already
+            try {
+                if (!firebase.apps.length) {
+                    firebase.initializeApp({
+                        apiKey: "AIzaSyBqtR-mopnadnBWzSE6HJzdZeNVqIQRnfs",
+                        authDomain: "white-fire-technologies.firebaseapp.com",
+                        projectId: "white-fire-technologies",
+                        storageBucket: "white-fire-technologies.firebasestorage.app",
+                        messagingSenderId: "997726192451",
+                        appId: "1:997726192451:web:c4ebf82504875f7174e5f6",
+                        measurementId: "G-SLSNLSDR79"
+                    });
+                    console.log('Firebase initialized in brochure script');
+                }
+            } catch (error) {
+                console.error('Error initializing Firebase:', error);
+            }
+            
+            // Wait a moment to ensure DOM is fully loaded
+            setTimeout(setupBrochureDownload, 1000);
+            
+            function setupBrochureDownload() {
+                // Find the download brochure button
+                const downloadButton = document.querySelector('.cta-button.secondary');
+                
+                if (!downloadButton) {
+                    console.error('Download brochure button not found');
+                    return;
+                }
+                
+                console.log('Download button found, adding event listener');
+                
+                // Find modals or create them
+                let loginModal = document.getElementById('loginModal');
+                let registerModal = document.getElementById('registerModal');
+                
+                // Add notification elements to modals if they exist
+                if (loginModal) {
+                    const modalContent = loginModal.querySelector('.modal-content');
+                    if (modalContent && !document.getElementById('brochureMessage')) {
+                        const brochureMessage = document.createElement('div');
+                        brochureMessage.id = 'brochureMessage';
+                        brochureMessage.className = 'brochure-notification';
+                        brochureMessage.style.display = 'none';
+                        brochureMessage.textContent = 'Please login or register to download the placement brochure.';
+                        
+                        // Insert after the heading
+                        const heading = modalContent.querySelector('h2');
+                        if (heading) {
+                            heading.parentNode.insertBefore(brochureMessage, heading.nextSibling);
+                        } else {
+                            modalContent.prepend(brochureMessage);
+                        }
+                    }
+                }
+                
+                if (registerModal) {
+                    const modalContent = registerModal.querySelector('.modal-content');
+                    if (modalContent && !document.getElementById('registerBrochureMessage')) {
+                        const registerBrochureMessage = document.createElement('div');
+                        registerBrochureMessage.id = 'registerBrochureMessage';
+                        registerBrochureMessage.className = 'brochure-notification';
+                        registerBrochureMessage.style.display = 'none';
+                        registerBrochureMessage.textContent = 'Register to download the Cloud Computing brochure.';
+                        
+                        // Insert after the heading
+                        const heading = modalContent.querySelector('h2');
+                        if (heading) {
+                            heading.parentNode.insertBefore(registerBrochureMessage, heading.nextSibling);
+                        } else {
+                            modalContent.prepend(registerBrochureMessage);
+                        }
+                    }
+                }
+                
+                // Add click event to the download button
+                downloadButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Download button clicked');
+                    
+                    try {
+                        // Check if user is logged in
+                        if (firebase.auth().currentUser) {
+                            // User is logged in, download the brochure
+                            downloadBrochure();
+                        } else {
+                            // User is not logged in, show login modal
+                            if (loginModal) {
+                                const brochureMessage = document.getElementById('brochureMessage');
+                                if (brochureMessage) {
+                                    brochureMessage.style.display = 'block';
+                                }
+                                
+                                loginModal.style.display = 'block';
+                                
+                                // Hide any previous errors
+                                const loginError = document.getElementById('loginError');
+                                if (loginError) {
+                                    loginError.style.display = 'none';
+                                }
+                            } else {
+                                console.log('Please login or register to download the brochure.');
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error in download button click handler:', error);
+                        console.log('Please login or register to download the brochure.');
+                    }
+                });
+                
+                // Handle auth state changes
+                firebase.auth().onAuthStateChanged(function(user) {
+                    console.log('Auth state changed in brochure script:', user ? 'User logged in' : 'User logged out');
+                    
+                    if (user) {
+                        // Check if we need to download the brochure
+                        const brochureMessage = document.getElementById('brochureMessage');
+                        const registerBrochureMessage = document.getElementById('registerBrochureMessage');
+                        
+                        if ((brochureMessage && brochureMessage.style.display === 'block') || 
+                            (registerBrochureMessage && registerBrochureMessage.style.display === 'block')) {
+                            
+                            // Close modals
+                            if (loginModal) loginModal.style.display = 'none';
+                            if (registerModal) registerModal.style.display = 'none';
+                            
+                            // Hide messages
+                            if (brochureMessage) brochureMessage.style.display = 'none';
+                            if (registerBrochureMessage) registerBrochureMessage.style.display = 'none';
+                            
+                            // Download brochure
+                            setTimeout(downloadBrochure, 500);
+                        }
+                    }
+                });
+                
+                // Handle switch between login and register modals
+                const switchToRegister = document.getElementById('switchToRegister');
+                const switchToLogin = document.getElementById('switchToLogin');
+                
+                if (switchToRegister) {
+                    switchToRegister.addEventListener('click', function(e) {
+                        const brochureMessage = document.getElementById('brochureMessage');
+                        const registerBrochureMessage = document.getElementById('registerBrochureMessage');
+                        
+                        if (brochureMessage && brochureMessage.style.display === 'block' && registerBrochureMessage) {
+                            registerBrochureMessage.style.display = 'block';
+                        }
+                    });
+                }
+                
+                if (switchToLogin) {
+                    switchToLogin.addEventListener('click', function(e) {
+                        const brochureMessage = document.getElementById('brochureMessage');
+                        const registerBrochureMessage = document.getElementById('registerBrochureMessage');
+                        
+                        if (registerBrochureMessage && registerBrochureMessage.style.display === 'block' && brochureMessage) {
+                            brochureMessage.style.display = 'block';
+                        }
+                    });
+                }
+            }
+            
+            // Function to handle brochure download
+            window.downloadBrochure = function() {
+                console.log('Starting brochure download');
+                
+                // Show download notification
+                const downloadNotification = document.getElementById('download-notification');
+                if (downloadNotification) {
+                    downloadNotification.style.display = 'block';
+                    
+                    // Hide notification after 3 seconds
+                    setTimeout(function() {
+                        downloadNotification.style.display = 'none';
+                    }, 3000);
+                }
+                
+                // Create temporary link for download
+                const link = document.createElement('a');
+                link.href = '/resources/cloud-computing-brochure.pdf';
+                link.download = 'WhiteFire-Cloud-Computing-Brochure.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Log download to Firestore
+                try {
+                    const db = firebase.firestore();
+                    const user = firebase.auth().currentUser;
+                    
+                    if (user) {
+                        db.collection('brochure_downloads').add({
+                            userId: user.uid,
+                            userEmail: user.email,
+                            course: 'Cloud Computing',
+                            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                        })
+                        .then(() => {
+                            console.log('Download logged successfully');
+                        })
+                        .catch(error => {
+                            console.error('Error logging download:', error);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error logging download to Firestore:', error);
+                }
+                
+                return false; // Prevent default link behavior
+            };
+        });
+    </script>
 
 
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
