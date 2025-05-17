@@ -572,6 +572,210 @@ app.post('/enroll-course', async (req, res) => {
 
 
 
+  // Add this to your server.js file - new route for placement form
+
+// Handle placement form submissions
+app.post('/placement-inquiry', async (req, res) => {
+    try {
+      const { name, email, querytype, message, location } = req.body;
+      
+      console.log('Placement form submission received:', { name, email, querytype, message, location });
+      
+      // Validate the form data
+      if (!name || !email || !querytype || !message) {
+        return res.status(400).json({ message: 'Name, email, query type, and message are required' });
+      }
+      
+      // Get access token (use existing or from env)
+      const accessToken = tokens?.access_token || process.env.ZOHO_ACCESS_TOKEN;
+      
+      if (!accessToken) {
+        return res.status(500).json({ 
+          message: 'Server configuration error. Please try again later or contact us directly.' 
+        });
+      }
+      
+      // Format location information if available
+      let locationInfo = '';
+      if (location && Object.keys(location).length > 0) {
+        locationInfo = `\n\nLocation Information:\n`;
+        
+        if (location.fullAddress) locationInfo += `Address: ${location.fullAddress}\n`;
+        if (location.city) locationInfo += `City: ${location.city}\n`;
+        if (location.state) locationInfo += `State: ${location.state}\n`;
+        if (location.country) locationInfo += `Country: ${location.country}\n`;
+        if (location.postalCode) locationInfo += `Postal Code: ${location.postalCode}\n`;
+        
+        if (location.latitude && location.longitude) {
+          locationInfo += `Coordinates: ${location.latitude}, ${location.longitude}\n`;
+        }
+      }
+      
+      // Create a lead in Zoho CRM
+      const leadData = {
+        Last_Name: name,
+        Email: email,
+        Description: `Placement Inquiry\nQuery Type: ${querytype}\n\n${message}${locationInfo}`,
+        Lead_Source: 'Website Placement Form',
+        // Add location fields if available
+        City: location?.city || '',
+        State: location?.state || '',
+        Country: location?.country || '',
+        Zip_Code: location?.postalCode || ''
+      };
+      
+      const response = await axios.post('https://www.zohoapis.eu/crm/v2/Leads', {
+        data: [leadData]
+      }, {
+        headers: {
+          'Authorization': `Zoho-oauthtoken ${accessToken}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      console.log('Placement inquiry lead created in Zoho CRM:', response.data);
+      
+      res.status(200).json({ 
+        message: 'Thank you for your inquiry! Our placement team will contact you shortly.' 
+      });
+    } catch (error) {
+      console.error('Error processing placement inquiry:', error.response?.data || error.message);
+      
+      // Check for expired token
+      if (error.response?.status === 401) {
+        // Try to refresh the token
+        try {
+          await refreshToken();
+          
+          // Retry the request with the new token
+          return handlePlacementInquiry(req, res);
+        } catch (refreshError) {
+          console.error('Error refreshing token:', refreshError);
+          return res.status(503).json({ 
+            message: 'Service temporarily unavailable. Please try again in a few minutes.' 
+          });
+        }
+      }
+      
+      res.status(500).json({ 
+        message: 'There was an error processing your inquiry. Please try again later or contact us directly.' 
+      });
+    }
+  });
+  
+  // Helper function for retrying requests after token refresh
+  function handlePlacementInquiry(req, res) {
+    return app._router.handle(req, res);
+  }
+
+
+
+
+
+
+
+  // Add this route to your server.js file
+
+// Handle free session booking submissions
+app.post('/book-free-session', async (req, res) => {
+    try {
+      const { name, email, phone, course, sessionDate, sessionTime, location } = req.body;
+      
+      console.log('Free session booking received:', { name, email, phone, course, sessionDate, sessionTime, location });
+      
+      // Validate the form data
+      if (!name || !email || !phone || !course || !sessionDate || !sessionTime) {
+        return res.status(400).json({ 
+          message: 'All fields (name, email, phone, course, date, and time) are required' 
+        });
+      }
+      
+      // Get access token (use existing or from env)
+      const accessToken = tokens?.access_token || process.env.ZOHO_ACCESS_TOKEN;
+      
+      if (!accessToken) {
+        return res.status(500).json({ 
+          message: 'Server configuration error. Please try again later or contact us directly.' 
+        });
+      }
+      
+      // Format location information if available
+      let locationInfo = '';
+      if (location && Object.keys(location).length > 0) {
+        locationInfo = `\n\nLocation Information:\n`;
+        
+        if (location.fullAddress) locationInfo += `Address: ${location.fullAddress}\n`;
+        if (location.city) locationInfo += `City: ${location.city}\n`;
+        if (location.state) locationInfo += `State: ${location.state}\n`;
+        if (location.country) locationInfo += `Country: ${location.country}\n`;
+        if (location.postalCode) locationInfo += `Postal Code: ${location.postalCode}\n`;
+        
+        if (location.latitude && location.longitude) {
+          locationInfo += `Coordinates: ${location.latitude}, ${location.longitude}\n`;
+        }
+      }
+      
+      // Create a lead in Zoho CRM
+      const leadData = {
+        Last_Name: name,
+        Email: email,
+        Phone: phone,
+        Description: `Free Session Booking\nCourse: ${course}\nPreferred Date: ${sessionDate}\nPreferred Time: ${sessionTime}${locationInfo}`,
+        Lead_Source: 'Free Session Booking',
+        // Add location fields if available
+        City: location?.city || '',
+        State: location?.state || '',
+        Country: location?.country || '',
+        Zip_Code: location?.postalCode || ''
+      };
+      
+      const response = await axios.post('https://www.zohoapis.eu/crm/v2/Leads', {
+        data: [leadData]
+      }, {
+        headers: {
+          'Authorization': `Zoho-oauthtoken ${accessToken}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      console.log('Free session booking lead created in Zoho CRM:', response.data);
+      
+      res.status(200).json({ 
+        message: 'Free session booked successfully! We\'ll confirm your booking via email soon.' 
+      });
+    } catch (error) {
+      console.error('Error processing free session booking:', error.response?.data || error.message);
+      
+      // Check for expired token
+      if (error.response?.status === 401) {
+        // Try to refresh the token
+        try {
+          await refreshToken();
+          
+          // Retry the request with the new token
+          return handleFreeSessionBooking(req, res);
+        } catch (refreshError) {
+          console.error('Error refreshing token:', refreshError);
+          return res.status(503).json({ 
+            message: 'Service temporarily unavailable. Please try again in a few minutes.' 
+          });
+        }
+      }
+      
+      res.status(500).json({ 
+        message: 'There was an error processing your booking. Please try again later or contact us directly.' 
+      });
+    }
+  });
+  
+  // Helper function for retrying requests after token refresh
+  function handleFreeSessionBooking(req, res) {
+    return app._router.handle(req, res);
+  }
+
+
+
+
 
 // Start the server
 app.listen(port, () => {
