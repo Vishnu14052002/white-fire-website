@@ -1115,6 +1115,9 @@
     <div id="footer"></div>
     <script src="footer.js"></script>
 
+
+    <script src="zoho-forms.js"></script>
+
     <div id="download-notification" class="download-in-progress">
         <i class="fas fa-file-download"></i>
         <p>Starting your download...</p>
@@ -1132,22 +1135,22 @@
             console.log('Brochure download script loaded');
             
             // Initialize Firebase if it hasn't been already
-            try {
-                if (!firebase.apps.length) {
-                    firebase.initializeApp({
-                        apiKey: "AIzaSyBqtR-mopnadnBWzSE6HJzdZeNVqIQRnfs",
-                        authDomain: "white-fire-technologies.firebaseapp.com",
-                        projectId: "white-fire-technologies",
-                        storageBucket: "white-fire-technologies.firebasestorage.app",
-                        messagingSenderId: "997726192451",
-                        appId: "1:997726192451:web:c4ebf82504875f7174e5f6",
-                        measurementId: "G-SLSNLSDR79"
-                    });
-                    console.log('Firebase initialized in brochure script');
-                }
-            } catch (error) {
-                console.error('Error initializing Firebase:', error);
-            }
+            // try {
+            //     if (!firebase.apps.length) {
+            //         firebase.initializeApp({
+            //             apiKey: "AIzaSyBqtR-mopnadnBWzSE6HJzdZeNVqIQRnfs",
+            //             authDomain: "white-fire-technologies.firebaseapp.com",
+            //             projectId: "white-fire-technologies",
+            //             storageBucket: "white-fire-technologies.firebasestorage.app",
+            //             messagingSenderId: "997726192451",
+            //             appId: "1:997726192451:web:c4ebf82504875f7174e5f6",
+            //             measurementId: "G-SLSNLSDR79"
+            //         });
+            //         console.log('Firebase initialized in brochure script');
+            //     }
+            // } catch (error) {
+            //     console.error('Error initializing Firebase:', error);
+            // }
             
             // Wait a moment to ensure DOM is fully loaded
             setTimeout(setupBrochureDownload, 1000);
