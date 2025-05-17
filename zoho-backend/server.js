@@ -135,9 +135,9 @@ app.get('/api/create-test-lead', async (req, res) => {
 // Add the form submission handler
 app.post('/submit-form', async (req, res) => {
   try {
-    const { name, email, phone, course, message } = req.body;
+    const { name, email, phone, course, message, location } = req.body;
     
-    console.log('Form submission received:', { name, email, phone, course, message });
+    console.log('Form submission received:', { name, email, phone, course, message, location });
     
     // Validate the form data
     if (!name || !email || !phone || !course || !message) {
@@ -153,13 +153,34 @@ app.post('/submit-form', async (req, res) => {
       });
     }
     
+    // Format location information if available
+    let locationInfo = '';
+    if (location && Object.keys(location).length > 0) {
+      locationInfo = `\n\nLocation Information:\n`;
+      
+      if (location.fullAddress) locationInfo += `Address: ${location.fullAddress}\n`;
+      if (location.city) locationInfo += `City: ${location.city}\n`;
+      if (location.state) locationInfo += `State: ${location.state}\n`;
+      if (location.country) locationInfo += `Country: ${location.country}\n`;
+      if (location.postalCode) locationInfo += `Postal Code: ${location.postalCode}\n`;
+      
+      if (location.latitude && location.longitude) {
+        locationInfo += `Coordinates: ${location.latitude}, ${location.longitude}\n`;
+      }
+    }
+    
     // Create a lead in Zoho CRM
     const leadData = {
       Last_Name: name,
       Email: email,
       Phone: phone,
-      Description: `Course: ${course}\n\n${message}`,
-      Lead_Source: 'Website Contact Form'
+      Description: `Course: ${course}\n\n${message}${locationInfo}`,
+      Lead_Source: 'Website Contact Form',
+      // Add location fields if available
+      City: location?.city || '',
+      State: location?.state || '',
+      Country: location?.country || '',
+      Zip_Code: location?.postalCode || ''
     };
     
     const response = await axios.post('https://www.zohoapis.eu/crm/v2/Leads', {
@@ -181,12 +202,19 @@ app.post('/submit-form', async (req, res) => {
     
     // Check for expired token
     if (error.response?.status === 401) {
-      // You might want to trigger a token refresh here
-      console.log('Token expired, refreshing...');
-      // For now, just inform the client
-      return res.status(503).json({ 
-        message: 'Service temporarily unavailable. Please try again in a few minutes.' 
-      });
+      // Try to refresh the token and retry
+      try {
+        await refreshToken();
+        
+        // Call this function again with the same request - note this is a recursive approach
+        // You might want to add a retry counter to prevent infinite loops
+        return submitForm(req, res);
+      } catch (refreshError) {
+        console.error('Error refreshing token:', refreshError);
+        return res.status(503).json({ 
+          message: 'Service temporarily unavailable. Please try again in a few minutes.' 
+        });
+      }
     }
     
     res.status(500).json({ 
@@ -324,6 +352,26 @@ async function refreshToken() {
   
   console.log('Token refreshed successfully');
   return tokens;
+}
+
+// Helper function for submitForm retry
+function submitForm(req, res) {
+  return app._router.handle(req, res);
+}
+
+// Helper function for addUserToCRM retry
+function addUserToCRM(req, res) {
+  return app._router.handle(req, res);
+}
+
+// Set initial tokens from environment variables
+if (process.env.ZOHO_ACCESS_TOKEN && process.env.ZOHO_REFRESH_TOKEN) {
+  tokens = {
+    access_token: process.env.ZOHO_ACCESS_TOKEN,
+    refresh_token: process.env.ZOHO_REFRESH_TOKEN,
+    expiry: Date.now() + (3600 * 1000) // Assume 1 hour validity
+  };
+  console.log('Initialized tokens from environment variables');
 }
 
 // Start the server
