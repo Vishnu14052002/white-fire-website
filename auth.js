@@ -399,38 +399,95 @@ function updateUserProfile(name, phone, photoURL) {
   }
 }
 
-// Function to add user to Zoho CRM
+// Function to get user's location
+function getUserLocation() {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        // Success callback
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          
+          // Get location details using reverse geocoding API
+          fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
+            .then(response => response.json())
+            .then(data => {
+              const locationData = {
+                latitude,
+                longitude,
+                city: data.address?.city || data.address?.town || data.address?.village || '',
+                state: data.address?.state || '',
+                country: data.address?.country || '',
+                postalCode: data.address?.postcode || '',
+                fullAddress: data.display_name || ''
+              };
+              resolve(locationData);
+            })
+            .catch(error => {
+              // If reverse geocoding fails, at least return coordinates
+              console.error('Error getting address from coordinates:', error);
+              resolve({ latitude, longitude });
+            });
+        },
+        // Error callback
+        (error) => {
+          console.warn('Error getting location:', error.message);
+          resolve({}); // Resolve with empty object to continue registration
+        },
+        // Options
+        { 
+          enableHighAccuracy: false, 
+          timeout: 5000, 
+          maximumAge: 0 
+        }
+      );
+    } else {
+      console.warn('Geolocation is not supported by this browser');
+      resolve({}); // Resolve with empty object to continue registration
+    }
+  });
+}
+
+// Function to add user to Zoho CRM with location
 function addUserToCRM(userData) {
   const { name, email, phone, authProvider } = userData;
   
-  return fetch('http://localhost:3000/add-user-to-crm', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      name,
-      email,
-      phone,
-      authProvider
-    })
-  })
-  .then(response => {
-    if (!response.ok) {
-      // If response is not OK, throw error with response data
-      return response.json().then(data => {
-        throw new Error(data.message || 'Error adding user to CRM');
+  // First get location, then send data to CRM
+  return getUserLocation()
+    .then(locationData => {
+      console.log('Location data:', locationData);
+      
+      return fetch('http://localhost:3000/add-user-to-crm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          authProvider,
+          location: locationData
+        })
       });
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log('User added to Zoho CRM successfully:', data);
-    return data;
-  })
-  .catch(error => {
-    console.error('Error adding user to Zoho CRM:', error);
-    // Still continue the registration process even if CRM addition fails
-    return { success: false, error: error.message };
-  });
+    })
+    .then(response => {
+      if (!response.ok) {
+        // If response is not OK, throw error with response data
+        return response.json().then(data => {
+          throw new Error(data.message || 'Error adding user to CRM');
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('User added to Zoho CRM successfully:', data);
+      return data;
+    })
+    .catch(error => {
+      console.error('Error adding user to Zoho CRM:', error);
+      // Still continue the registration process even if CRM addition fails
+      return { success: false, error: error.message };
+    });
 }
