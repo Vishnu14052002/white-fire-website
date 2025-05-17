@@ -195,6 +195,113 @@ app.post('/submit-form', async (req, res) => {
   }
 });
 
+
+
+
+// Add these routes right before the line "app.listen(port, () => {"
+
+// Add a new user to Zoho CRM
+app.post('/add-user-to-crm', async (req, res) => {
+    try {
+      const { name, email, phone, authProvider } = req.body;
+      
+      console.log('Adding user to Zoho CRM:', { name, email, phone, authProvider });
+      
+      // Validate the required data
+      if (!name || !email) {
+        return res.status(400).json({ message: 'Name and email are required' });
+      }
+      
+      // Check if we have a valid token
+      if (!tokens.access_token) {
+        return res.status(401).json({ 
+          message: 'Not authenticated with Zoho CRM. Please ensure the OAuth flow is completed.' 
+        });
+      }
+      
+      // Create a lead in Zoho CRM
+      const leadData = {
+        Last_Name: name,
+        Email: email,
+        Phone: phone || '',
+        Description: `New user registration via ${authProvider}`,
+        Lead_Source: 'Website Registration'
+      };
+      
+      const response = await axios.post('https://www.zohoapis.eu/crm/v2/Leads', {
+        data: [leadData]
+      }, {
+        headers: {
+          'Authorization': `Zoho-oauthtoken ${tokens.access_token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      console.log('User added to Zoho CRM:', response.data);
+      
+      res.status(200).json({ 
+        message: 'User registered and added to CRM successfully',
+        crmData: response.data
+      });
+    } catch (error) {
+      console.error('Error adding user to CRM:', error.response?.data || error.message);
+      
+      // Check for expired token
+      if (error.response?.status === 401) {
+        // You might want to trigger a token refresh here
+        console.log('Token expired, needs refreshing');
+        return res.status(503).json({ 
+          message: 'Service temporarily unavailable. Please try again in a few minutes.' 
+        });
+      }
+      
+      res.status(500).json({ 
+        message: 'There was an error adding user to CRM',
+        error: error.response?.data || error.message
+      });
+    }
+  });
+  
+  // Add a token refresh route
+  app.get('/refresh-token', async (req, res) => {
+    if (!tokens.refresh_token) {
+      return res.status(400).json({ error: 'No refresh token available' });
+    }
+    
+    try {
+      const params = new URLSearchParams();
+      params.append('refresh_token', tokens.refresh_token);
+      params.append('client_id', process.env.ZOHO_CLIENT_ID);
+      params.append('client_secret', process.env.ZOHO_CLIENT_SECRET);
+      params.append('grant_type', 'refresh_token');
+      
+      const response = await axios.post(`https://accounts.zoho.eu/oauth/v2/token`, params, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
+      
+      // Update tokens
+      tokens = {
+        access_token: response.data.access_token,
+        refresh_token: tokens.refresh_token, // Keep the existing refresh token
+        expiry: Date.now() + (response.data.expires_in * 1000)
+      };
+      
+      res.json({ message: 'Token refreshed successfully' });
+    } catch (error) {
+      console.error('Error refreshing token:', error.response?.data || error.message);
+      res.status(500).json({ 
+        error: 'Failed to refresh token', 
+        details: error.response?.data || error.message 
+      });
+    }
+  });
+
+
+
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
