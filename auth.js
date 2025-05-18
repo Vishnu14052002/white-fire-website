@@ -4,6 +4,20 @@ document.addEventListener('header-loaded', function() {
   initializeFirebaseAuth();
 });
 
+// Function to determine the API base URL
+function getApiBaseUrl() {
+  // Use production URL when on the actual website
+  if (window.location.hostname === 'whitefiretechnologies.com' || 
+      window.location.hostname === 'www.whitefiretechnologies.com') {
+    return 'https://whitefiretechnologies.com';
+  }
+  // Fallback to localhost for development
+  return 'http://localhost:3000';
+}
+
+// Use this in all your API calls
+const API_BASE_URL = getApiBaseUrl();
+
 function initializeFirebaseAuth() {
   // Move the Firebase initialization code from script.js to here
   try {
@@ -458,7 +472,7 @@ function addUserToCRM(userData) {
     .then(locationData => {
       console.log('Location data:', locationData);
       
-      return fetch('http://localhost:3000/add-user-to-crm', {
+      return fetch(`${API_BASE_URL}/add-user-to-crm`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
