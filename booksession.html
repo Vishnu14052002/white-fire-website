@@ -194,172 +194,192 @@
     <script src="script.js"></script>     
 
     <script>
-    // Function to get user's location
-    function getUserLocation() {
-      return new Promise((resolve, reject) => {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            // Success callback
-            (position) => {
-              const latitude = position.coords.latitude;
-              const longitude = position.coords.longitude;
-              
-              // Get location details using reverse geocoding API
-              fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
-                .then(response => response.json())
-                .then(data => {
-                  const locationData = {
-                    latitude,
-                    longitude,
-                    city: data.address?.city || data.address?.town || data.address?.village || '',
-                    state: data.address?.state || '',
-                    country: data.address?.country || '',
-                    postalCode: data.address?.postcode || '',
-                    fullAddress: data.display_name || ''
-                  };
-                  resolve(locationData);
-                })
-                .catch(error => {
-                  // If reverse geocoding fails, at least return coordinates
-                  console.error('Error getting address from coordinates:', error);
-                  resolve({ latitude, longitude });
-                });
-            },
-            // Error callback
-            (error) => {
-              console.warn('Error getting location:', error.message);
-              resolve({}); // Resolve with empty object to continue form submission
-            },
-            // Options
-            { 
-              enableHighAccuracy: false, 
-              timeout: 5000, 
-              maximumAge: 0 
-            }
-          );
-        } else {
-          console.warn('Geolocation is not supported by this browser');
-          resolve({}); // Resolve with empty object to continue form submission
-        }
-      });
-    }
-
-    // Set minimum date to today
-    document.addEventListener('DOMContentLoaded', function() {
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById("session-date").min = today;
-      
-      // Get booking form and attach event listener
-      const bookingForm = document.getElementById('bookingForm');
-      if (bookingForm) {
-        // Remove existing listeners if any
-        const newBookingForm = bookingForm.cloneNode(true);
-        bookingForm.parentNode.replaceChild(newBookingForm, bookingForm);
-        
-        // Add new submit listener
-        newBookingForm.addEventListener('submit', async function(event) {
-          event.preventDefault();
-          
-          // Show loading state
-          const submitBtn = document.querySelector('.submit-btn');
-          const originalBtnText = submitBtn.textContent;
-          submitBtn.textContent = 'Processing...';
-          submitBtn.disabled = true;
-          
-          try {
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const course = document.getElementById('course').value;
-            const sessionDate = document.getElementById('session-date').value;
-            const sessionTime = document.getElementById('session-time').value;
-            
-            // Get location data
-            const locationData = await getUserLocation();
-            console.log('Location data:', locationData);
-            
-            // Prepare data for submission
-            const formData = {
-              name,
-              email,
-              phone,
-              course,
-              sessionDate,
-              sessionTime,
-              location: locationData
-            };
-            
-            // Send data to server
-            const response = await fetch('http://localhost:3000/book-free-session', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
+      // Function to get user's location (fixed to avoid CORS issues)
+      function getUserLocation() {
+        return new Promise((resolve, reject) => {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              // Success callback
+              (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                
+                // Just return coordinates to avoid CORS issues
+                resolve({ latitude, longitude });
+                
+                // Alternative: Use CORS proxy for address lookup (uncomment if needed)
+                /*
+                fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)}`)
+                  .then(response => response.json())
+                  .then(data => {
+                    const locationData = {
+                      latitude,
+                      longitude,
+                      city: data.address?.city || data.address?.town || data.address?.village || '',
+                      state: data.address?.state || '',
+                      country: data.address?.country || '',
+                      postalCode: data.address?.postcode || '',
+                      fullAddress: data.display_name || ''
+                    };
+                    resolve(locationData);
+                  })
+                  .catch(error => {
+                    console.error('Error getting address from coordinates:', error);
+                    resolve({ latitude, longitude });
+                  });
+                */
               },
-              body: JSON.stringify(formData)
-            });
-            
-            const result = await response.json();
-            
-            // Reset button state
-            submitBtn.textContent = originalBtnText;
-            submitBtn.disabled = false;
-            
-            // Show success message
-            const successElement = document.getElementById('bookingSuccess');
-            successElement.style.display = 'block';
-            
-            // Clear form
-            newBookingForm.reset();
-            
-            // Hide success after 5 seconds
-            setTimeout(() => {
-              successElement.style.display = 'none';
-            }, 5000);
-          } catch (error) {
-            console.error('Error booking session:', error);
-            
-            // Reset button state
-            submitBtn.textContent = originalBtnText;
-            submitBtn.disabled = false;
-            
-            // Show error message
-            alert('Error booking free session. Please try again.');
+              // Error callback
+              (error) => {
+                console.warn('Error getting location:', error.message);
+                resolve({}); // Resolve with empty object to continue form submission
+              },
+              // Options
+              { 
+                enableHighAccuracy: false, 
+                timeout: 5000, 
+                maximumAge: 0 
+              }
+            );
+          } else {
+            console.warn('Geolocation is not supported by this browser');
+            resolve({}); // Resolve with empty object to continue form submission
           }
         });
       }
-    });
-
-    // Mobile navigation functionality
-    const menuIcon = document.getElementById('menu-icon');
-    const navLinks = document.getElementById('nav-links');
-
-    if (menuIcon && navLinks) {
-      menuIcon.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+  
+      // Set minimum date to today
+      document.addEventListener('DOMContentLoaded', function() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("session-date").min = today;
+        
+        // Get booking form and attach event listener
+        const bookingForm = document.getElementById('bookingForm');
+        if (bookingForm) {
+          // Remove existing listeners if any
+          const newBookingForm = bookingForm.cloneNode(true);
+          bookingForm.parentNode.replaceChild(newBookingForm, bookingForm);
+          
+          // Add new submit listener
+          newBookingForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Processing...';
+            submitBtn.disabled = true;
+            
+            try {
+              // Get form values
+              const name = document.getElementById('name').value;
+              const email = document.getElementById('email').value;
+              const phone = document.getElementById('phone').value;
+              const course = document.getElementById('course').value;
+              const sessionDate = document.getElementById('session-date').value;
+              const sessionTime = document.getElementById('session-time').value;
+              
+              // Get location data
+              const locationData = await getUserLocation();
+              console.log('Location data:', locationData);
+              
+              // Prepare data for submission
+              const formData = {
+                name,
+                email,
+                phone,
+                course,
+                sessionDate,
+                sessionTime,
+                location: locationData
+              };
+              
+              console.log('Submitting free session booking:', formData);
+              
+              // Send data to server - FIXED URL
+              const response = await fetch('/book-free-session', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+              });
+              
+              if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+              }
+              
+              const result = await response.json();
+              console.log('Free session booking success:', result);
+              
+              // Reset button state
+              submitBtn.textContent = originalBtnText;
+              submitBtn.disabled = false;
+              
+              // Show success message
+              const successElement = document.getElementById('bookingSuccess');
+              if (successElement) {
+                successElement.textContent = result.message || 'Free session booked successfully! We\'ll confirm your booking via email soon.';
+                successElement.style.display = 'block';
+              }
+              
+              // Clear form
+              newBookingForm.reset();
+              
+              // Reset minimum date
+              const today = new Date().toISOString().split('T')[0];
+              document.getElementById("session-date").min = today;
+              
+              // Hide success after 5 seconds
+              setTimeout(() => {
+                if (successElement) {
+                  successElement.style.display = 'none';
+                }
+              }, 5000);
+            } catch (error) {
+              console.error('Error booking session:', error);
+              
+              // Reset button state
+              submitBtn.textContent = originalBtnText;
+              submitBtn.disabled = false;
+              
+              // Show error message
+              alert('Error booking free session. Please try again.');
+            }
+          });
+        }
       });
-    }
-
-    // Mobile dropdown functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
-      
-      mobileDropdownHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-          // Toggle active class on header
-          this.classList.toggle('active');
-          
-          // Find the target dropdown content
-          const targetId = this.getAttribute('data-target');
-          const dropdownContent = document.getElementById(targetId);
-          
-          // Toggle show class on content
-          if (dropdownContent) {
-            dropdownContent.classList.toggle('show');
-          }
+  
+      // Mobile navigation functionality
+      const menuIcon = document.getElementById('menu-icon');
+      const navLinks = document.getElementById('nav-links');
+  
+      if (menuIcon && navLinks) {
+        menuIcon.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+      }
+  
+      // Mobile dropdown functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
+        
+        mobileDropdownHeaders.forEach(header => {
+          header.addEventListener('click', function() {
+            // Toggle active class on header
+            this.classList.toggle('active');
+            
+            // Find the target dropdown content
+            const targetId = this.getAttribute('data-target');
+            const dropdownContent = document.getElementById(targetId);
+            
+            // Toggle show class on content
+            if (dropdownContent) {
+              dropdownContent.classList.toggle('show');
+            }
+          });
         });
       });
-    });
-    </script>
+      </script>
 </body>
 </html>

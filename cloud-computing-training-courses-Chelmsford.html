@@ -1429,89 +1429,109 @@
         });
 
         // Form submission handler for enrollment
-        document.getElementById("enrollmentForm").addEventListener("submit", async (event) => {
-            event.preventDefault();
+// Form submission handler for enrollment
+document.getElementById("enrollmentForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-            // Get form values
-            const fullName = document.getElementById("enrollFullName").value;
-            const email = document.getElementById("enrollEmail").value;
-            const phone = document.getElementById("enrollPhone").value;
-            const courseInterested = document.getElementById("enrollCourse").value;
+    // Get form values
+    const fullName = document.getElementById("enrollFullName").value;
+    const email = document.getElementById("enrollEmail").value;
+    const phone = document.getElementById("enrollPhone").value;
+    const courseInterested = document.getElementById("enrollCourse").value;
 
-            // Add a new document to Firestore
-            try {
-                await addDoc(collection(db, "enrollments"), {
-                    fullName: fullName,
-                    email: email,
-                    phone: phone,
-                    courseInterested: courseInterested,
-                    timestamp: new Date()
-                });
-                
-                // Hide form and show success message
-                document.getElementById("enrollmentForm").style.display = "none";
-                document.getElementById("enrollmentSuccess").style.display = "block";
-                
-                // Reset the form (hidden but reset for next time)
-                document.getElementById("enrollmentForm").reset();
-                // Reset the course field
-                document.getElementById("enrollCourse").value = "Cloud Computing";
-                
-                // Close modal after 3 seconds
-                setTimeout(() => {
-                    modal.style.display = "none";
-                    // Reset view for next time
-                    document.getElementById("enrollmentForm").style.display = "block";
-                    document.getElementById("enrollmentSuccess").style.display = "none";
-                }, 3000);
-                
-            } catch (e) {
-                console.error("Error submitting enrollment: ", e);
-                alert("Error submitting enrollment. Please try again.");
-            }
+    try {
+        const response = await fetch('/enroll-course', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: fullName,
+                email: email,
+                phone: phone,
+                course: courseInterested,
+                source: 'Data Science Course Page'
+            })
         });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            // Hide form and show success message
+            document.getElementById("enrollmentForm").style.display = "none";
+            document.getElementById("enrollmentSuccess").style.display = "block";
+            document.getElementById("enrollmentSuccess").textContent = result.message;
+            
+            // Reset the form
+            document.getElementById("enrollmentForm").reset();
+            document.getElementById("enrollCourse").value = "Cloud Computing";
+            
+            // Close modal after 3 seconds
+            setTimeout(() => {
+                modal.style.display = "none";
+                document.getElementById("enrollmentForm").style.display = "block";
+                document.getElementById("enrollmentSuccess").style.display = "none";
+            }, 3000);
+        } else {
+            alert(result.message || "Error submitting enrollment. Please try again.");
+        }
+    } catch (error) {
+        console.error("Error submitting enrollment:", error);
+        alert("Error submitting enrollment. Please try again.");
+    }
+});
 
         // Form submission handler for booking a session
-        document.getElementById("bookSessionForm").addEventListener("submit", async (event) => {
-            event.preventDefault();
+// Form submission handler for booking a session
+document.getElementById("bookSessionForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-            // Get form values
-            const fullName = document.getElementById("fullName").value;
-            const email = document.getElementById("email").value;
-            const phone = document.getElementById("phone").value;
-            const courseInterested = document.getElementById("courseInterested").value;
-            const preferredDate = document.getElementById("preferredDate").value;
-            const preferredTime = document.getElementById("preferredTime").value;
+    // Get form values
+    const fullName = document.getElementById("fullName").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const courseInterested = document.getElementById("courseInterested").value;
+    const preferredDate = document.getElementById("preferredDate").value;
+    const preferredTime = document.getElementById("preferredTime").value;
 
-            // Add a new document to Firestore
-            try {
-                await addDoc(collection(db, "session-bookings"), {
-                    fullName: fullName,
-                    email: email,
-                    phone: phone,
-                    courseInterested: courseInterested,
-                    preferredDate: preferredDate,
-                    preferredTime: preferredTime,
-                    status: "pending",
-                    timestamp: new Date()
-                });
-                
-                // Show success message and reset form
-                document.getElementById("bookingSuccess").style.display = "block";
-                document.getElementById("bookSessionForm").reset();
-                // Reset the course field to Cloud Computing
-                document.getElementById("courseInterested").value = "Cloud Computing";
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    document.getElementById("bookingSuccess").style.display = "none";
-                }, 5000);
-                
-            } catch (e) {
-                console.error("Error booking session: ", e);
-                alert("Error booking session. Please try again.");
-            }
+    try {
+        const response = await fetch('/book-session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: fullName,
+                email: email,
+                phone: phone,
+                course: courseInterested,
+                preferredDate: preferredDate,
+                preferredTime: preferredTime,
+                source: 'Data Science Course Page'
+            })
         });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            // Show success message and reset form
+            document.getElementById("bookingSuccess").style.display = "block";
+            document.getElementById("bookingSuccess").textContent = result.message;
+            document.getElementById("bookSessionForm").reset();
+            document.getElementById("courseInterested").value = "Cloud Computing";
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById("bookingSuccess").style.display = "none";
+            }, 5000);
+        } else {
+            alert(result.message || "Error booking session. Please try again.");
+        }
+    } catch (error) {
+        console.error("Error booking session:", error);
+        alert("Error booking session. Please try again.");
+    }
+});
 
         // FAQ toggle
         const faqQuestions = document.querySelectorAll('.faq-question');

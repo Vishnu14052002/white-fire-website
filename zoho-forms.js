@@ -1,4 +1,7 @@
-// Updated zoho-forms.js - completely removes Firebase dependencies
+// Fixed zoho-forms.js - with correct API URLs
+
+// Get the correct API base URL
+const API_BASE_URL = window.location.origin;
 
 // Function to get user's location
 function getUserLocation() {
@@ -10,8 +13,12 @@ function getUserLocation() {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             
-            // Get location details using reverse geocoding API
-            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
+            // Just return coordinates without address lookup to avoid CORS issues
+            resolve({ latitude, longitude });
+            
+            // Alternative: Use CORS proxy for address lookup
+            /*
+            fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)}`)
               .then(response => response.json())
               .then(data => {
                 const locationData = {
@@ -26,10 +33,10 @@ function getUserLocation() {
                 resolve(locationData);
               })
               .catch(error => {
-                // If reverse geocoding fails, at least return coordinates
                 console.error('Error getting address from coordinates:', error);
                 resolve({ latitude, longitude });
               });
+            */
           },
           // Error callback
           (error) => {
@@ -144,9 +151,9 @@ function getUserLocation() {
           source: 'Course Page Enrollment Form'
         };
         
-        // Send to Zoho CRM
+        // Send to Zoho CRM - FIXED URL
         sendToZohoCRM(
-          "http://localhost:3000/enroll-course", 
+          "/enroll-course", 
           formData,
           function(result) {
             console.log('Enrollment success:', result);
@@ -221,9 +228,9 @@ function getUserLocation() {
           source: 'Course Page Booking Form'
         };
         
-        // Send to Zoho CRM
+        // Send to Zoho CRM - FIXED URL
         sendToZohoCRM(
-          "http://localhost:3000/book-session", 
+          "/book-session", 
           formData,
           function(result) {
             console.log('Booking success:', result);
