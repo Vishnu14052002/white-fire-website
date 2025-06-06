@@ -687,7 +687,7 @@
  
   
 
-  <!-- WhatsApp Button & Chat -->
+  <!-- WhatsApp Button & Chat
   <div class="whatsapp-container">
     <div class="whatsapp-button" id="whatsapp-button">
       <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
@@ -705,8 +705,11 @@
         <button id="send-message">Send</button>
       </div>
     </div>
-  </div>
+  </div> -->
 
+
+  <div id="whatsapp-containerr"></div>
+  <script src="whatsapp.js"></script>
 
 
 
@@ -732,68 +735,68 @@ if (menuIcon && navLinks) {
 }
     
 console.log("started")
-    // WhatsApp functionality
-const whatsappButton = document.getElementById('whatsapp-button');
-const whatsappChat = document.getElementById('whatsapp-chat');
-const closeChat = document.getElementById('close-chat');
-const sendMessage = document.getElementById('send-message');
-const messageInput = document.getElementById('whatsapp-message');
-const chatBody = document.getElementById('chat-body');
-const whatsappNumber = '+447587675040'; // Your WhatsApp number
+//     // WhatsApp functionality
+// const whatsappButton = document.getElementById('whatsapp-button');
+// const whatsappChat = document.getElementById('whatsapp-chat');
+// const closeChat = document.getElementById('close-chat');
+// const sendMessage = document.getElementById('send-message');
+// const messageInput = document.getElementById('whatsapp-message');
+// const chatBody = document.getElementById('chat-body');
+// const whatsappNumber = '+447587675040'; // Your WhatsApp number
 
-whatsappButton.addEventListener('click', () => {
-  whatsappChat.style.display = 'flex';
-});
-console.log("Script loaded and button:");
+// whatsappButton.addEventListener('click', () => {
+//   whatsappChat.style.display = 'flex';
+// });
+// console.log("Script loaded and button:");
 
 
-closeChat.addEventListener('click', () => {
-  whatsappChat.style.display = 'none';
-});
+// closeChat.addEventListener('click', () => {
+//   whatsappChat.style.display = 'none';
+// });
 
-// Function to redirect to WhatsApp with the message
-function redirectToWhatsApp(message) {
-  // Format the number without spaces or special characters
-  const formattedNumber = whatsappNumber.replace(/\s+/g, '');
+// // Function to redirect to WhatsApp with the message
+// function redirectToWhatsApp(message) {
+//   // Format the number without spaces or special characters
+//   const formattedNumber = whatsappNumber.replace(/\s+/g, '');
   
-  // Create the WhatsApp URL with the message
-  const whatsappURL = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`;
+//   // Create the WhatsApp URL with the message
+//   const whatsappURL = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`;
   
-  // Open WhatsApp in a new tab
-  window.open(whatsappURL, '_blank');
-}
+//   // Open WhatsApp in a new tab
+//   window.open(whatsappURL, '_blank');
+// }
 
-sendMessage.addEventListener('click', () => {
-  handleMessageSend();
-});
+// sendMessage.addEventListener('click', () => {
+//   handleMessageSend();
+// });
 
-// Also handle pressing Enter key in the input field
-messageInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    handleMessageSend();
-  }
-});
+// // Also handle pressing Enter key in the input field
+// messageInput.addEventListener('keypress', (e) => {
+//   if (e.key === 'Enter') {
+//     handleMessageSend();
+//   }
+// });
 
-function handleMessageSend() {
-  const message = messageInput.value.trim();
-  if (message !== '') {
-    // Display the message in the chat interface
-    const userMsg = document.createElement('div');
-    userMsg.className = 'user-message';
-    userMsg.innerText = message;
-    chatBody.appendChild(userMsg);
-    chatBody.scrollTop = chatBody.scrollHeight;
+// function handleMessageSend() {
+//   const message = messageInput.value.trim();
+//   if (message !== '') {
+//     // Display the message in the chat interface
+//     const userMsg = document.createElement('div');
+//     userMsg.className = 'user-message';
+//     userMsg.innerText = message;
+//     chatBody.appendChild(userMsg);
+//     chatBody.scrollTop = chatBody.scrollHeight;
     
-    // Add a small delay so user can see their message before redirect
-    setTimeout(() => {
-      // Redirect to WhatsApp with the message
-      redirectToWhatsApp(message);
+//     // Add a small delay so user can see their message before redirect
+//     setTimeout(() => {
+//       // Redirect to WhatsApp with the message
+//       redirectToWhatsApp(message);
       
-      // Clear the input field
-      messageInput.value = '';
-    }, 500);
-  }
-}
+//       // Clear the input field
+//       messageInput.value = '';
+//     }, 500);
+//   }
+// }
 
     function filterCourses() {
     let input = document.getElementById("search-box").value.toLowerCase();
