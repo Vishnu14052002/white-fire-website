@@ -713,41 +713,25 @@
 
 
 
-
-
-  <div id="footer"></div>
-  <script src="footer.js"></script>
-
-
-
-  <!-- <script>
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer').innerHTML = data;
-      });
-  </script> -->
-
-
-
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-<script src="header.js"></script>
-<script src="auth.js"></script>
-<script src="script.js"></script>
-
-
-  
-
   <script>
+    
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
 
-    menuIcon.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
+// Check if elements exist before adding event listeners
+if (menuIcon && navLinks) {
+  menuIcon.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    console.log("Menu toggled!");
+  });
+} else {
+  console.warn('Menu elements not found:', {
+    menuIcon: !!menuIcon,
+    navLinks: !!navLinks
+  });
+}
+    
+console.log("started")
     // WhatsApp functionality
 const whatsappButton = document.getElementById('whatsapp-button');
 const whatsappChat = document.getElementById('whatsapp-chat');
@@ -760,6 +744,8 @@ const whatsappNumber = '+447587675040'; // Your WhatsApp number
 whatsappButton.addEventListener('click', () => {
   whatsappChat.style.display = 'flex';
 });
+console.log("Script loaded and button:");
+
 
 closeChat.addEventListener('click', () => {
   whatsappChat.style.display = 'none';
@@ -1129,6 +1115,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   </script>
+
+
+
+
+
+  <div id="footer"></div>
+  <script src="footer.js"></script>
+
+
+
+  <!-- <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+  </script> -->
+
+
+
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script src="header.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+
+
+  
+
+
 
 <script src="auto-popup.js"></script>
 
