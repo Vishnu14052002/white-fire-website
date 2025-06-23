@@ -236,6 +236,10 @@
     width: 280px;
     padding: 20px;
     transition: transform 0.3s ease-in-out;
+    /* Add flexbox to control layout */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Make all boxes same height */
   }
   
   .course-box:hover {
@@ -251,6 +255,10 @@
   
   .course-details {
     margin-top: 15px;
+    /* Make this flex to push button to bottom */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* This will take up available space */
   }
   
   .course-name {
@@ -263,8 +271,8 @@
     font-size: 1rem;
     color: #666;
     margin: 10px 0;
-    /* mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.8) 5%, transparent 100%);
--webkit-mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.8) 5%, transparent 100%); */
+    /* Remove the flex-grow so description doesn't expand */
+    flex-grow: 1; /* This pushes the button to the bottom */
 
   }
   
@@ -287,7 +295,7 @@
 
   .see-more-btn {
     display: inline-block;
-    margin-top: 0px;
+    margin-top: auto; /* This pushes the button to the bottom */
     padding: 10px 18px;
     background-color: #0d6985;
     color: white;
@@ -297,6 +305,7 @@
     border-radius: 25px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-self: center; /* Center the button horizontally */
   }
   
   .see-more-btn:hover {

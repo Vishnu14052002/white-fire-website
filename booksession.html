@@ -7,195 +7,39 @@
     <link rel="stylesheet" href="commoncssforloginlogout.css" class="stylesheet">
    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">    
+    <link rel="stylesheet" href="./whatsapp.css" class="style"> 
     <title>Book Free Session</title>
+    <style>
+        /* Add styles for success message */
+        #bookingSuccess {
+            display: none;
+            background-color: #e8f5e9;
+            color: #4CAF50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 500;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-    <header class="main-header">
-        <div class="logo">
-          <a href="/index.html"><img src="resources/Whitefirelogo.png" alt="Logo"></a>
-        </div>
-        <nav class="nav-links" id="nav-links">
-          <a href="/index.html" >Home</a>
-          <div class="dropdown courses-dropdown">
-            <a href="/courses.html" class="dropbtn">Courses <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-              <a href="/cloud-computing-training-courses-chelmsford.html">Cloud Computing</a>
-              <a href="/data-science-training-course-chelmsford.html">Data Science</a>
-              <a href="/data-base-administration-training-course-chelmsford.html">Database Administration</a>
-              <a href="/it-basics-skill-training-course-chelmsford.html">IT Basic Skills</a>
-              <a href="/network-administration-training-course-chelmsford.html">Network Administration</a>
-              <a href="/programming-training-course-chelmsford.html">Programming Languages</a>
-            </div>
-          </div>
-          <a href="/about.html">About Us</a>
-          <a href="/contact.html">Contact Us</a>
-          <a href="/syllabus.html" class="nav-syllabus-link">
-            <div class="magic-syllabus-container">
-              <i class="fas fa-crown syllabus-crown"></i>
-              <span class="magic-text">Magic Syllabus</span>
-            </div>
-          </a>
+  <div id="header-container"></div>
           
-          <!-- Added dropdown menu -->
-          <div class="dropdown">
-            <a href="#" class="dropbtn">More <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-              <a href="/placement.html">Placements</a>
-              <a href="/gallery.html">Gallery</a>
-              <a href="/careers.html">Careers</a>
-              <a href="/blog.html">Tech Blog</a>
-              <a href="/testimonials.html">Testimonials</a>
-              <a href="/booksession.html">Free Session</a>
-            </div>
-          </div>
-    
-          <!-- Mobile-only links -->
-          <div class="mobile-only-links">
-            <!-- Mobile Courses Menu - with dropdown toggle -->
-            <div class="mobile-dropdown">
-              <div class="mobile-dropdown-header" data-target="mobile-courses-dropdown">
-                Courses <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="mobile-dropdown-content" id="mobile-courses-dropdown">
-                <a href="/cloud-computing-training-courses-chelmsford.html">Cloud Computing</a>
-                <a href="/data-science-training-course-chelmsford.html">Data Science</a>
-                <a href="/data-base-administration-training-course-chelmsford.html">Database Administration</a>
-                <a href="/it-basics-skill-training-course-chelmsford.html">IT Basic Skills</a>
-                <a href="/network-administration-training-course-chelmsford.html">Network Administration</a>
-                <a href="/programming-training-course-chelmsford.html">Programming Languages</a>
-              </div>
-            </div>
-            
-            <!-- Other mobile links -->
-            <div class="mobile-dropdown">
-              <div class="mobile-dropdown-header" data-target="mobile-more-dropdown">
-                More <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="mobile-dropdown-content" id="mobile-more-dropdown">
-                <!-- <a href="otherpages/scholarships.html">Scholarships</a> -->
-                <a href="/placement.html">Placements</a>
-                <!-- <a href="otherpages/hire-from-us.html">Hire From Us</a> -->
-                <a href="/gallery.html">Gallery</a>
-                <!-- <a href="otherpages/our-trainers.html">Our Trainers</a> -->
-                <!-- <a href="otherpages/become-trainer.html">Become A Trainer</a> -->
-                <a href="/careers.html">Other Careers</a>
-                <a href="/blog.html">Tech Blog</a>
-                <a href="/testimonials.html">Testimonials</a>
-                <a href="/booksession.html">Free Session</a>
-                <!-- <a href="otherpages/white-papers.html">White Papers</a> -->
-              </div>
-            </div>
-            
-            <!-- Keep other direct links -->
-           
-          </div>
-
-
-
-                <!-- Authentication Links - MOVED BELOW mobile-only-links -->
-                <div class="auth-section">
-                  <!-- This section will be dynamically replaced based on auth state -->
-                  <div id="loggedOutView">
-                    <a href="#" id="loginBtn">Login/Register</a>
-                  </div>
-                  <div id="loggedInView" style="display: none;">
-                    <span id="welcomeUser"></span>
-                    <button id="logoutBtn">Logout</button>
-                  </div>
-                </div>
-          
-          
-          
-                  </nav>
-                  <div class="menu-icon" id="menu-icon">☰</div>
-                </header>
-          
-          
-          
-                         <!-- Login Modal -->
-                         <div class="modal" id="loginModal">
-                          <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h2>Login</h2>
-                            <div id="loginError" class="error-message"></div>
-                            <form id="loginForm">
-                              <div class="form-group">
-                                <label for="loginEmail">Email</label>
-                                <input type="email" id="loginEmail" required>
-                              </div>
-                              <div class="form-group">
-                                <label for="loginPassword">Password</label>
-                                <input type="password" id="loginPassword" required>
-                              </div>
-                              <button type="submit">Login</button>
-                            </form>
-                            
-                            <!-- Add separator -->
-                            <div class="separator">
-                              <span>OR</span>
-                            </div>
-                            
-                            <!-- Add Google Sign-in button -->
-                            <button id="googleSignInBtnLogin" class="google-signin-btn">
-                              <i class="fab fa-google"></i> Sign in with Google
-                            </button>
-                            
-                            <p>Don't have an account? <a href="#" style="text-decoration: none;color: black;" id="switchToRegister">Register here</a></p>
-                          </div>
-                        </div>
-                        
-                        <!-- Register Modal --> 
-                        <div class="modal" id="registerModal">
-                          <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h2>Register</h2>
-                            <div id="registerError" class="error-message"></div>
-                            <div id="registerSuccess" class="success-message"></div>
-                            <form id="registerForm">
-                              <div class="form-group">
-                                <label for="registerName">Full Name</label>
-                                <input type="text" id="registerName" required>
-                              </div>
-                              <div class="form-group">
-                                <label for="registerPhone">Phone Number</label>
-                                <input type="tel" id="registerPhone" required>
-                              </div>
-                              <div class="form-group">
-                                <label for="registerEmail">Email</label>
-                                <input type="email" id="registerEmail" required>
-                              </div>
-                              <div class="form-group">
-                                <label for="registerPassword">Password</label>
-                                <input type="password" id="registerPassword" required>
-                              </div>
-                              <button type="submit">Register</button>
-                            </form>
-                            
-                            <!-- Add separator -->
-                            <div class="separator">
-                              <span>OR</span>
-                            </div>
-                            
-                            <!-- Add Google Sign-in button -->
-                            <button id="googleSignInBtn" class="google-signin-btn">
-                              <i class="fab fa-google"></i> Register with Google
-                            </button>
-                            
-                            <p>Already have an account? <a href="#" style="text-decoration: none;color: black;" id="switchToLogin">Login here</a></p>
-                          </div>
-                        </div>
-          
-          
-
-
-
     <section class="hero-section">
         <div class="hero-overlay"></div>
         <img src="../otherpages/otherpageresources//shutterstock_2288178513.jpg" alt="Free Session Image" class="hero-image">
         <div class="hero-text">
           <h1>Book Your Free Session Now</h1>
           <p>Experience our world-class training before you commit</p>
-          <span class="sub-tagline">🔥 Limited seats available for each session!</span>
+          <span class="sub-tagline">Limited seats available for each session!</span>
         </div>
     </section>
 
@@ -294,6 +138,9 @@
 
                     <button type="submit" class="submit-btn">Book My Free Session</button>
                 </form>
+                <div id="bookingSuccess">
+                    Free session booked successfully! We'll confirm your booking via email soon.
+                </div>
             </div>
         </div>
     </section>
@@ -338,137 +185,206 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer_container">
-          <div class="footer_about">
-            <h2>White Fire</h2>
-            <p>Igniting innovation, driving success. Let's build something amazing together.</p>
-          </div>
-    
-          <div class="footer_links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/about.html">About Us</a></li>
-            <li><a href="/courses.html">Courses</a></li>
-            <li><a href="/contact.html">Contact</a></li>
-          </ul>
-        </div>
-    
-        <div class="footer_social">
-          <h3>Follow Us</h3>
-          <div class="social_icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-    
-        <div class="footer_newsletter">
-          <h3>Subscribe</h3>
-          <p>Get the latest updates and offers.</p>
-          <form>
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-    
-        <div class="footer_bottom">
-          <p>&copy; 2025 White Fire. All rights reserved.</p>
-        </div>
-        </div>
-      </footer>
+    <div id="whatsapp-containerr"></div>
+    <script src="whatsapp.js"></script>
 
+    <div id="footer"></div>
+    <script src="footer.js"></script>
 
-      <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-      <script src="script.js"></script>      
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="header.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>     
 
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBqtR-mopnadnBWzSE6HJzdZeNVqIQRnfs",
-            authDomain: "white-fire-technologies.firebaseapp.com",
-            projectId: "white-fire-technologies",
-            storageBucket: "white-fire-technologies.firebasestorage.app",
-            messagingSenderId: "997726192451",
-            appId: "1:997726192451:web:c4ebf82504875f7174e5f6",
-            measurementId: "G-SLSNLSDR79"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // Set minimum date to today
+    <script>
+      // Function to get user's location (fixed to avoid CORS issues)
+      function getUserLocation() {
+        return new Promise((resolve, reject) => {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              // Success callback
+              (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                
+                // Just return coordinates to avoid CORS issues
+                resolve({ latitude, longitude });
+                
+                // Alternative: Use CORS proxy for address lookup (uncomment if needed)
+                /*
+                fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)}`)
+                  .then(response => response.json())
+                  .then(data => {
+                    const locationData = {
+                      latitude,
+                      longitude,
+                      city: data.address?.city || data.address?.town || data.address?.village || '',
+                      state: data.address?.state || '',
+                      country: data.address?.country || '',
+                      postalCode: data.address?.postcode || '',
+                      fullAddress: data.display_name || ''
+                    };
+                    resolve(locationData);
+                  })
+                  .catch(error => {
+                    console.error('Error getting address from coordinates:', error);
+                    resolve({ latitude, longitude });
+                  });
+                */
+              },
+              // Error callback
+              (error) => {
+                console.warn('Error getting location:', error.message);
+                resolve({}); // Resolve with empty object to continue form submission
+              },
+              // Options
+              { 
+                enableHighAccuracy: false, 
+                timeout: 5000, 
+                maximumAge: 0 
+              }
+            );
+          } else {
+            console.warn('Geolocation is not supported by this browser');
+            resolve({}); // Resolve with empty object to continue form submission
+          }
+        });
+      }
+  
+      // Set minimum date to today
+      document.addEventListener('DOMContentLoaded', function() {
         const today = new Date().toISOString().split('T')[0];
         document.getElementById("session-date").min = today;
-
-        document.getElementById("bookingForm").addEventListener("submit", async (event) => {
+        
+        // Get booking form and attach event listener
+        const bookingForm = document.getElementById('bookingForm');
+        if (bookingForm) {
+          // Remove existing listeners if any
+          const newBookingForm = bookingForm.cloneNode(true);
+          bookingForm.parentNode.replaceChild(newBookingForm, bookingForm);
+          
+          // Add new submit listener
+          newBookingForm.addEventListener('submit', async function(event) {
             event.preventDefault();
-
-            // Get form values
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const phone = document.getElementById("phone").value;
-            const course = document.getElementById("course").value;
-            const sessionDate = document.getElementById("session-date").value;
-            const sessionTime = document.getElementById("session-time").value;
-
-            // Add a new document to Firestore
-            try {
-                await addDoc(collection(db, "free-sessions"), {
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    course: course,
-                    sessionDate: sessionDate,
-                    sessionTime: sessionTime,
-                    status: "pending",
-                    timestamp: new Date()
-                });
-                alert("Free session booked successfully! We'll confirm your booking via email soon.");
-            } catch (e) {
-                console.error("Error booking session: ", e);
-                alert("Error booking free session. Please try again.");
-            }
-
-            // Clear the form after submission
-            document.getElementById("bookingForm").reset();
-        });
-
-        const menuIcon = document.getElementById('menu-icon');
-        const navLinks = document.getElementById('nav-links');
-
-        menuIcon.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-
-        // Mobile dropdown functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
             
-            mobileDropdownHeaders.forEach(header => {
-            header.addEventListener('click', function() {
-                // Toggle active class on header
-                this.classList.toggle('active');
-                
-                // Find the target dropdown content
-                const targetId = this.getAttribute('data-target');
-                const dropdownContent = document.getElementById(targetId);
-                
-                // Toggle show class on content
-                if (dropdownContent) {
-                dropdownContent.classList.toggle('show');
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Processing...';
+            submitBtn.disabled = true;
+            
+            try {
+              // Get form values
+              const name = document.getElementById('name').value;
+              const email = document.getElementById('email').value;
+              const phone = document.getElementById('phone').value;
+              const course = document.getElementById('course').value;
+              const sessionDate = document.getElementById('session-date').value;
+              const sessionTime = document.getElementById('session-time').value;
+              
+              // Get location data
+              const locationData = await getUserLocation();
+              console.log('Location data:', locationData);
+              
+              // Prepare data for submission
+              const formData = {
+                name,
+                email,
+                phone,
+                course,
+                sessionDate,
+                sessionTime,
+                location: locationData
+              };
+              
+              console.log('Submitting free session booking:', formData);
+              
+              // Send data to server - FIXED URL
+              const response = await fetch('/book-free-session', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+              });
+              
+              if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+              }
+              
+              const result = await response.json();
+              console.log('Free session booking success:', result);
+              
+              // Reset button state
+              submitBtn.textContent = originalBtnText;
+              submitBtn.disabled = false;
+              
+              // Show success message
+              const successElement = document.getElementById('bookingSuccess');
+              if (successElement) {
+                successElement.textContent = result.message || 'Free session booked successfully! We\'ll confirm your booking via email soon.';
+                successElement.style.display = 'block';
+              }
+              
+              // Clear form
+              newBookingForm.reset();
+              
+              // Reset minimum date
+              const today = new Date().toISOString().split('T')[0];
+              document.getElementById("session-date").min = today;
+              
+              // Hide success after 5 seconds
+              setTimeout(() => {
+                if (successElement) {
+                  successElement.style.display = 'none';
                 }
-            });
-            });
+              }, 5000);
+            } catch (error) {
+              console.error('Error booking session:', error);
+              
+              // Reset button state
+              submitBtn.textContent = originalBtnText;
+              submitBtn.disabled = false;
+              
+              // Show error message
+              alert('Error booking free session. Please try again.');
+            }
+          });
+        }
+      });
+  
+      // Mobile navigation functionality
+      const menuIcon = document.getElementById('menu-icon');
+      const navLinks = document.getElementById('nav-links');
+  
+      if (menuIcon && navLinks) {
+        menuIcon.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
         });
-    </script>
+      }
+  
+      // Mobile dropdown functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
+        
+        mobileDropdownHeaders.forEach(header => {
+          header.addEventListener('click', function() {
+            // Toggle active class on header
+            this.classList.toggle('active');
+            
+            // Find the target dropdown content
+            const targetId = this.getAttribute('data-target');
+            const dropdownContent = document.getElementById(targetId);
+            
+            // Toggle show class on content
+            if (dropdownContent) {
+              dropdownContent.classList.toggle('show');
+            }
+          });
+        });
+      });
+      </script>
 </body>
 </html>

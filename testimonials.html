@@ -6,183 +6,13 @@
     <link rel="stylesheet" href="./otherpages/otherpagestyle/testimonials.css">
     <link rel="stylesheet" href="commoncssforloginlogout.css" class="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+     <meta name="robots" content="index, follow">
+     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">    
+    <link rel="stylesheet" href="./whatsapp.css" class="style">
     <title>Testimonials - White Fire Technologies</title>
 </head>
 <body>
-    <header class="main-header">
-        <div class="logo">
-          <a href="/index.html"><img src="resources/Whitefirelogo.png" alt="Logo"></a>
-        </div>
-        <nav class="nav-links" id="nav-links">
-          <a href="/index.html" >Home</a>
-          <div class="dropdown courses-dropdown">
-            <a href="/courses.html" class="dropbtn">Courses <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-                <a href="/cloud-computing-training-courses-chelmsford.html">Cloud Computing</a>
-                <a href="/data-science-training-course-chelmsford.html">Data Science</a>
-                <a href="/data-base-administration-training-course-chelmsford.html">Database Administration</a>
-                <a href="/it-basics-skill-training-course-chelmsford.html">IT Basic Skills</a>
-                <a href="/network-administration-training-course-chelmsford.html">Network Administration</a>
-                <a href="/programming-training-course-chelmsford.html">Programming Languages</a>
-            </div>
-          </div>
-          <a href="/about.html">About Us</a>
-          <a href="/contact.html">Contact Us</a>
-          <a href="/syllabus.html" class="nav-syllabus-link">
-            <div class="magic-syllabus-container">
-              <i class="fas fa-crown syllabus-crown"></i>
-              <span class="magic-text">Magic Syllabus</span>
-            </div>
-          </a>
-          
-          <!-- Added dropdown menu -->
-          <div class="dropdown">
-            <a href="#" class="dropbtn">More <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-              <a href="/placement.html">Placements</a>
-              <a href="/gallery.html">Gallery</a>
-              <a href="/careers.html">Careers</a>
-              <a href="/blog.html">Tech Blog</a>
-              <a href="/testimonials.html">Testimonials</a>
-              <a href="/booksession.html">Free Session</a>
-            </div>
-          </div>
-    
-          <!-- Mobile-only links -->
-          <div class="mobile-only-links">
-            <!-- Mobile Courses Menu - with dropdown toggle -->
-            <div class="mobile-dropdown">
-              <div class="mobile-dropdown-header" data-target="mobile-courses-dropdown">
-                Courses <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="mobile-dropdown-content" id="mobile-courses-dropdown">
-                <a href="/cloud-computing-training-courses-chelmsford.html">Cloud Computing</a>
-                <a href="/data-science-training-course-chelmsford.html">Data Science</a>
-                <a href="/data-base-administration-training-course-chelmsford.html">Database Administration</a>
-                <a href="/it-basics-skill-training-course-chelmsford.html">IT Basic Skills</a>
-                <a href="/network-administration-training-course-chelmsford.html">Network Administration</a>
-                <a href="/programming-training-course-chelmsford.html">Programming Languages</a>
-              </div>
-            </div>
-            
-            <!-- Other mobile links -->
-            <div class="mobile-dropdown">
-              <div class="mobile-dropdown-header" data-target="mobile-more-dropdown">
-                More <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="mobile-dropdown-content" id="mobile-more-dropdown">
-                <!-- <a href="otherpages/scholarships.html">Scholarships</a> -->
-                <a href="/placement.html">Placements</a>
-                <!-- <a href="otherpages/hire-from-us.html">Hire From Us</a> -->
-                <a href="/gallery.html">Gallery</a>
-                <!-- <a href="otherpages/our-trainers.html">Our Trainers</a> -->
-                <!-- <a href="otherpages/become-trainer.html">Become A Trainer</a> -->
-                <a href="/careers.html">Other Careers</a>
-                <a href="/blog.html">Tech Blog</a>
-                <a href="/testimonials.html">Testimonials</a>
-                <a href="/booksession.html">Free Session</a>
-                <!-- <a href="otherpages/white-papers.html">White Papers</a> -->
-              </div>
-            </div>
-            
-            <!-- Keep other direct links -->
-           
-          </div>
-
-
-
-                <!-- Authentication Links - MOVED BELOW mobile-only-links -->
-                <div class="auth-section">
-                    <!-- This section will be dynamically replaced based on auth state -->
-                    <div id="loggedOutView">
-                      <a href="#" id="loginBtn">Login/Register</a>
-                    </div>
-                    <div id="loggedInView" style="display: none;">
-                      <span id="welcomeUser"></span>
-                      <button id="logoutBtn">Logout</button>
-                    </div>
-                  </div>
-            
-            
-            
-                    </nav>
-                    <div class="menu-icon" id="menu-icon">☰</div>
-                  </header>
-            
-            
-            
-                           <!-- Login Modal -->
-                           <div class="modal" id="loginModal">
-                            <div class="modal-content">
-                              <span class="close">&times;</span>
-                              <h2>Login</h2>
-                              <div id="loginError" class="error-message"></div>
-                              <form id="loginForm">
-                                <div class="form-group">
-                                  <label for="loginEmail">Email</label>
-                                  <input type="email" id="loginEmail" required>
-                                </div>
-                                <div class="form-group">
-                                  <label for="loginPassword">Password</label>
-                                  <input type="password" id="loginPassword" required>
-                                </div>
-                                <button type="submit">Login</button>
-                              </form>
-                              
-                              <!-- Add separator -->
-                              <div class="separator">
-                                <span>OR</span>
-                              </div>
-                              
-                              <!-- Add Google Sign-in button -->
-                              <button id="googleSignInBtnLogin" class="google-signin-btn">
-                                <i class="fab fa-google"></i> Sign in with Google
-                              </button>
-                              
-                              <p>Don't have an account? <a href="#" style="text-decoration: none;color: black;" id="switchToRegister">Register here</a></p>
-                            </div>
-                          </div>
-                          
-                          <!-- Register Modal --> 
-                          <div class="modal" id="registerModal">
-                            <div class="modal-content">
-                              <span class="close">&times;</span>
-                              <h2>Register</h2>
-                              <div id="registerError" class="error-message"></div>
-                              <div id="registerSuccess" class="success-message"></div>
-                              <form id="registerForm">
-                                <div class="form-group">
-                                  <label for="registerName">Full Name</label>
-                                  <input type="text" id="registerName" required>
-                                </div>
-                                <div class="form-group">
-                                  <label for="registerPhone">Phone Number</label>
-                                  <input type="tel" id="registerPhone" required>
-                                </div>
-                                <div class="form-group">
-                                  <label for="registerEmail">Email</label>
-                                  <input type="email" id="registerEmail" required>
-                                </div>
-                                <div class="form-group">
-                                  <label for="registerPassword">Password</label>
-                                  <input type="password" id="registerPassword" required>
-                                </div>
-                                <button type="submit">Register</button>
-                              </form>
-                              
-                              <!-- Add separator -->
-                              <div class="separator">
-                                <span>OR</span>
-                              </div>
-                              
-                              <!-- Add Google Sign-in button -->
-                              <button id="googleSignInBtn" class="google-signin-btn">
-                                <i class="fab fa-google"></i> Register with Google
-                              </button>
-                              
-                              <p>Already have an account? <a href="#" style="text-decoration: none;color: black;" id="switchToLogin">Login here</a></p>
-                            </div>
-                          </div>
+  <div id="header-container"></div>
             
 
 
@@ -193,7 +23,7 @@
         <div class="hero-text">
           <h1>Our Success Stories</h1>
           <p>Hear what our students and trainers have to say about their experience</p>
-          <span class="sub-tagline">🔥 Real stories from the White Fire community!</span>
+          <span class="sub-tagline">Real stories from the White Fire community!</span>
         </div>
     </section>
 
@@ -219,7 +49,7 @@
                     <p>The data science course completely changed my career trajectory. The hands-on projects and personal guidance from instructors were invaluable. I landed a job as a data analyst within two months of completing the course!</p>
                 </div>
                 <div class="testimonial-author">
-                    <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Student">
+                    
                     <div class="author-info">
                         <h4>Robert Adams</h4>
                         <p>Data Science Graduate</p>
@@ -240,7 +70,7 @@
                     <p>Coming from a non-technical background, I was worried about learning data science. The instructors broke down complex concepts into digestible parts and were always available for extra help. Now I work as a junior data scientist!</p>
                 </div>
                 <div class="testimonial-author">
-                    <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Student">
+                    
                     <div class="author-info">
                         <h4>Priya Sharma</h4>
                         <p>Data Science Graduate</p>
@@ -262,7 +92,7 @@
                     <p>As someone with no prior coding experience, I was nervous about learning web development. The step-by-step approach and supportive environment at White Fire made it possible for me to build my skills and confidence. I now work as a freelance developer.</p>
                 </div>
                 <div class="testimonial-author">
-                    <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Student">
+                    
                     <div class="author-info">
                         <h4>Emily Chen</h4>
                         <p>Web Development Graduate</p>
@@ -283,7 +113,7 @@
                     <p>The web development bootcamp was intense but incredibly rewarding. The curriculum was up-to-date with the latest technologies, and the project-based learning approach prepared me well for real-world challenges. I received three job offers before graduation!</p>
                 </div>
                 <div class="testimonial-author">
-                    <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Student">
+                    
                     <div class="author-info">
                         <h4>James Wilson</h4>
                         <p>Web Development Graduate</p>
@@ -305,7 +135,7 @@
                     <p>The AWS certification course was comprehensive and practical. The lab exercises and real-world scenarios helped me understand cloud architecture deeply. I passed the certification exam on my first attempt and secured a cloud engineer position!</p>
                 </div>
                 <div class="testimonial-author">
-                    <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Student">
+                    
                     <div class="author-info">
                         <h4>Michael Thompson</h4>
                         <p>Cloud Computing Graduate</p>
@@ -327,7 +157,7 @@
                     <p>The network administration program gave me hands-on experience with the latest networking technologies. The CCNA exam prep was thorough, and the instructors shared valuable insights from their industry experience. I'm now working as a network specialist at a major telecom company.</p>
                 </div>
                 <div class="testimonial-author">
-                    <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Student">
+                    
                     <div class="author-info">
                         <h4>Sarah Johnson</h4>
                         <p>Network Administration Graduate</p>
@@ -351,7 +181,7 @@
         <div class="trainers-testimonials">
             <div class="trainer-testimonial">
                 <div class="trainer-image">
-                    <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Trainer">
+                    <!-- <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Trainer"> -->
                 </div>
                 <div class="trainer-content">
                     <h3>Dr. Alex Morgan</h3>
@@ -363,7 +193,7 @@
 
             <div class="trainer-testimonial reverse">
                 <div class="trainer-image">
-                    <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Trainer">
+                    <!-- <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Trainer"> -->
                 </div>
                 <div class="trainer-content">
                     <h3>Jessica Martinez</h3>
@@ -375,7 +205,7 @@
 
             <div class="trainer-testimonial">
                 <div class="trainer-image">
-                    <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Trainer">
+                    <!-- <img src="/otherpages/otherpageresources/certifierinstructor.jpeg" alt="Trainer"> -->
                 </div>
                 <div class="trainer-content">
                     <h3>David Patel</h3>
@@ -388,65 +218,31 @@
 
         <div class="cta-section">
             <h3>Join Our Community</h3>
-            <p>Ready to transform your career or share your knowledge as a trainer?</p>
+            <p>Ready to transform your career</p>
             <div class="cta-buttons">
                 <a href="/courses.html" class="cta-btn">Explore Courses</a>
-                <a href="/careers.html" class="cta-btn secondary">Become a Trainer</a>
+    
             </div>
         </div>
     </section>
 
-    
+    <div id="whatsapp-containerr"></div>
+    <script src="whatsapp.js"></script>
 
     
 
-    <footer class="footer">
-        <div class="footer_container">
-          <div class="footer_about">
-            <h2>White Fire</h2>
-            <p>Igniting innovation, driving success. Let's build something amazing together.</p>
-          </div>
     
-          <div class="footer_links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/about.html">About Us</a></li>
-            <li><a href="/courses.html">Courses</a></li>
-            <li><a href="/contact.html">Contact</a></li>
-          </ul>
-        </div>
-    
-        <div class="footer_social">
-          <h3>Follow Us</h3>
-          <div class="social_icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-    
-        <div class="footer_newsletter">
-          <h3>Subscribe</h3>
-          <p>Get the latest updates and offers.</p>
-          <form>
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-    
-        <div class="footer_bottom">
-          <p>&copy; 2025 White Fire. All rights reserved.</p>
-        </div>
-        </div>
-    </footer>
+
+    <div id="footer"></div>
+    <script src="footer.js"></script>
 
 
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-    <script src="script.js"></script>    
+    <script src="header.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>  
 
     <script>
         // Mobile menu toggle
@@ -463,7 +259,7 @@
             
             mobileDropdownHeaders.forEach(header => {
                 header.addEventListener('click', function() {
-                    // Toggle active class on header
+                    // Toggle active class on heade
                     this.classList.toggle('active');
                     
                     // Find the target dropdown content
