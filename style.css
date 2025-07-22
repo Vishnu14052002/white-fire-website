@@ -836,6 +836,7 @@ form a:hover {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-right: 10px;
 }
 #logoutBtn:hover {
   background-color: #d32f2f;
@@ -1099,6 +1100,9 @@ form a:hover {
   .nav-links {
     display: flex;
     flex-direction: column;
+  }
+  #welcomeUser{
+    margin-left: 20px;
   }
 }
 
