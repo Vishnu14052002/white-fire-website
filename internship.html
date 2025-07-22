@@ -19,9 +19,9 @@
         <div class="hero-overlay"></div>
         <img src="../otherpages/otherpageresources//shutterstock_2288178513.jpg" alt="Testimonials Hero Image" class="hero-image">
         <div class="hero-text">
-          <h1>Our Internship</h1>
-          <p>Hear what our students and trainers have to say about their experience</p>
-          <span class="sub-tagline">Real stories from the White Fire community!</span>
+          <h1>Our Real world project based Internship</h1>
+          <p>Join our exclusive Internship program</p>
+          <span class="sub-tagline">Internship in all domains are available</span>
         </div>
     </section>
 
@@ -60,16 +60,12 @@
                 </div>
                 <div class="overview-stats">
                     <div class="stat-card">
-                        <h3>500+</h3>
+                        <h3>20+</h3>
                         <p>Successful Interns</p>
                     </div>
                     <div class="stat-card">
                         <h3>85%</h3>
                         <p>Job Placement Rate</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>100+</h3>
-                        <p>Partner Companies</p>
                     </div>
                     <div class="stat-card">
                         <h3>4.8/5</h3>
@@ -265,9 +261,6 @@
             
             <div class="stories-grid">
                 <div class="story-card">
-                    <div class="intern-photo">
-                        <img src="../otherpages/otherpageresources/intern1.jpg" alt="Intern Success Story">
-                    </div>
                     <div class="story-content">
                         <h4>Rahul Sharma</h4>
                         <p class="position">Data Science Intern → ML Engineer at TechCorp</p>
@@ -280,9 +273,7 @@
                 </div>
 
                 <div class="story-card">
-                    <div class="intern-photo">
-                        <img src="../otherpages/otherpageresources/intern2.jpg" alt="Intern Success Story">
-                    </div>
+
                     <div class="story-content">
                         <h4>Priya Patel</h4>
                         <p class="position">Web Dev Intern → Full Stack Developer at StartupXYZ</p>
@@ -295,9 +286,7 @@
                 </div>
 
                 <div class="story-card">
-                    <div class="intern-photo">
-                        <img src="../otherpages/otherpageresources/intern3.jpg" alt="Intern Success Story">
-                    </div>
+
                     <div class="story-content">
                         <h4>Arjun Kumar</h4>
                         <p class="position">AI Intern → AI Research Associate at InnovateTech</p>
@@ -315,46 +304,7 @@
 
 
 
-    <section class="application-process">
-        <div class="container">
-            <div class="section-header">
-                <h2>Application Process</h2>
-                <p>Simple steps to join our internship program</p>
-            </div>
-            
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Apply Online</h3>
-                    <p>Fill out our comprehensive application form with your details and preferred domain</p>
-                </div>
-                <div class="step-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Technical Assessment</h3>
-                    <p>Complete a domain-specific technical assessment to evaluate your current skill level</p>
-                </div>
-                <div class="step-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Interview</h3>
-                    <p>Participate in a virtual interview with our technical team and project managers</p>
-                </div>
-                <div class="step-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Start Journey</h3>
-                    <p>Get selected and begin your exciting internship journey with us</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <section class="requirements-eligibility">
         <div class="container">
@@ -367,7 +317,6 @@
                         <li>Minimum 3-month availability</li>
                         <li>Strong communication skills</li>
                         <li>Eagerness to learn and adapt</li>
-                        <li>Own laptop with required software</li>
                     </ul>
                 </div>
                 
@@ -420,7 +369,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>You'll work on real client projects ranging from web applications, mobile apps, data analysis dashboards, AI solutions, and cloud infrastructure projects.</p>
+                        <p>You'll work on real world projects ranging from web applications, mobile apps, data analysis dashboards, AI solutions, and cloud infrastructure projects.</p>
                     </div>
                 </div>
 
@@ -480,6 +429,34 @@
     <script src="header.js"></script>
     <script src="auth.js"></script>
     <script src="script.js"></script>  
+
+
+    <script>
+
+function toggleFAQ(element) {
+    const faqItem = element.parentElement;
+    const answer = faqItem.querySelector('.faq-answer');
+    const question = element;
+    const icon = element.querySelector('i');
+    
+    // Toggle active class on question
+    question.classList.toggle('active');
+    
+    // Toggle active class on answer
+    answer.classList.toggle('active');
+    
+    // Close other open FAQs (optional - for accordion behavior)
+    const allFaqItems = document.querySelectorAll('.faq-item');
+    allFaqItems.forEach(item => {
+        if (item !== faqItem) {
+            const otherQuestion = item.querySelector('.faq-question');
+            const otherAnswer = item.querySelector('.faq-answer');
+            otherQuestion.classList.remove('active');
+            otherAnswer.classList.remove('active');
+        }
+    });
+}
+    </script>
 
 
 
