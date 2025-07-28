@@ -112,6 +112,7 @@
                     </div>
                 </div>
 
+        
             </div>
 
             <!-- Bootcamp Statistics -->
@@ -228,6 +229,9 @@
                         <input id="email" type="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
+                        <input id="phone" type="tel" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
                         <select id="bootcamptrack" name="bootcamptrack" required>
                             <option value="" disabled selected>What interests you most?</option>
                             <option value="ai">Green AI & Machine Learning</option>
@@ -321,6 +325,7 @@
                 // Get form values
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
                 const bootcamptrack = document.getElementById('bootcamptrack').value;
                 const message = document.getElementById('message').value;
                 
@@ -332,6 +337,7 @@
                 const formData = {
                   name,
                   email,
+                  phone,
                   bootcamptrack,
                   message,
                   location: locationData
