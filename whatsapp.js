@@ -12,7 +12,7 @@ fetch('whatsapp.html')
     const sendMessage = document.getElementById('send-message');
     const messageInput = document.getElementById('whatsapp-message');
     const chatBody = document.getElementById('chat-body');
-    const whatsappNumber = '+447587675040'; // Your WhatsApp number
+    const whatsappNumber = '+447497775838'; // Your WhatsApp number
 
     whatsappButton.addEventListener('click', () => {
       whatsappChat.style.display = 'flex';
